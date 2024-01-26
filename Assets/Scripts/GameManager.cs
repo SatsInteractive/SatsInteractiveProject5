@@ -53,6 +53,9 @@ public class GameManager : MonoBehaviour
     {
         inputManager.HandleUIInput();
         inputManager.HandlePointsInput();
+        inputManager.HandleMovementInput();
+        if (codeMiniGame != null) return;
+        codeMiniGame.HandleCodeMiniGameInput();
     }
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Main")
         {
             codeMiniGame = FindObjectOfType<CodeMiniGame>();
+            inputManager.playerController = FindObjectOfType<PlayerController>();
         }
     }
 
