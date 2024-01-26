@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private PointsManager pointsManager;
     private InputManager inputManager;
     private SoundManager soundManager;
+    private CodeMiniGame codeMiniGame;
     
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         uiManager.OnBackButtonPressed += ResumeGame;
         uiManager.OnStartGameButtonPressed += StartGame;
         pointsManager.OnPointsUpdated += UpdatePoints;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     
     private void OnDisable()
@@ -44,12 +46,22 @@ public class GameManager : MonoBehaviour
         uiManager.OnExitButtonPressed -= ExitGame;
         uiManager.OnSettingsButtonPressed -= StopGame;
         uiManager.OnBackButtonPressed -= ResumeGame;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Update()
     {
         inputManager.HandleUIInput();
         inputManager.HandlePointsInput();
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene loaded: " + scene.name);
+        if (scene.name == "Main")
+        {
+            codeMiniGame = FindObjectOfType<CodeMiniGame>();
+        }
     }
 
     private void StartGame()
@@ -91,6 +103,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Audio level changed to {value}");
         soundManager.AdjustAudioLevel(value);
+        if (codeMiniGame != null) codeMiniGame.CodeMiniGameChangeVolumeLevel(value);
     }
     
     private void ChangeScene(string sceneName)
