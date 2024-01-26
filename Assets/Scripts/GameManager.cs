@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private PointsManager pointsManager;
     private InputManager inputManager;
     private SoundManager soundManager;
+    private CodeMiniGame codeMiniGame;
     
     private void Awake()
     {
@@ -17,15 +18,9 @@ public class GameManager : MonoBehaviour
         
         uiManager = FindObjectOfType<UIManager>();
         if (uiManager == null) gameObject.AddComponent<UIManager>();
-        uiManager.OnAudioSliderChanged += AdjustAudioLevel;
-        uiManager.OnExitButtonPressed += ExitGame;
-        uiManager.OnSettingsButtonPressed += StopGame;
-        uiManager.OnBackButtonPressed += ResumeGame;
-        uiManager.OnStartGameButtonPressed += StartGame;
         
         pointsManager = FindObjectOfType<PointsManager>();
         if (pointsManager == null) gameObject.AddComponent<PointsManager>();
-        pointsManager.OnPointsUpdated += UpdatePoints;
         
         soundManager = FindObjectOfType<SoundManager>();
         if (soundManager == null) gameObject.AddComponent<SoundManager>();
@@ -34,10 +29,39 @@ public class GameManager : MonoBehaviour
         if (inputManager == null) gameObject.AddComponent<InputManager>();
     }
 
+    private void OnEnable()
+    {
+        uiManager.OnAudioSliderChanged += AdjustAudioLevel;
+        uiManager.OnExitButtonPressed += ExitGame;
+        uiManager.OnSettingsButtonPressed += StopGame;
+        uiManager.OnBackButtonPressed += ResumeGame;
+        uiManager.OnStartGameButtonPressed += StartGame;
+        pointsManager.OnPointsUpdated += UpdatePoints;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    
+    private void OnDisable()
+    {
+        uiManager.OnAudioSliderChanged -= AdjustAudioLevel;
+        uiManager.OnExitButtonPressed -= ExitGame;
+        uiManager.OnSettingsButtonPressed -= StopGame;
+        uiManager.OnBackButtonPressed -= ResumeGame;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void Update()
     {
         inputManager.HandleUIInput();
         inputManager.HandlePointsInput();
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene loaded: " + scene.name);
+        if (scene.name == "Main")
+        {
+            codeMiniGame = FindObjectOfType<CodeMiniGame>();
+        }
     }
 
     private void StartGame()
@@ -60,6 +84,7 @@ public class GameManager : MonoBehaviour
     private void ExitGame()
     {
         string currentScene = SceneManager.GetActiveScene().name;
+        Debug.Log("Exiting game called, scene: " + currentScene + "...");
 
         if (currentScene == "Menu")
         {
@@ -78,6 +103,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Audio level changed to {value}");
         soundManager.AdjustAudioLevel(value);
+        if (codeMiniGame != null) codeMiniGame.CodeMiniGameChangeVolumeLevel(value);
     }
     
     private void ChangeScene(string sceneName)
@@ -86,18 +112,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
     
-    private void UpdatePoints(int points)
+    private void UpdatePoints(float points)
     {
         Debug.Log($"Points set to: {points}");
         uiManager.HandleHealthChange(points);
-    }
-    
-    private void OnDestroy()
-    {
-        uiManager.OnAudioSliderChanged -= AdjustAudioLevel;
-        uiManager.OnExitButtonPressed -= ExitGame;
-        uiManager.OnSettingsButtonPressed -= StopGame;
-        uiManager.OnBackButtonPressed -= ResumeGame;
     }
     
 }
