@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 64184997}
   - component: {fileID: 64184996}
   - component: {fileID: 64184995}
+  - component: {fileID: 64184998}
   m_Layer: 0
   m_Name: Classes
   m_TagString: Untagged
@@ -432,6 +433,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &64184998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64184993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80090bcf4a132b241be7dbe0f143ebae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regionUI: {fileID: 5262824662317030061, guid: c792adbe39e533c4bb440ac446cac2ba, type: 3}
 --- !u!1 &75459788
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +918,7 @@ GameObject:
   - component: {fileID: 571049223}
   - component: {fileID: 571049222}
   - component: {fileID: 571049221}
+  - component: {fileID: 571049224}
   m_Layer: 0
   m_Name: COOP
   m_TagString: Untagged
@@ -982,7 +997,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1050,6 +1065,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &571049224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571049219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80090bcf4a132b241be7dbe0f143ebae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regionUI: {fileID: 5262824662317030061, guid: 8764db8418453d940a3e4428024c3940, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,6 +1513,7 @@ GameObject:
   - component: {fileID: 1088803857}
   - component: {fileID: 1088803856}
   - component: {fileID: 1088803855}
+  - component: {fileID: 1088803858}
   m_Layer: 0
   m_Name: WC
   m_TagString: Untagged
@@ -2898,6 +2927,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3909041049589948406, guid: f425a099fe6d56548a2bba7b2a9b56ea, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909041049589948406, guid: f425a099fe6d56548a2bba7b2a9b56ea, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8331782988828223098, guid: f425a099fe6d56548a2bba7b2a9b56ea, type: 3}
