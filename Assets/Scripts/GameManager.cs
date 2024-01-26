@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     {
         inputManager.HandleUIInput();
         inputManager.HandlePointsInput();
+        inputManager.HandleMovementInput();
+        codeMiniGame.HandleCodeMiniGameInput();
     }
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

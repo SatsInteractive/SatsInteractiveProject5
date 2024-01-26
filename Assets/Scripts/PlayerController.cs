@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
-    [SerializeField] private Vector2 moveInput;
+    [SerializeField] public Vector2 moveInput;
     
     // Movement animation
     public Transform Face;

@@ -559,8 +559,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 457936270964827204}
-  - component: {fileID: 2706536813459218831}
   - component: {fileID: 584955721698097506}
+  - component: {fileID: 6476887109716761675}
   m_Layer: 0
   m_Name: CodeMiniGame
   m_TagString: Untagged
@@ -584,27 +584,6 @@ Transform:
   - {fileID: 4728547392162198324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2706536813459218831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5123765114740966353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa46ceebb1c663048a7b93a0fc3f7a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  codingPrompts:
-  - private Vector2 movementInput;
-  - public float moveSpeed = 5f;
-  - void Update() { }
-  normalColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 0}
-  errorColor: {r: 0.41509432, g: 0.26824492, b: 0.26824492, a: 0}
-  correctSound: {fileID: 0}
-  wrongSound: {fileID: 0}
-  audioLevel: 0
 --- !u!82 &584955721698097506
 AudioSource:
   m_ObjectHideFlags: 0
@@ -701,6 +680,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6476887109716761675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5123765114740966353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa46ceebb1c663048a7b93a0fc3f7a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codingPrompts:
+  - Debug.Log("I'm trapped in a computer!");
+  - transform.Rotate(Vector3.up * danceSpeed * Time.deltaTime);
+  - if(Input.GetButtonDown("PartyMode")) StartParty();
+  - public int numberOfCats = 999;
+  - Rigidbody2D gravityIsALie;
+  - bool isPlayerAsleep = false;
+  - Animator discoDancer = GetComponent<Animator>();
+  - float coffeeLevel = 0.0f;
+  - Camera.main.clearFlags = CameraClearFlags.SolidColor;
+  - void WhyAmIRunning() { }
+  normalColor: {r: 0.7490197, g: 0.7490197, b: 0.7490197, a: 1}
+  errorColor: {r: 106, g: 106, b: 68, a: 1}
+  correctSound: {fileID: 0}
+  wrongSound: {fileID: 0}
+  audioLevel: 0
 --- !u!1 &5824069150436766431
 GameObject:
   m_ObjectHideFlags: 0

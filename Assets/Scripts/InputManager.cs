@@ -7,12 +7,19 @@ public class InputManager : MonoBehaviour
 {
     private UIManager uiManager;
     private PointsManager pointsManager;
+    private PlayerController playerController;
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
         pointsManager = GetComponent<PointsManager>();
         uiManager = FindObjectOfType<UIManager>();
+    }
+    
+    public void HandleMovementInput()
+    {
+        playerController.moveInput.x = Input.GetAxis("Horizontal");
+        playerController.moveInput.y = Input.GetAxis("Vertical");
     }
 
     public void HandleUIInput()
