@@ -12,9 +12,9 @@ public class UIManager : MonoBehaviour
     private Button settingsButton;
     
     private GameObject settingsScreen;
-    private Button backButton;
-    private Button exitButton;
-    private Slider audioSlider;
+    public Button backButton;
+    public Button exitButton;
+    public Slider audioSlider;
     
     private GameObject scoreBoard;
     private Slider healthSlider;
@@ -46,8 +46,8 @@ public class UIManager : MonoBehaviour
         healthText = scoreBoard.transform.Find("HealthText").GetComponent<TextMeshProUGUI>();
         
         audioSlider.onValueChanged.AddListener(HandleAudioLevelChange);
-        backButton.onClick.AddListener(HandleBackButtonPressed);
-        exitButton.onClick.AddListener(HandleExitButtonPressed);
+        //backButton.onClick.AddListener(HandleBackButtonPressed);
+        //exitButton.onClick.AddListener(HandleExitButtonPressed);
         settingsButton.onClick.AddListener(HandleSettingsButtonPressed);
         startButton.onClick.AddListener(HandleStartGameButtonPressed);
     }
@@ -79,13 +79,13 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    private void HandleBackButtonPressed()
+    public void HandleBackButtonPressed()
     {
         settingsScreen.SetActive(false);
         OnBackButtonPressed?.Invoke();
     }
     
-    private void HandleExitButtonPressed()
+    public void HandleExitButtonPressed()
     {
         settingsScreen.SetActive(false);
         OnExitButtonPressed?.Invoke();
