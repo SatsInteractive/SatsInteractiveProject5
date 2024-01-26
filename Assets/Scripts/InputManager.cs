@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        pointsManager = GetComponent<PointsManager>();
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     public void HandleUIInput()
