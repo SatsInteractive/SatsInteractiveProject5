@@ -30,20 +30,19 @@ public class CodeMiniGame : MonoBehaviour
         "bool isPlayerAsleep = false;",
         "Animator discoDancer = GetComponent<Animator>();",
         "float coffeeLevel = 0.0f;",
-        "Camera.main.clearFlags = CameraClearFlags.SolidColor;",
         "void WhyAmIRunning() { }"
     };
-    public Color normalColor = new Color(85, 85, 85, 0);
-    public Color errorColor = new Color(106, 106, 68, 0);
+    public Color normalColor = new Color(85, 85, 85, 1);
+    public Color errorColor = new Color(106, 106, 68, 1);
     public AudioClip correctSound;
     public AudioClip wrongSound;
     public float audioLevel;
 
     private void Awake()
     {
-        promptText = transform.Find("code_prompt").GetComponent<TextMeshProUGUI>();
-        inputField = transform.Find("code_input_field").GetComponent<TMP_InputField>();
-        timerText = transform.Find("code_minigame_timer").GetComponent<TextMeshProUGUI>();
+        promptText = transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>();
+        inputField = transform.GetChild(0).GetChild(4).GetComponent<TMP_InputField>();
+        timerText = transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>();
         codeMiniGameAudioSource = GetComponent<AudioSource>();
         codeMiniGameAudioSource.volume = audioLevel;
     }
@@ -59,7 +58,7 @@ public class CodeMiniGame : MonoBehaviour
         SetRandomPrompt();
     }
 
-    private void Update()
+    public void HandleCodeMiniGameInput()
     {
         if (codeMiniGameActive)
         {
