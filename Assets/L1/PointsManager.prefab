@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
+  hours: 1800
   nextMultiplierTotal: 1
   ActionInfo:
   - type: eating

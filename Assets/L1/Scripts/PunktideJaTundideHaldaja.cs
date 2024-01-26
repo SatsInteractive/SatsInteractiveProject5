@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PunktideHaldaja : MonoBehaviour
+public class PunktideJaTundideHaldaja : MonoBehaviour
 {
     public float points;
+    public int hours;
+    public int day;
     public float nextMultiplierTotal;
+    private int[] endhours;
     private List<ActionType> actionHistory;
     public Action[] ActionInfo;
 
@@ -29,6 +32,7 @@ public class PunktideHaldaja : MonoBehaviour
     private void Awake()
     {
         actionHistory = new List<ActionType>();
+        endhours = new[] { 2400, 2400, 1600};
     }
     
     private void TriggerAction(ActionType actionType)
@@ -45,7 +49,31 @@ public class PunktideHaldaja : MonoBehaviour
             nextMultiplierTotal = 1f;
         }
         nextMultiplierTotal *= actionTriggered.nextMultiplier;
+        hours += 200;
         actionHistory.Add(actionType);
+
+        if (hours == endhours[day])
+        {
+            NextDay();
+        }
+    }
+
+    private void NextDay()
+    {
+        day += 1;
+        hours = 0800;
+        if (day == 1)
+        {
+            
+        }
+        else if (day == 2)
+        {
+            
+        }
+        else if (day == 3)
+        {
+            // END THE FUCKING GAME!!!!!!!!!!!!!!!!!!!!!!
+        }
     }
     
     void Update()
