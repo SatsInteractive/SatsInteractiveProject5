@@ -16,16 +16,15 @@ public class RegionManager : MonoBehaviour
         {
             Debug.Log("Collision with: " + other.gameObject.name);
             playerInsideRegion = true;
-            // Disable player movement and map
-            // We can change this line of code if player movement is done some other way
 
-            //PlayerController playerController = other.GetComponent<PlayerController>();
+            // Disable player movement and map
+            PlayerController playerController = other.GetComponent<PlayerController>();
             //playerController.DisableMovement();
             //MapController.Instance.DisableMap();
 
             // Instantiate and show region UI
-            uiInstance = Instantiate(regionUI, transform.position, Quaternion.identity);
-            uiInstance.transform.SetParent(transform);
+            uiInstance = Instantiate(regionUI, new Vector3(0,0,0), Quaternion.identity);
+            //uiInstance.transform.SetParent(transform);
         }
     }
 
@@ -45,8 +44,8 @@ public class RegionManager : MonoBehaviour
     // Call this method when the player completes the activity and leaves the region
     public void ExitRegion()
     {
-            // PlayerController playerController = FindObjectOfType<PlayerController>();
-            // playerController.EnableMovement();
+            PlayerController playerController = FindObjectOfType<PlayerController>();
+            //playerController.EnableMovement();
             Debug.Log("ExitRegion gets called");
             Destroy(uiInstance);
             // MapController.Instance.EnableMap();
