@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         inputManager.HandleUIInput();
         inputManager.HandlePointsInput();
         inputManager.HandleMovementInput();
+        if (codeMiniGame != null) return;
         codeMiniGame.HandleCodeMiniGameInput();
     }
     
