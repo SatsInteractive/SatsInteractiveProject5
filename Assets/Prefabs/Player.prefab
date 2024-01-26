@@ -190,7 +190,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6391839988121198141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,5 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  moveInputX: 0
-  moveInputY: 0
+  moveInput: {x: 0, y: 0}
+  Face: {fileID: 7231915332528615242}
+  initialFaceScale: 0.08
+  walkAnimationRate: 4
+  scaleAmount: 0.005
