@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Main")
         {
             codeMiniGame = FindObjectOfType<CodeMiniGame>();
+            inputManager.playerController = FindObjectOfType<PlayerController>();
         }
     }
 
