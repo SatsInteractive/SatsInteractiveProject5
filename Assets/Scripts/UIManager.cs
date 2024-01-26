@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         
-        ui = GameObject.Find("UI");
+        ui = gameObject;
         
         menuScreen = ui.transform.Find("MenuScreen").gameObject;
         startButton = menuScreen.transform.Find("StartGameBtn").GetComponent<Button>();
@@ -98,7 +98,7 @@ public class UIManager : MonoBehaviour
     
     public void HandleHealthChange(float value)
     {
-        healthSlider.value = value;
+        healthSlider.value = value / 100f;
         healthText.text = $"{value}%";
     }
 }

@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PointsManager : MonoBehaviour
 {
-    [SerializeField] private int points = 0;
-    public event Action<int> OnPointsUpdated;
+    [SerializeField] private float points = 0;
+    public event Action<float> OnPointsUpdated;
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
     }
 
-    public void SetPoints(int points)
+    public void SetPoints(float points)
     {
         this.points = points;
         BroadcastPoints();
     }
 
-    public void AddPoints(int points)
+    public void AddPoints(float points)
     {
         this.points += points;
         BroadcastPoints();
@@ -29,7 +29,7 @@ public class PointsManager : MonoBehaviour
         OnPointsUpdated?.Invoke(points);
     }
     
-    public int GetPoints()
+    public float GetPoints()
     {
         return points;
     }
