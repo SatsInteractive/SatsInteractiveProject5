@@ -6,8 +6,12 @@ public class RegionManager : MonoBehaviour
 {
     public GameObject regionUI; // Prefab for the UI to be displayed in the region
 
-    private GameObject uiInstance;
     private bool playerInsideRegion = false;
+
+    private void Start()
+    {
+        regionUI.SetActive(false);
+    }
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,14 +21,13 @@ public class RegionManager : MonoBehaviour
             Debug.Log("Collision with: " + other.gameObject.name);
             playerInsideRegion = true;
 
+            regionUI.SetActive(true);
+
             // Disable player movement and map
             PlayerController playerController = other.GetComponent<PlayerController>();
             //playerController.DisableMovement();
             //MapController.Instance.DisableMap();
 
-            // Instantiate and show region UI
-            uiInstance = Instantiate(regionUI, new Vector3(0,0,0), Quaternion.identity);
-            //uiInstance.transform.SetParent(transform);
         }
     }
 
@@ -47,7 +50,9 @@ public class RegionManager : MonoBehaviour
             PlayerController playerController = FindObjectOfType<PlayerController>();
             //playerController.EnableMovement();
             Debug.Log("ExitRegion gets called");
-            Destroy(uiInstance);
+
+            regionUI.SetActive(false);
+
             // MapController.Instance.EnableMap();
     }
 }

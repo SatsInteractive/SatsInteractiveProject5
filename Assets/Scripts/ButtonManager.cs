@@ -7,12 +7,16 @@ public class ButtonManager : MonoBehaviour
 
     public GameObject minigame;
 
-    public void InstantiateMinigame()
+    void Start()
     {
-        Debug.Log("Button Clicked!");
-        Instantiate(minigame);
+        Debug.Log("Button created!");
+    }
 
-        Debug.Log(this.gameObject.transform.parent.transform.gameObject);
-        Destroy(this.gameObject.transform.parent.transform.gameObject);
+    public void StartMinigame()
+    {
+        Debug.Log("Button Clicked!" + this.gameObject.transform.parent.transform.gameObject);
+        minigame.SetActive(true);
+
+        this.gameObject.transform.parent.transform.gameObject.SetActive(false);
     }
 }
