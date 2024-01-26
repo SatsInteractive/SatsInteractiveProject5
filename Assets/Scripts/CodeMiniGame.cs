@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class CodeMiniGame : MonoBehaviour
+public class CodeMiniGame : MiniGame
 {
     private TextMeshProUGUI promptText;
     private TMP_InputField inputField;
@@ -37,6 +37,7 @@ public class CodeMiniGame : MonoBehaviour
     public AudioClip correctSound;
     public AudioClip wrongSound;
     public float audioLevel;
+    public float colorFeedbackDelay = 0.5f;
 
     private void Awake()
     {
@@ -49,10 +50,10 @@ public class CodeMiniGame : MonoBehaviour
 
     private void Start()
     {
-        StartCodeMiniGame();
+        gameObject.SetActive(false);
     }
 
-    private void StartCodeMiniGame()
+    public override void StartCodeMiniGame()
     {
         codeMiniGameActive = true;
         SetRandomPrompt();
@@ -106,7 +107,7 @@ public class CodeMiniGame : MonoBehaviour
     {
         codeMiniGameAudioSource.PlayOneShot(wrongSound);
         inputField.image.color = errorColor;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(colorFeedbackDelay);
         inputField.image.color = normalColor;
     }
 
