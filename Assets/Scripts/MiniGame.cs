@@ -53,6 +53,7 @@ public class MiniGame : MonoBehaviour
     {
         endScreen.SetActive(false);
         totalTimeTaken = 0f;
+        
         completionTimes = new List<float>();
         EndMiniGame();
     }

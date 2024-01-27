@@ -29,6 +29,7 @@ public class MapManager : MonoBehaviour
     public void HideMap()
     {
         HideAllChildSprites(mapArt);
+        playerController.FaceSpriteRenderer.enabled = false;
     }
     
     private void HideAllChildSprites(GameObject parent)
@@ -44,6 +45,7 @@ public class MapManager : MonoBehaviour
     public void ShowMap()
     {
         ShowAllChildSprites(mapArt);
+        playerController.FaceSpriteRenderer.enabled = true;
     }
     
     private void ShowAllChildSprites(GameObject parent)
