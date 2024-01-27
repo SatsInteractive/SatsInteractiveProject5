@@ -205,7 +205,7 @@ public class ColorMatchingMinigame : MiniGame
     {
         yield return new WaitForSeconds(delay);
         colorMatchingMinigameStartingScreen.SetActive(false);
-        StartPrompts();
+        StartPaintings();
     }
 
     private void StartPaintings()
