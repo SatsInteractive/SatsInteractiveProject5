@@ -34,7 +34,10 @@ public class GameManager : MonoBehaviour
         uiManager.OnAudioSliderChanged += AdjustAudioLevel;
         uiManager.OnExitButtonPressed += ExitGame;
         uiManager.OnSettingsButtonPressed += StopGame;
+        uiManager.OnCreditsButtonPressed += StopGame;
         uiManager.OnBackButtonPressed += ResumeGame;
+        uiManager.OnCreditsButtonPressed += StopGame;
+        uiManager.OnBackButtonCreditsPressed += ResumeGame;
         uiManager.OnStartGameButtonPressed += StartGame;
         pointsManager.OnPointsUpdated += UpdatePoints;
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -46,6 +49,8 @@ public class GameManager : MonoBehaviour
         uiManager.OnExitButtonPressed -= ExitGame;
         uiManager.OnSettingsButtonPressed -= StopGame;
         uiManager.OnBackButtonPressed -= ResumeGame;
+        uiManager.OnCreditsButtonPressed -= StopGame;
+        uiManager.OnBackButtonCreditsPressed -= ResumeGame;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
