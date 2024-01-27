@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     
     public TMP_InputField playerNameInput;
     public TMP_InputField strongestSkillInput;
-    public SpriteRenderer chosenSprite;
+    public Image chosenSprite;
     public Sprite[] possibleSprites;
     
     private void Awake()

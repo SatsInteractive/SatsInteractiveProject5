@@ -12,7 +12,8 @@ public class MiniGame : MonoBehaviour
     [SerializeField] protected float audioLevel;
     [SerializeField] protected float colorFeedbackDelay = 0.5f;
     [SerializeField] protected float screenOpeningDelay = 5f;
-    
+    protected bool inputLocked = false;
+
     public virtual void StartMiniGame()
     {
         

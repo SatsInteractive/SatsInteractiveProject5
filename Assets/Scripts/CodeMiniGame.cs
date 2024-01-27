@@ -17,7 +17,6 @@ public class CodeMiniGame : MiniGame
     private bool codeMiniGameActive = false;
     private int promptCount = 0;
     private bool promptSet = false;
-    private bool inputLocked = false;
     private bool userPressedFirstKey = false;
 
     [Header("Settings")]
