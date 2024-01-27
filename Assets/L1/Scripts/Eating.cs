@@ -11,6 +11,14 @@ public class Eating : MonoBehaviour
     private int timesPizzaClicked;
     public List<GameObject> PizzaButtons;
     public Dialogue Dialogue;
+    public AudioClip[] eatingSounds;
+    public AudioClip krooks;
+    public AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void MumbleClicked()
     {
@@ -35,6 +43,15 @@ public class Eating : MonoBehaviour
             PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.eating);
         }
         timesPizzaClicked += 1;
+        if (timesPizzaClicked == 5)
+        {
+            audioSource.clip = krooks;
+            audioSource.Play();
+        }
+        else
+        {
+            PlayEatingSound();
+        }
     }
 
     private void OnEnable()
@@ -44,5 +61,16 @@ public class Eating : MonoBehaviour
         {
             variablePizzaButton.SetActive(true);   
         }
+    }
+    
+    private void PlayEatingSound()
+    {
+        audioSource.clip = eatingSounds[UnityEngine.Random.Range(0, eatingSounds.Length)];
+        audioSource.Play();
+    }
+    
+    public void ChangeVolume(float volume)
+    {
+        audioSource.volume = volume * 0.25f;
     }
 }
