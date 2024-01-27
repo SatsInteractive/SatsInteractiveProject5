@@ -70,7 +70,6 @@ public class CodeMiniGame : MiniGame
     {
         yield return new WaitForSeconds(delay);
         codeStartingScreen.SetActive(false);
-        codeMiniGameActive = true;
         promptCount = 0;
         StartPrompts();
     }
@@ -89,25 +88,22 @@ public class CodeMiniGame : MiniGame
 
     private void StartPrompts()
     {
-        while (promptCount < promptsPerGame)
+        codeMiniGameActive = true;
+        if (promptSet == false)
         {
-            if (promptSet == false)
+            if (promptCount <= promptsPerGame - 1)
             {
-                if (promptCount <= promptsPerGame)
-                {
-                    currentPrompt = codingPrompts[Random.Range(0, codingPrompts.Count)];
-                    promptText.text = currentPrompt;
-                    promptSet = true;
-                    promptCount++;
-                    inputField.text = "";
-                    inputField.ActivateInputField();
-                    startTime = Time.time;
-                }
+                currentPrompt = codingPrompts[Random.Range(0, codingPrompts.Count)];
+                promptText.text = currentPrompt;
+                promptSet = true;
+                promptCount++;
+                inputField.text = "";
+                inputField.ActivateInputField();
+                startTime = Time.time;
             }
-            else
-            {
-                
-            }
+        }
+        else
+        {
         }
     }
     
@@ -145,9 +141,10 @@ public class CodeMiniGame : MiniGame
     
     IEnumerator WaitBeforeNewPrompt()
     {
+        inputField.DeactivateInputField();
         yield return new WaitForSeconds(newPromptDelay);
         promptSet = false;
-        codeMiniGameActive = true;
+        StartPrompts();
     }
 
     private int CalculatePoints(float time)
