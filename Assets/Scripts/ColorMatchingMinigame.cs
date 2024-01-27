@@ -36,6 +36,7 @@ public class ColorMatchingMinigame : MiniGame
     [SerializeField] private TMP_Text feedbackText;
 
     public GameObject wrongFeedback;
+    public GameObject correctFeedback;
 
     //from Lauri's system
     private bool isColorMatchingMinigameActive = false;
@@ -82,6 +83,7 @@ public class ColorMatchingMinigame : MiniGame
         submitButton.onClick.AddListener(SubmitGrid);
 
         wrongFeedback.SetActive(false);
+        correctFeedback.SetActive(false);
 
         // Generate random color IDs for the correct grid
         GenerateRandomGrid();
@@ -217,31 +219,30 @@ public class ColorMatchingMinigame : MiniGame
 
         if (isCorrect)
         {
-            StartCoroutine(OpenAndCloseFeedback());
             Debug.Log("Minigame complete! Grid is correct.");
             feedbackText.text = "Good Job!";
-            CompletePainting();
+            StartCoroutine(FlashGrid(correctFeedback));
+            StartCoroutine(CompletePainting());
             // End the minigame, perhaps by transitioning to another scene or showing a completion message
         }
         else
         {
-            StartCoroutine(OpenAndCloseFeedback());
-            StartCoroutine(FlashWrongGrid());
+            StartCoroutine(FlashGrid(wrongFeedback));
             feedbackText.text = "INCORRECT GRID!";
             Debug.Log("Incorrect grid. Keep trying!");
             // Optionally provide feedback to the player
         }
     }
 
-    IEnumerator FlashWrongGrid()
+    IEnumerator FlashGrid(GameObject feedback)
     {
 
-        wrongFeedback.SetActive(true);
+        feedback.SetActive(true);
 
         // Wait for 1 second
         yield return new WaitForSeconds(1f);
 
-        wrongFeedback.SetActive(false);
+        feedback.SetActive(false);
     }
 
     IEnumerator OpenAndCloseFeedback()
@@ -284,8 +285,10 @@ public class ColorMatchingMinigame : MiniGame
         }
     }
 
-    private void CompletePainting()
+    IEnumerator CompletePainting()
     {
+        yield return new WaitForSeconds(1f);
+
         ResetGame();
         // Completion logic, such as scoring
         isColorMatchingMinigameActive = false;
