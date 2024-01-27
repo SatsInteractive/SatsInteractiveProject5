@@ -107,12 +107,18 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    public void DialogueOptionChosen(string buttonText)
+    public void DisableDialogueOptions()
     {
         foreach (var varDialogueButton in dialogueButtons)
         {
             varDialogueButton.SetActive(false);
         }
+    }
+
+    public void DialogueOptionChosen(string buttonText)
+    {
+        DisableDialogueOptions();
+        
         if (buttonText == dialogueButtonsTexts[0].text)
         {
             index += 1;
