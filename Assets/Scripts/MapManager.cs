@@ -7,7 +7,9 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
 
-    GameObject mapArt;
+    private GameObject mapArt;
+    [SerializeField] private Transform playerSpawnPoint;
+    private PlayerController playerController;
 
     private void Awake()
     {
@@ -21,15 +23,42 @@ public class MapManager : MonoBehaviour
         }
 
         mapArt = gameObject.transform.GetChild(0).gameObject;
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     public void HideMap()
     {
-        mapArt.SetActive(false);
+        HideAllChildSprites(mapArt);
+    }
+    
+    private void HideAllChildSprites(GameObject parent)
+    {
+        SpriteRenderer[] childSprites = parent.GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer sprite in childSprites)
+        {
+            sprite.enabled = false;
+        }
     }
 
     public void ShowMap()
     {
-        mapArt.SetActive(true);
+        ShowAllChildSprites(mapArt);
+    }
+    
+    private void ShowAllChildSprites(GameObject parent)
+    {
+        SpriteRenderer[] childSprites = parent.GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer sprite in childSprites)
+        {
+            sprite.enabled = true;
+        }
+    }
+    
+    public void TeleportPlayerToSpawnPoint1()
+    {
+        playerController.transform.position = playerSpawnPoint.position;
+        playerController.isInMiniGame = false;
     }
 }

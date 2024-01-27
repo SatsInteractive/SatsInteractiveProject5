@@ -34,6 +34,11 @@ public class UIManager : MonoBehaviour
     public event Action OnCreditsButtonPressed;
     public event Action OnBackButtonCreditsPressed;
     
+    public TMP_InputField playerNameInput;
+    public TMP_InputField strongestSkillInput;
+    public Image chosenSprite;
+    public Sprite[] possibleSprites;
+    
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -138,5 +143,10 @@ public class UIManager : MonoBehaviour
     {
         healthSlider.value = value / 100f;
         healthText.text = $"{value}%";
+    }
+    
+    public void HandleCharacterChosen()
+    {
+        
     }
 }

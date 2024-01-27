@@ -26,7 +26,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isInMiniGame) return;
+        if (isInMiniGame)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         if (moveInput != Vector2.zero)
         {
             if (!isMoving)

@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 
-public class ColorMatchingMinigame : MonoBehaviour
+public class ColorMatchingMinigame : MiniGame
 {
     public GameObject ColorPaletteGameObject;
     public GameObject BigGridGameObject;
     public GameObject ExampleGridGameObject;
+    [SerializeField] private GameObject colorMatchingMinigameStartingScreen;
 
     private Button[] colorPalette; // UI buttons for colors
-    private Image[] bigGrid; // Larger grid of Image components for coloring
+    private GameObject[] bigGrid; // Larger grid of Image components for coloring
     private Image[] exampleGrid;
 
     public Button submitButton;
@@ -23,11 +25,21 @@ public class ColorMatchingMinigame : MonoBehaviour
     private int selectedColorId; // Currently selected color ID
     private float timer = 60f; // Initial timer value
 
+    [SerializeField] private int artCount = 0;
+    [SerializeField] private int artsPerGame = 2;
+
+
+    //from Lauri's system
+    private bool isColorMatchingMinigameActive = false;
+
     private void Awake()
     {
         // Find Image arrays from the specified GameObjects
         colorPalette = ColorPaletteGameObject.GetComponentsInChildren<Button>();
-        bigGrid = BigGridGameObject.GetComponentsInChildren<Image>();
+        bigGrid = BigGridGameObject.GetComponentsInChildren<Transform>() // Use Transform instead of GameObject
+            .Where(t => t != BigGridGameObject.transform) // Exclude the parent object
+            .Select(t => t.gameObject) // Convert back to GameObject
+            .ToArray();
         exampleGrid = ExampleGridGameObject.GetComponentsInChildren<Image>();
 
     }
@@ -40,10 +52,18 @@ public class ColorMatchingMinigame : MonoBehaviour
         // Set up color palette button callbacks
         for (int i = 0; i < colorPalette.Length; i++)
         {
-            int colorId = i + 1; // Assuming color IDs start from 1
+            int colorId = i;
             colorPalette[i].GetComponent<Button>().onClick.AddListener(() => OnColorSelected(colorId));
             colorPalette[i].GetComponent<Outline>().enabled = false;
         }
+
+        // Set up bigGrid button callbacks
+        for (int i = 0; i < bigGrid.Length; i++)
+        {
+            int gridIndex = i;
+            bigGrid[i].GetComponent<Button>().onClick.AddListener(() => OnBigGridElementClicked(gridIndex));
+        }
+
 
         // The first color is selected
         colorPalette[0].GetComponent<Outline>().enabled = true;
@@ -58,25 +78,23 @@ public class ColorMatchingMinigame : MonoBehaviour
         GenerateRandomGrid();
     }
 
-    //private void GenerateRandomGrid()
-    //{
-    //    correctGridIds = new int[bigGrid.Length];
-    //    for (int i = 0; i < correctGridIds.Length; i++)
-    //    {
-    //        correctGridIds[i] = Random.Range(1, colorPalette.Length + 1);
-    //        exampleGrid[i].color = GetColor(i);
-    //        bigGrid[i].color = Color.white; // Set big grid squares to white initially
-    //    }
-    //}
+    public override void StartMiniGame()
+    {
+        isColorMatchingMinigameActive = false;
+        gameObject.SetActive(true);
+        inputLocked = true;
+        colorMatchingMinigameStartingScreen.SetActive(true);
+        StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
+    }
+
     private void GenerateRandomGrid()
     {
         correctGridIds = new int[bigGrid.Length];
 
-        Debug.Log($"Example Grid Length: {exampleGrid.Length}");
 
         for (int i = 0; i < exampleGrid.Length; i++)
         {
-            correctGridIds[i] = Random.Range(1, colorPalette.Length + 1);
+            correctGridIds[i] = Random.Range(0, colorPalette.Length);
 
             if (exampleGrid[i] != null)
             {
@@ -93,8 +111,8 @@ public class ColorMatchingMinigame : MonoBehaviour
 
     public void OnColorSelected(int colorId)
     {
-        // Assuming color IDs start from 1
-        int arrayIndex = colorId - 1;
+        // Assuming color IDs start from 0
+        int arrayIndex = colorId;
 
         // Disable outline for all colors
         foreach (Button colorImage in colorPalette)
@@ -118,32 +136,22 @@ public class ColorMatchingMinigame : MonoBehaviour
 
         selectedColorId = colorId;
 
-        Debug.Log("New color selected. The selected colorId: " + selectedColorId);
     }
 
-    private void Update()
+    private void OnBigGridElementClicked(int gridIndex)
     {
-        // Check for user input to color the big grid
-        if (Input.GetMouseButton(0))
+        GameObject clickedObject = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+
+        if (clickedObject != null && clickedObject.CompareTag("BigGridSquare"))
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null)
+            int squareIndex = System.Array.IndexOf(bigGrid, clickedObject);
+            if (squareIndex != -1)
             {
-                GameObject clickedObject = hit.collider.gameObject;
-                if (clickedObject != null && clickedObject.CompareTag("BigGridSquare"))
-                {
-                    Debug.Log("BigGridSquare clicked: " + clickedObject.tag);
-                    int squareIndex = System.Array.IndexOf(bigGrid, clickedObject.GetComponent<Image>());
-                    if (squareIndex != -1)
-                    {
-                        playerGridIds[squareIndex] = selectedColorId;
-                        clickedObject.GetComponent<Image>().color = GetColor(selectedColorId);
-                    }
-                }
+                playerGridIds[squareIndex] = selectedColorId;
+                clickedObject.GetComponent<Image>().color = GetColor(selectedColorId);
             }
         }
     }
-
 
     private void SubmitGrid()
     {
@@ -178,33 +186,50 @@ public class ColorMatchingMinigame : MonoBehaviour
     {
         switch (colorId)
         {
+            case 0:
+                return Color.green;
             case 1:
                 return Color.red;
             case 2:
-                return Color.green;
-            case 3:
                 return Color.blue;
-            case 4:
+            case 3:
                 return Color.yellow;
-            case 5:
+            case 4:
                 return Color.magenta;
             default:
                 return Color.white;
         }
     }
 
-    //private void UpdateTimer()
-    //{
-    //    // Update and display the timer
-    //    timer -= 1f;
-    //    timerText.text = "Time: " + Mathf.Ceil(timer).ToString();
+    private IEnumerator StartGameAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        colorMatchingMinigameStartingScreen.SetActive(false);
+        StartPrompts();
+    }
 
-    //    // Check if time is up
-    //    if (timer <= 0f)
-    //    {
-    //        Debug.Log("Time's up! Minigame incomplete.");
-    //        // End the minigame, perhaps by transitioning to another scene or showing a failure message
-    //    }
-    //}
+    private void StartPaintings()
+    {
+        isColorMatchingMinigameActive = true;
+        inputLocked = false;
+        
+        if (artCount <= artsPerGame - 1)
+        {
+
+            artCount++;
+            startTime = Time.time;
+        }
+        else
+        {
+            EndMiniGame();
+        }
+    }
+
+    public override void EndMiniGame()
+    {
+        isColorMatchingMinigameActive = false;
+        colorMatchingMinigameStartingScreen.SetActive(true);
+        base.EndMiniGame();
+    }
 }
 

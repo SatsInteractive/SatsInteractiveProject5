@@ -10,16 +10,13 @@ using Random = UnityEngine.Random;
 public class CodeMiniGame : MiniGame
 {
     [SerializeField] private TextMeshProUGUI promptText;
-    [SerializeField] private TextMeshProUGUI timerText;
     private AudioSource codeMiniGameAudioSource;
     [SerializeField] private GameObject codeStartingScreen;
     
-    private float startTime;
     private float timeTaken;
     private bool codeMiniGameActive = false;
     private int promptCount = 0;
     private bool promptSet = false;
-    private bool inputLocked = false;
     private bool userPressedFirstKey = false;
 
     [Header("Settings")]
@@ -37,11 +34,6 @@ public class CodeMiniGame : MiniGame
     };
     [SerializeField] public Color normalColor = new Color(85, 85, 85, 1);
     [SerializeField] public Color errorColor = new Color(106, 106, 68, 1);
-    public AudioClip correctSound;
-    public AudioClip wrongSound;
-    public float audioLevel;
-    public float colorFeedbackDelay = 0.5f;
-    public float screenOpeningDelay = 5f;
     public float newPromptDelay = 1f;
     public int promptsPerGame = 3;
     
@@ -77,7 +69,7 @@ public class CodeMiniGame : MiniGame
         gameObject.SetActive(false);
     }
 
-    public override void StartCodeMiniGame()
+    public override void StartMiniGame()
     {
         promptDisplay.text = "";
         codeMiniGameActive = false;
@@ -114,12 +106,16 @@ public class CodeMiniGame : MiniGame
             }
             else
             {
-                codeMiniGameActive = false;
-                codeStartingScreen.SetActive(true);
-                gameObject.SetActive(false);
-                MapManager.Instance.ShowMap();
+                EndMiniGame();
             }
         }
+    }
+
+    public override void EndMiniGame()
+    {
+        codeMiniGameActive = false;
+        codeStartingScreen.SetActive(true);
+        base.EndMiniGame();
     }
 
     public void HandleCodeMiniGameInput()
@@ -174,11 +170,10 @@ public class CodeMiniGame : MiniGame
         promptDisplay.text = currentPrompt.Substring(0, currentCharacterIndex);
     }
     
-    private void UpdateTimer()
+     protected override void UpdateTimer()
     {
         if (!userPressedFirstKey) return;
-        float timeElapsed = Time.time - startTime;
-        timerText.text = "Time: " + timeElapsed.ToString("F2");
+        base.UpdateTimer();
     }
     
     IEnumerator ShowErrorFeedback(char wrongChar)
