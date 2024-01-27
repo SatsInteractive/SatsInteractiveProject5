@@ -466,7 +466,19 @@ MonoBehaviour:
   - '"How is it going?"'
   - END
   WCDialogue: []
-  CoopDialogue: []
+  CoopDialogue:
+  - I arrive at Coop. I feel tired
+  - I decide to buy an energy drink. I see two options, Monster and Red Bull.
+  - PlayerOptions
+  - 2
+  - Monster
+  - Red Bull
+  - 8
+  - 10
+  - I feel monstreous
+  - END
+  - I feel like I have wings
+  - END
   dialogueButtons:
   - {fileID: 484291187}
   - {fileID: 1086703004}
