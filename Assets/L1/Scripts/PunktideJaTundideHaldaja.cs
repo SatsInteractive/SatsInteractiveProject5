@@ -80,11 +80,11 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         }
         else if (day == 1)
         {
-            TimeAndDateTextMeshProUGUI.text += "January 26";
+            TimeAndDateTextMeshProUGUI.text += "January 27";
         }
         else if (day == 2)
         {
-            TimeAndDateTextMeshProUGUI.text += "January 26";
+            TimeAndDateTextMeshProUGUI.text += "January 28";
         }
         actionHistory.Add(actionType);
 
