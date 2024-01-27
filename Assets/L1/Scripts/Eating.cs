@@ -14,13 +14,14 @@ public class Eating : MonoBehaviour
 
     public void MumbleClicked()
     {
-        PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.mumbling);
+        //PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.mumbling);
         Dialogue.transform.parent.gameObject.SetActive(true);
         Dialogue.StartDialogue(Dialogue.dialoguePlaceOptions.Kitchen);
     }
 
     public void PizzaClicked()
     {
+        print(timesPizzaClicked);
         if (timesPizzaClicked < 1)
         {
             PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.eating);
@@ -34,7 +35,7 @@ public class Eating : MonoBehaviour
         { 
             PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.eating);
         }
-        timesPizzaClicked += 1;
+        timesPizzaClicked++;
     }
 
     private void OnEnable()
