@@ -26,7 +26,6 @@ public class ColorMatchingMinigame : MiniGame
 
     [SerializeField] private int artCount = 0;
     private int artsPerGame = 2;
-    private float screenOpeningDelay = 3f;
 
     public GameObject colormatching_side_bg;
 
