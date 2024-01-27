@@ -41,7 +41,7 @@ public class RegionManager : MonoBehaviour
             ExitRegion();
 
             playerInsideRegion = false;
-            MapManager.Instance.ShowMap();
+            //MapManager.Instance.ShowMap();
         }
     }
 

@@ -117,6 +117,7 @@ public class CodeMiniGame : MiniGame
                 codeMiniGameActive = false;
                 codeStartingScreen.SetActive(true);
                 gameObject.SetActive(false);
+                MapManager.Instance.TeleportPlayerToSpawnPoint1();
                 MapManager.Instance.ShowMap();
             }
         }
