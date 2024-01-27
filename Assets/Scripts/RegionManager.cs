@@ -25,8 +25,8 @@ public class RegionManager : MonoBehaviour
 
             // Disable player movement and map
             PlayerController playerController = other.GetComponent<PlayerController>();
-            //playerController.DisableMovement();
-            //MapController.Instance.DisableMap();
+            playerController.isInMiniGame = true;
+            MapManager.Instance.HideMap();
 
         }
     }
@@ -41,6 +41,7 @@ public class RegionManager : MonoBehaviour
             ExitRegion();
 
             playerInsideRegion = false;
+            MapManager.Instance.ShowMap();
         }
     }
 

@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     private SoundManager soundManager;
     private CodeMiniGame codeMiniGame;
     
+    private bool isGamePaused = false;
+    private bool inMiniGame = false;
+    
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -54,7 +57,8 @@ public class GameManager : MonoBehaviour
         inputManager.HandleUIInput();
         inputManager.HandlePointsInput();
         inputManager.HandleMovementInput();
-        if (codeMiniGame == null) return;
+        
+        //if (codeMiniGame == null) return;
         //codeMiniGame.HandleCodeMiniGameInput();
     }
     
@@ -64,7 +68,7 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Main")
         {
             codeMiniGame = FindObjectOfType<CodeMiniGame>();
-      //      inputManager.playerController = FindObjectOfType<PlayerController>();
+            inputManager.playerController = FindObjectOfType<PlayerController>();
         }
     }
 
