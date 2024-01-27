@@ -32,6 +32,9 @@ public class ColorMatchingMinigame : MiniGame
 
     private float newPaintingDelay = 1f;
 
+    [SerializeField] private GameObject feedback;
+    [SerializeField] private TMP_Text feedbackText;
+
     //from Lauri's system
     private bool isColorMatchingMinigameActive = false;
 
@@ -46,6 +49,7 @@ public class ColorMatchingMinigame : MiniGame
         exampleGrid = ExampleGridGameObject.GetComponentsInChildren<Image>();
 
         isColorMatchingMinigameActive = false;
+        feedback.SetActive(false);
     }
 
     private void Start()
@@ -208,12 +212,16 @@ public class ColorMatchingMinigame : MiniGame
 
         if (isCorrect)
         {
+            feedback.SetActive(true);
             Debug.Log("Minigame complete! Grid is correct.");
+            feedbackText.text = "Good Job!";
             CompletePainting();
             // End the minigame, perhaps by transitioning to another scene or showing a completion message
         }
         else
         {
+            feedback.SetActive(true);
+            feedbackText.text = "INCORRECT GRID!";
             Debug.Log("Incorrect grid. Keep trying!");
             // Optionally provide feedback to the player
         }
