@@ -82,6 +82,43 @@ public class ColorMatchingMinigame : MiniGame
         colormatching_side_bg.SetActive(false);
     }
 
+    public void ResetGame()
+    {
+        // Reset variables and UI elements to their initial state
+
+        // Disable outline for all colors
+        foreach (Button colorImage in colorPalette)
+        {
+            Outline outline = colorImage.GetComponent<Outline>();
+            if (outline != null)
+            {
+                outline.enabled = false;
+            }
+        }
+
+        // Set the outline for the first color
+        colorPalette[0].GetComponent<Outline>().enabled = true;
+
+        // Reset player grid and example grid colors
+        for (int i = 0; i < bigGrid.Length; i++)
+        {
+            playerGridIds[i] = 69; // Assuming color ID 69 is the default color
+            bigGrid[i].GetComponent<Image>().color = GetColor(69);
+        }
+
+        selectedColorId = 0;
+
+        // Generate a new random correct grid
+        GenerateRandomGrid();
+
+        // Reset timer and any other game-specific variables
+        artCount = 0;
+        startTime = 0;
+
+        // Optionally, hide or reset any additional UI elements specific to the game
+    }
+
+
     public override void StartMiniGame()
     {
         isColorMatchingMinigameActive = false;
@@ -209,6 +246,8 @@ public class ColorMatchingMinigame : MiniGame
                 return Color.yellow;
             case 4:
                 return Color.magenta;
+            case 69:
+                return Color.white;
             default:
                 return Color.white;
         }
@@ -241,6 +280,8 @@ public class ColorMatchingMinigame : MiniGame
 
     protected override void EndMiniGame()
     {
+        ResetGame();
+        colormatching_side_bg.SetActive(false);
         isColorMatchingMinigameActive = false;
         colorMatchingMinigameStartingScreen.SetActive(true);
         base.EndMiniGame();
