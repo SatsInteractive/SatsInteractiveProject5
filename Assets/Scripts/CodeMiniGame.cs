@@ -42,6 +42,14 @@ public class CodeMiniGame : MiniGame
     [SerializeField] private string currentPrompt;
     private string userInput = "";
     private int currentCharacterIndex = 0;
+    
+    [Header("Stats")]
+    private int totalMistakes = 0;
+    private int totalCharactersTyped = 0;
+    [SerializeField] private TMP_Text averagePromptSpeedText;
+    [SerializeField] private TMP_Text averageCharacterSpeedText;
+    [SerializeField] private TMP_Text mistakeCountText;
+    [SerializeField] private TMP_Text characterCountText;
 
     private void Awake()
     {
@@ -67,6 +75,7 @@ public class CodeMiniGame : MiniGame
     {
         codeStartingScreen.SetActive(true);
         gameObject.SetActive(false);
+        endScreen.SetActive(false);
     }
 
     public override void StartMiniGame()
@@ -116,6 +125,7 @@ public class CodeMiniGame : MiniGame
         codeMiniGameActive = false;
         codeStartingScreen.SetActive(true);
         base.ShowEndScreen();
+        float averagePromptSpeed = totalTimeTaken / promptsPerGame;
     }
 
     protected override void EndMiniGame()
@@ -166,6 +176,7 @@ public class CodeMiniGame : MiniGame
         inputLocked = true;
         codeMiniGameAudioSource.PlayOneShot(correctSound);
         timeTaken = Time.time - startTime;
+        completionTimes.Add(timeTaken);
         int points = CalculatePoints(timeTaken);
         Debug.Log("Correct! Points: " + points);
         StartCoroutine(WaitBeforeNewPrompt());
@@ -216,5 +227,12 @@ public class CodeMiniGame : MiniGame
     {
         this.audioLevel = audioLevel;
         codeMiniGameAudioSource.volume = audioLevel;
+    }
+    
+    public override void OnLeaveButtonClicked()
+    {
+        totalMistakes = 0;
+        totalCharactersTyped = 0;
+        base.OnLeaveButtonClicked();
     }
 }

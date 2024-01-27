@@ -18,7 +18,7 @@ public class MiniGame : MonoBehaviour
     protected bool inputLocked = false;
     
     [Header("End Screen Settings")]
-    [SerializeField] private GameObject endScreen;
+    [SerializeField] protected GameObject endScreen;
     [SerializeField] private TMP_Text totalTimeTakenText;
     
     protected virtual void Awake()

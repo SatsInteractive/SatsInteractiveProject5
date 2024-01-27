@@ -145,8 +145,18 @@ public class UIManager : MonoBehaviour
         healthText.text = $"{value}%";
     }
     
-    public void HandleCharacterChosen()
+    public void HandleNextCharacterButton()
     {
-        
+        int currentIndex = Array.IndexOf(possibleSprites, chosenSprite.sprite);
+        if (currentIndex == possibleSprites.Length - 1)
+        {
+            currentIndex = 0;
+        }
+        else
+        {
+            currentIndex++;
+        }
+
+        chosenSprite.sprite = possibleSprites[currentIndex];
     }
 }

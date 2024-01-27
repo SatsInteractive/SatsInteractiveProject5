@@ -1958,24 +1958,44 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3243617402015828913, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 3161906516196421307, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 327.7698
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161906516196421307, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 61.4568
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161906516196421307, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161906516196421307, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -242
       objectReference: {fileID: 0}
     - target: {fileID: 5123765114740966353, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
       propertyPath: m_Name
       value: CodeMiniGame
       objectReference: {fileID: 0}
-    - target: {fileID: 8798654517904950697, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 6345051920684789838, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_fontSize
+      value: 48
       objectReference: {fileID: 0}
-    - target: {fileID: 7997670358321849986, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 6345051920684789838, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569835401631729694, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8798654517904950697, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 6569835401631729694, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569835401631729694, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
