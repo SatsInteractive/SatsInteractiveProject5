@@ -53,8 +53,8 @@ public class CodeMiniGame : MiniGame
 
     private void Awake()
     {
-        promptText = transform.GetChild(0).Find("code_prompt").GetComponent<TextMeshProUGUI>();
-        timerText = transform.GetChild(0).Find("code_minigame_timer").GetComponent<TextMeshProUGUI>();
+        promptText = transform.GetChild(0).Find("code_prompt_bg").transform.Find("code_prompt").GetComponent<TextMeshProUGUI>();
+        timerText = transform.GetChild(0).Find("code_side_bg").transform.Find("code_minigame_timer").GetComponent<TextMeshProUGUI>();
         codeStartingScreen = transform.GetChild(0).Find("code_starting_screen").gameObject;
         codeMiniGameAudioSource = GetComponent<AudioSource>();
         codeMiniGameAudioSource.volume = audioLevel;
