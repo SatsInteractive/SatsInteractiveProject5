@@ -6,7 +6,7 @@ using TMPro;
 
 public class PunktideJaTundideHaldaja : MonoBehaviour
 {
-    public float points;
+    public Vector3 points;
     public int hours;
     public int day;
     public float nextMultiplierTotal;
@@ -30,7 +30,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     public struct Action
     {
         public string type;
-        public float addedPoints;
+        public Vector3 addedPoints;
         public float nextMultiplier;
         public int availability;
         public int hoursUsed;
@@ -66,7 +66,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
             //Add additional error functionality, i.e what happens when the action cannot be triggered right now
             return;
         }
-        if (actionTriggered.addedPoints!=0)
+        if ((actionTriggered.addedPoints.x+actionTriggered.addedPoints.y+actionTriggered.addedPoints.z)!=0)
         {
             points += actionTriggered.addedPoints * nextMultiplierTotal;
             nextMultiplierTotal = 1f;
