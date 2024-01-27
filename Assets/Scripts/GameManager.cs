@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private Eating eating;
     private GameObject playerNameGO;
     private Cutscenes cutscenes;
+    private PunktideJaTundideHaldaja punktideJaTundideHaldaja;
     
     private bool isGamePaused = false;
     private bool inMiniGame = false;
@@ -41,6 +42,8 @@ public class GameManager : MonoBehaviour
         
         inputManager = FindObjectOfType<InputManager>();
         if (inputManager == null) gameObject.AddComponent<InputManager>();
+        
+        uiManager.maxScore = pointsManager.maxPoints;
     }
 
     private void OnEnable()
@@ -82,6 +85,8 @@ public class GameManager : MonoBehaviour
             codeMiniGame = FindObjectOfType<CodeMiniGame>();
             colorMatchingMinigame = FindObjectOfType<ColorMatchingMinigame>();
             playerController = FindObjectOfType<PlayerController>();
+            punktideJaTundideHaldaja = FindObjectOfType<PunktideJaTundideHaldaja>();
+            punktideJaTundideHaldaja.pointsManager = pointsManager;
             eating = FindObjectOfType<Eating>();
             cutscenes = FindObjectOfType<Cutscenes>();
             cutscenes.uiManager = uiManager;

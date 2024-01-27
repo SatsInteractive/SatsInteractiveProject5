@@ -5,6 +5,7 @@ using UnityEngine;
 public class PointsManager : MonoBehaviour
 {
     [SerializeField] private float points = 0;
+    public float maxPoints = 180;
     public event Action<float> OnPointsUpdated;
 
     private void Awake()

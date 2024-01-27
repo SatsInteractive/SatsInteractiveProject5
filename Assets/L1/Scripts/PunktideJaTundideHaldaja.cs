@@ -15,6 +15,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     private float timeTaken;
     public Action[] ActionInfo;
     public TextMeshProUGUI TimeAndDateTextMeshProUGUI;
+    public PointsManager pointsManager;
 
     public enum ActionType
     {
@@ -69,6 +70,8 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         if ((actionTriggered.addedPoints.x+actionTriggered.addedPoints.y+actionTriggered.addedPoints.z)!=0)
         {
             points += actionTriggered.addedPoints * nextMultiplierTotal;
+            float average_points = (points.x + points.y + points.z) / 3;
+            pointsManager.AddPoints(average_points);
             nextMultiplierTotal = 1f;
         }
         nextMultiplierTotal *= actionTriggered.nextMultiplier;

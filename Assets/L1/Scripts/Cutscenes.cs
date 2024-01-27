@@ -27,6 +27,7 @@ public class Cutscenes : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         yield return new WaitForSeconds((float)videoPlayer.clip.length - 0.1f);
         uiManager.jammerCardInfoUpRight.SetActive(true);
+        uiManager.scoreBoard.SetActive(true);
         timeText.gameObject.SetActive(true);
         gameObject.SetActive(false);
         
