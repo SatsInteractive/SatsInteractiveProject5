@@ -212,7 +212,7 @@ public class ColorMatchingMinigame : MiniGame
 
         if (isCorrect)
         {
-            feedback.SetActive(true);
+            StartCoroutine(OpenAndCloseFeedback());
             Debug.Log("Minigame complete! Grid is correct.");
             feedbackText.text = "Good Job!";
             CompletePainting();
@@ -220,11 +220,18 @@ public class ColorMatchingMinigame : MiniGame
         }
         else
         {
-            feedback.SetActive(true);
+            StartCoroutine(OpenAndCloseFeedback());
             feedbackText.text = "INCORRECT GRID!";
             Debug.Log("Incorrect grid. Keep trying!");
             // Optionally provide feedback to the player
         }
+    }
+
+    IEnumerator OpenAndCloseFeedback()
+    {
+        feedback.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        feedback.SetActive(false);
     }
 
     private bool CheckGrid()
