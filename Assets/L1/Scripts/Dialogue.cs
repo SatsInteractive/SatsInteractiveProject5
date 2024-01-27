@@ -20,6 +20,8 @@ public class Dialogue : MonoBehaviour
     public List<TextMeshProUGUI> dialogueButtonsTexts;
     private bool dialogueSkippable=false;
     private int nextDialogueIndex;
+    public PunktideJaTundideHaldaja PunktideJaTundideHaldaja;
+    private PunktideJaTundideHaldaja.ActionType currentDialoguePlaceActionType;
 
     public enum dialoguePlaceOptions
     {
@@ -57,14 +59,17 @@ public class Dialogue : MonoBehaviour
         if (dialoguePlace == dialoguePlaceOptions.Kitchen)
         {
             linesToType = KitchenDialogue;
+            currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.mumbling;
         }
         else if (dialoguePlace == dialoguePlaceOptions.WC)
         {
             linesToType = WCDialogue;
+            currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.shitting;
         }
         else if (dialoguePlace == dialoguePlaceOptions.Coop)
         {
             linesToType = CoopDialogue;
+            currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.coop;
         }
 
         StartCoroutine(TypeLine());
@@ -84,6 +89,7 @@ public class Dialogue : MonoBehaviour
             }
             else if (linesToType[index] == "END")
             {
+                PunktideJaTundideHaldaja.TriggerAction(currentDialoguePlaceActionType);
                 gameObject.transform.parent.gameObject.SetActive(false);
             }
             else

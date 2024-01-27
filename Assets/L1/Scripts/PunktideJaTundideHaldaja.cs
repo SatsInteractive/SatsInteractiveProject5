@@ -112,17 +112,4 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
             // END THE FUCKING GAME!!!!!!!!!!!!!!!!!!!!!!
         }
     }
-    
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TriggerAction(ActionType.eating);
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            TriggerAction(ActionType.coding);
-        }
-    }
 }

@@ -10,7 +10,7 @@ public class Shopping : MonoBehaviour
 
     private void OnEnable()
     {
-        PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coop);
+        //PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coop);
         Dialogue.transform.parent.gameObject.SetActive(true);
         Dialogue.StartDialogue(Dialogue.dialoguePlaceOptions.Coop);
     }
