@@ -50,6 +50,7 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue(dialoguePlaceOptions dialoguePlace)
     {
+        textComponent.text = String.Empty;
         index = 0;
         dialogueSkippable = true;
         if (dialoguePlace == dialoguePlaceOptions.Kitchen)
