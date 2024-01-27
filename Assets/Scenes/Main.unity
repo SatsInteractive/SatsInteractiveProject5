@@ -1440,6 +1440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isKitchen: 0
+  isCoop: 1
+  dialogue: {fileID: 113861386}
 --- !u!114 &381269188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3941,6 +3943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isKitchen: 1
+  isCoop: 0
+  dialogue: {fileID: 0}
 --- !u!114 &1096971666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6176,6 +6180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isKitchen: 0
+  isCoop: 0
+  dialogue: {fileID: 0}
 --- !u!1 &1803598418
 GameObject:
   m_ObjectHideFlags: 0
