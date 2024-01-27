@@ -20,7 +20,7 @@ public class Dialogue : MonoBehaviour
     public List<TextMeshProUGUI> dialogueButtonsTexts;
     private bool dialogueSkippable=false;
     private int nextDialogueIndex;
-    
+
     public enum dialoguePlaceOptions
     {
         Kitchen,
@@ -30,6 +30,7 @@ public class Dialogue : MonoBehaviour
     private void Awake()
     {
         textComponent.text = String.Empty;
+        
     }
 
     private void Update()
@@ -83,7 +84,7 @@ public class Dialogue : MonoBehaviour
             }
             else if (linesToType[index] == "END")
             {
-                gameObject.SetActive(false);
+                gameObject.transform.parent.gameObject.SetActive(false);
             }
             else
             {

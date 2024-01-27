@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PunktideJaTundideHaldaja : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     private List<ActionType> actionHistory;
     private float timeTaken;
     public Action[] ActionInfo;
+    public TextMeshProUGUI TimeAndDateTextMeshProUGUI;
 
     public enum ActionType
     {
@@ -37,6 +39,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     {
         actionHistory = new List<ActionType>();
         endhours = new[] { 2400, 2400, 1600};
+        TimeAndDateTextMeshProUGUI = gameObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     public void TimeTakenForCodingOrArt(float timeTaken, ActionType actionType)
@@ -69,6 +72,20 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         }
         nextMultiplierTotal *= actionTriggered.nextMultiplier;
         hours += 200;
+        TimeAndDateTextMeshProUGUI.text = String.Empty;
+        TimeAndDateTextMeshProUGUI.text += (hours / 100).ToString() + ":00" + "\n";
+        if (day == 0)
+        {
+            TimeAndDateTextMeshProUGUI.text += "January 26";
+        }
+        else if (day == 1)
+        {
+            TimeAndDateTextMeshProUGUI.text += "January 26";
+        }
+        else if (day == 2)
+        {
+            TimeAndDateTextMeshProUGUI.text += "January 26";
+        }
         actionHistory.Add(actionType);
 
         if (hours == endhours[day])
