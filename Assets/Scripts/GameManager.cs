@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
             playerController = FindObjectOfType<PlayerController>();
             inputManager.playerController = playerController;
             playerController.FaceSpriteRenderer.sprite = chosenSprite;
+            AdjustAudioLevel(uiManager.audioSlider.value);
         }
     }
 
@@ -123,6 +124,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Audio level changed to {value}");
         soundManager.AdjustAudioLevel(value);
         if (codeMiniGame != null) codeMiniGame.CodeMiniGameChangeVolumeLevel(value);
+        if (playerController != null) playerController.ChangeVolumeLevel(value);
     }
     
     private void ChangeScene(string sceneName)

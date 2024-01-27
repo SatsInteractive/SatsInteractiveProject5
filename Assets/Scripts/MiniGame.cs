@@ -10,6 +10,7 @@ public class MiniGame : MonoBehaviour
     [SerializeField] protected PunktideJaTundideHaldaja punktideJaTundideHaldaja;
     [SerializeField] protected TextMeshProUGUI timerText;
     [SerializeField] protected AudioClip correctSound;
+    [SerializeField] protected AudioClip successSound;
     [SerializeField] protected AudioClip wrongSound;
     [SerializeField] protected float audioLevel;
     [SerializeField] protected float colorFeedbackDelay = 0.5f;

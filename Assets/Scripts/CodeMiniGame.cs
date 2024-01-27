@@ -36,6 +36,7 @@ public class CodeMiniGame : MiniGame
     [SerializeField] public Color placeHolderColor = new Color(85, 85, 85, 0.5f);
     public float newPromptDelay = 1f;
     public int promptsPerGame = 3;
+    public float spaceFeedbackDuration = 0.2f;
     
     [Header("UI References")]
     [SerializeField] private TMP_Text promptDisplay;
@@ -106,6 +107,7 @@ public class CodeMiniGame : MiniGame
     {
         codeMiniGameActive = true;
         inputLocked = false;
+        startTime = Time.time;
         if (promptSet == false)
         {
             if (promptCount <= promptsPerGame - 1 && tempCodingPrompts.Count > 0)
@@ -153,11 +155,15 @@ public class CodeMiniGame : MiniGame
         string input = Input.inputString;
         if (!string.IsNullOrEmpty(input))
         {
+            if (input.Contains("\b"))
+            {
+                return;
+            }
+            
             // Handle first key press
             if (!userPressedFirstKey)
             {
                 userPressedFirstKey = true;
-                startTime = Time.time;
                 promptDisplay.text = "";
                 promptDisplay.color = normalColor;
             }
@@ -169,6 +175,10 @@ public class CodeMiniGame : MiniGame
                 currentCharacterIndex++;
                 totalCharactersTyped++;
                 UpdatePromptDisplay();
+                if (lastInputChar == ' ')
+                {
+                    StartCoroutine(ShowSpaceFeedback());
+                }
             }
             else if(currentCharacterIndex < currentPrompt.Length)
             {
@@ -188,10 +198,10 @@ public class CodeMiniGame : MiniGame
     
     private void CompletePrompt()
     {
-        // Completion logic, such as scoring
         codeMiniGameActive = false;
         inputLocked = true;
-        codeMiniGameAudioSource.PlayOneShot(correctSound);
+        promptDisplay.text = $"<color=green>{currentPrompt}</color>";
+        codeMiniGameAudioSource.PlayOneShot(successSound);
         timeTaken = Time.time - startTime;
         completionTimes.Add(timeTaken);
         StartCoroutine(WaitBeforeNewPrompt());
@@ -224,10 +234,25 @@ public class CodeMiniGame : MiniGame
         inputLocked = false;
     }
     
+    IEnumerator ShowSpaceFeedback()
+    {
+        // Temporarily show a green dot for the space
+        string originalText = promptDisplay.text;
+        promptDisplay.text = $"<color=green>{originalText}</color>";
+        codeMiniGameAudioSource.PlayOneShot(correctSound);
+        inputLocked = true;
+        yield return new WaitForSeconds(spaceFeedbackDuration);  // Duration for showing the green dot
+
+        // Revert back to the original text plus a space
+        inputLocked = false;
+        promptDisplay.text = originalText + " ";
+    }
+    
     IEnumerator WaitBeforeNewPrompt()
     {
         yield return new WaitForSeconds(newPromptDelay);
         promptSet = false;
+        promptDisplay.color = normalColor;
         promptDisplay.text = "";
         currentCharacterIndex = 0;
         StartPrompts();
@@ -241,7 +266,7 @@ public class CodeMiniGame : MiniGame
     public void CodeMiniGameChangeVolumeLevel(float audioLevel)
     {
         this.audioLevel = audioLevel;
-        codeMiniGameAudioSource.volume = audioLevel;
+        codeMiniGameAudioSource.volume = audioLevel * 0.25f;
     }
     
     public override void OnLeaveButtonClicked()

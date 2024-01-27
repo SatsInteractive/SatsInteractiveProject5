@@ -8,7 +8,8 @@ public class MapManager : MonoBehaviour
     public static MapManager Instance { get; private set; }
 
     private GameObject mapArt;
-    [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField] private Transform playerSpawnPoint1;
+    [SerializeField] private Transform playerSpawnPoint2;
     private PlayerController playerController;
     [SerializeField] private GameObject codeOrArtScreen;
 
@@ -63,7 +64,13 @@ public class MapManager : MonoBehaviour
     
     public void TeleportPlayerToSpawnPoint1()
     {
-        playerController.transform.position = playerSpawnPoint.position;
+        playerController.transform.position = playerSpawnPoint1.position;
+        playerController.isInMiniGame = false;
+    }
+    
+    public void TeleportPlayerToSpawnPoint2()
+    {
+        playerController.transform.position = playerSpawnPoint2.position;
         playerController.isInMiniGame = false;
     }
 }
