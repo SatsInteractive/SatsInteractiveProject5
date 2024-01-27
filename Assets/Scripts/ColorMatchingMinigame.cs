@@ -40,6 +40,7 @@ public class ColorMatchingMinigame : MiniGame
 
     //from Lauri's system
     private bool isColorMatchingMinigameActive = false;
+    public AudioSource colorMatchingMinigameAudioSource;
 
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class ColorMatchingMinigame : MiniGame
             .Select(t => t.gameObject) // Convert back to GameObject
             .ToArray();
         exampleGrid = ExampleGridGameObject.GetComponentsInChildren<Image>();
+        colorMatchingMinigameAudioSource = GetComponent<AudioSource>();
 
         isColorMatchingMinigameActive = false;
         feedback.SetActive(false);
@@ -207,6 +209,7 @@ public class ColorMatchingMinigame : MiniGame
             if (squareIndex != -1)
             {
                 playerGridIds[squareIndex] = selectedColorId;
+                colorMatchingMinigameAudioSource.PlayOneShot(correctSound);
                 clickedObject.GetComponent<Image>().color = GetColor(selectedColorId);
             }
         }
@@ -221,12 +224,14 @@ public class ColorMatchingMinigame : MiniGame
         {
             Debug.Log("Minigame complete! Grid is correct.");
             feedbackText.text = "Good Job!";
+            colorMatchingMinigameAudioSource.PlayOneShot(successSound);
             StartCoroutine(FlashGrid(correctFeedback));
             StartCoroutine(CompletePainting());
             // End the minigame, perhaps by transitioning to another scene or showing a completion message
         }
         else
         {
+            colorMatchingMinigameAudioSource.PlayOneShot(wrongSound);
             StartCoroutine(FlashGrid(wrongFeedback));
             feedbackText.text = "INCORRECT GRID!";
             Debug.Log("Incorrect grid. Keep trying!");
@@ -293,7 +298,6 @@ public class ColorMatchingMinigame : MiniGame
         // Completion logic, such as scoring
         isColorMatchingMinigameActive = false;
         // inputLocked = true;
-        // codeMiniGameAudioSource.PlayOneShot(correctSound);
         timeTaken = Time.time - startTime;
         completionTimes.Add(timeTaken);
         //int points = CalculatePoints(timeTaken);
@@ -353,6 +357,12 @@ public class ColorMatchingMinigame : MiniGame
         isColorMatchingMinigameActive = false;
         colorMatchingMinigameStartingScreen.SetActive(true);
         base.EndMiniGame();
+    }
+    
+    public void ColorMatchingMinigameChangeVolumeLevel(float audioLevel)
+    {
+        this.audioLevel = audioLevel;
+        colorMatchingMinigameAudioSource.volume = audioLevel * 0.10f;
     }
 
     public override void OnLeaveButtonClicked()

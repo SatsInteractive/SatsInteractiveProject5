@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
     private InputManager inputManager;
     private SoundManager soundManager;
     private CodeMiniGame codeMiniGame;
+    private ColorMatchingMinigame colorMatchingMinigame;
     private PlayerController playerController;
     private Eating eating;
     private GameObject playerNameGO;
+    private Cutscenes cutscenes;
     
     private bool isGamePaused = false;
     private bool inMiniGame = false;
@@ -78,8 +80,11 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Main")
         {
             codeMiniGame = FindObjectOfType<CodeMiniGame>();
+            colorMatchingMinigame = FindObjectOfType<ColorMatchingMinigame>();
             playerController = FindObjectOfType<PlayerController>();
             eating = FindObjectOfType<Eating>();
+            cutscenes = FindObjectOfType<Cutscenes>();
+            cutscenes.uiManager = uiManager;
             inputManager.playerController = playerController;
             playerController.FaceSpriteRenderer.sprite = chosenSprite;
             playerNameGO = GameObject.FindWithTag("PlayerName");
@@ -142,6 +147,7 @@ public class GameManager : MonoBehaviour
         if (codeMiniGame != null) codeMiniGame.CodeMiniGameChangeVolumeLevel(value);
         if (playerController != null) playerController.ChangeVolumeLevel(value);
         if (eating != null) eating.ChangeVolume(value);
+        if (colorMatchingMinigame != null) colorMatchingMinigame.ColorMatchingMinigameChangeVolumeLevel(value);
     }
     
     private void ChangeScene(string sceneName)
