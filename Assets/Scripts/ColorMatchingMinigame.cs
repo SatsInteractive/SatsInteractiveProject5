@@ -26,7 +26,9 @@ public class ColorMatchingMinigame : MiniGame
 
     [SerializeField] private int artCount = 0;
     [SerializeField] private int artsPerGame = 2;
+    private float screenOpeningDelay = 3f;
 
+    public GameObject colormatching_side_bg;
 
     //from Lauri's system
     private bool isColorMatchingMinigameActive = false;
@@ -41,6 +43,7 @@ public class ColorMatchingMinigame : MiniGame
             .ToArray();
         exampleGrid = ExampleGridGameObject.GetComponentsInChildren<Image>();
 
+        isColorMatchingMinigameActive = false;
     }
 
     private void Start()
@@ -75,6 +78,9 @@ public class ColorMatchingMinigame : MiniGame
 
         // Generate random color IDs for the correct grid
         GenerateRandomGrid();
+
+        colorMatchingMinigameStartingScreen.SetActive(true);
+        colormatching_side_bg.SetActive(false);
     }
 
     public override void StartMiniGame()
@@ -84,6 +90,14 @@ public class ColorMatchingMinigame : MiniGame
         inputLocked = true;
         colorMatchingMinigameStartingScreen.SetActive(true);
         StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
+    }
+
+    private void Update()
+    {
+        if (isColorMatchingMinigameActive)
+        {
+            UpdateTimer();
+        }
     }
 
     private void GenerateRandomGrid()
@@ -160,6 +174,7 @@ public class ColorMatchingMinigame : MiniGame
         if (isCorrect)
         {
             Debug.Log("Minigame complete! Grid is correct.");
+            EndMiniGame();
             // End the minigame, perhaps by transitioning to another scene or showing a completion message
         }
         else
@@ -210,6 +225,7 @@ public class ColorMatchingMinigame : MiniGame
     private void StartPaintings()
     {
         isColorMatchingMinigameActive = true;
+        colormatching_side_bg.SetActive(true);
         inputLocked = false;
         
         if (artCount <= artsPerGame - 1)
