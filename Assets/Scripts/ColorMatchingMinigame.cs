@@ -22,7 +22,6 @@ public class ColorMatchingMinigame : MiniGame
     private int[] correctGridIds; // Correct grid IDs
     private int[] playerGridIds; // Player's current grid IDs
     private int selectedColorId; // Currently selected color ID
-    private float timer = 60f; // Initial timer value
 
     [SerializeField] private int artCount = 0;
     private int artsPerGame = 2;
@@ -75,9 +74,6 @@ public class ColorMatchingMinigame : MiniGame
 
         // Set up submit button callback
         submitButton.onClick.AddListener(SubmitGrid);
-
-        // Start the timer
-        //InvokeRepeating("UpdateTimer", 1f, 1f);
 
         // Generate random color IDs for the correct grid
         GenerateRandomGrid();
@@ -134,6 +130,7 @@ public class ColorMatchingMinigame : MiniGame
 
     private void Update()
     {
+        Debug.Log(isColorMatchingMinigameActive);
         if (isColorMatchingMinigameActive)
         {
             UpdateTimer();
@@ -307,6 +304,7 @@ public class ColorMatchingMinigame : MiniGame
     private void StartPaintings()
     {
         isColorMatchingMinigameActive = true;
+        startTime = 0;
         colormatching_side_bg.SetActive(true);
         inputLocked = false;
         
