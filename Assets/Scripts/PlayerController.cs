@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     
     // Movement animation
     public Transform Face;
+    public SpriteRenderer FaceSpriteRenderer;
     public float initialFaceScale = 0.08f;
     public float walkAnimationRate = 0.5f;
     public float scaleAmount = 0.01f;

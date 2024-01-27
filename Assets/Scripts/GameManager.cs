@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour
     private InputManager inputManager;
     private SoundManager soundManager;
     private CodeMiniGame codeMiniGame;
+    private PlayerController playerController;
     
     private bool isGamePaused = false;
     private bool inMiniGame = false;
     
     public string playerName = "Untitled Player";
     public string strongestSkill = "None";
+    public Sprite chosenSprite;
     
     
     private void Awake()
@@ -72,7 +74,9 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Main")
         {
             codeMiniGame = FindObjectOfType<CodeMiniGame>();
-            inputManager.playerController = FindObjectOfType<PlayerController>();
+            playerController = FindObjectOfType<PlayerController>();
+            inputManager.playerController = playerController;
+            playerController.FaceSpriteRenderer.sprite = chosenSprite;
         }
     }
 
@@ -80,6 +84,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Starting game...");
         pointsManager.SetPoints(0);
+        playerName = uiManager.playerNameInput.text;
+        strongestSkill = uiManager.strongestSkillInput.text;
+        chosenSprite = uiManager.chosenSprite.sprite;
         ChangeScene("Main");
     }
     

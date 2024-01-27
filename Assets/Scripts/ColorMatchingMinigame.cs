@@ -18,7 +18,6 @@ public class ColorMatchingMinigame : MiniGame
     private Image[] exampleGrid;
 
     public Button submitButton;
-    public Text timerText;
 
     private int[] correctGridIds; // Correct grid IDs
     private int[] playerGridIds; // Player's current grid IDs
@@ -26,8 +25,13 @@ public class ColorMatchingMinigame : MiniGame
     private float timer = 60f; // Initial timer value
 
     [SerializeField] private int artCount = 0;
-    [SerializeField] private int artsPerGame = 2;
+    private int artsPerGame = 2;
 
+    public GameObject colormatching_side_bg;
+
+    private float timeTaken;
+
+    private float newPaintingDelay = 1f;
 
     //from Lauri's system
     private bool isColorMatchingMinigameActive = false;
@@ -42,6 +46,7 @@ public class ColorMatchingMinigame : MiniGame
             .ToArray();
         exampleGrid = ExampleGridGameObject.GetComponentsInChildren<Image>();
 
+        isColorMatchingMinigameActive = false;
     }
 
     private void Start()
@@ -76,7 +81,47 @@ public class ColorMatchingMinigame : MiniGame
 
         // Generate random color IDs for the correct grid
         GenerateRandomGrid();
+
+        colorMatchingMinigameStartingScreen.SetActive(true);
+        colormatching_side_bg.SetActive(false);
+        endScreen.SetActive(false);
     }
+
+    public void ResetGame()
+    {
+        // Reset variables and UI elements to their initial state
+
+        // Disable outline for all colors
+        foreach (Button colorImage in colorPalette)
+        {
+            Outline outline = colorImage.GetComponent<Outline>();
+            if (outline != null)
+            {
+                outline.enabled = false;
+            }
+        }
+
+        // Set the outline for the first color
+        colorPalette[0].GetComponent<Outline>().enabled = true;
+
+        // Reset player grid and example grid colors
+        for (int i = 0; i < bigGrid.Length; i++)
+        {
+            playerGridIds[i] = 69; // Assuming color ID 69 is the default color
+            bigGrid[i].GetComponent<Image>().color = GetColor(69);
+        }
+
+        selectedColorId = 0;
+
+        // Generate a new random correct grid
+        GenerateRandomGrid();
+
+        // Reset timer and any other game-specific variables
+        startTime = 0;
+
+        // Optionally, hide or reset any additional UI elements specific to the game
+    }
+
 
     public override void StartMiniGame()
     {
@@ -85,6 +130,14 @@ public class ColorMatchingMinigame : MiniGame
         inputLocked = true;
         colorMatchingMinigameStartingScreen.SetActive(true);
         StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
+    }
+
+    private void Update()
+    {
+        if (isColorMatchingMinigameActive)
+        {
+            UpdateTimer();
+        }
     }
 
     private void GenerateRandomGrid()
@@ -161,6 +214,7 @@ public class ColorMatchingMinigame : MiniGame
         if (isCorrect)
         {
             Debug.Log("Minigame complete! Grid is correct.");
+            CompletePainting();
             // End the minigame, perhaps by transitioning to another scene or showing a completion message
         }
         else
@@ -196,9 +250,51 @@ public class ColorMatchingMinigame : MiniGame
                 return Color.yellow;
             case 4:
                 return Color.magenta;
+            case 69:
+                return Color.white;
             default:
                 return Color.white;
         }
+    }
+
+    private void CompletePainting()
+    {
+        ResetGame();
+        // Completion logic, such as scoring
+        isColorMatchingMinigameActive = false;
+        // inputLocked = true;
+        // codeMiniGameAudioSource.PlayOneShot(correctSound);
+        timeTaken = Time.time - startTime;
+        completionTimes.Add(timeTaken);
+        //int points = CalculatePoints(timeTaken);
+        //Debug.Log("Correct! Points: " + points);
+
+        if (artCount < artsPerGame - 1)
+        {
+            StartCoroutine(WaitBeforeNewPainting());
+            artCount++;
+            startTime = Time.time;
+        }
+        else
+        {
+            ShowEndScreen();
+        }
+
+        timeTaken = 0;
+    }
+
+    protected override void ShowEndScreen()
+    {
+        isColorMatchingMinigameActive = false;
+        colorMatchingMinigameStartingScreen.SetActive(true);
+        base.ShowEndScreen();
+        //float averagePromptSpeed = totalTimeTaken / promptsPerGame;
+    }
+
+    IEnumerator WaitBeforeNewPainting()
+    {
+        yield return new WaitForSeconds(newPaintingDelay);
+        StartPaintings();
     }
 
     private IEnumerator StartGameAfterDelay(float delay)
@@ -211,25 +307,26 @@ public class ColorMatchingMinigame : MiniGame
     private void StartPaintings()
     {
         isColorMatchingMinigameActive = true;
+        colormatching_side_bg.SetActive(true);
         inputLocked = false;
         
-        if (artCount <= artsPerGame - 1)
-        {
-
-            artCount++;
-            startTime = Time.time;
-        }
-        else
-        {
-            EndMiniGame();
-        }
     }
 
-    public override void EndMiniGame()
+    protected override void EndMiniGame()
     {
+        ResetGame();
+        artCount = 0;
+        colormatching_side_bg.SetActive(false);
         isColorMatchingMinigameActive = false;
         colorMatchingMinigameStartingScreen.SetActive(true);
         base.EndMiniGame();
+    }
+
+    public override void OnLeaveButtonClicked()
+    {
+        // totalMistakes = 0;
+        // totalCharactersTyped = 0;
+        base.OnLeaveButtonClicked();
     }
 }
 

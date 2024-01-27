@@ -18,6 +18,6 @@ public class ButtonManager : MonoBehaviour
         minigame.SetActive(true);
         minigame.GetComponent<MiniGame>().StartMiniGame();
 
-        this.gameObject.transform.parent.transform.gameObject.SetActive(false);
+        gameObject.transform.parent.transform.parent.transform.gameObject.SetActive(false);
     }
 }
