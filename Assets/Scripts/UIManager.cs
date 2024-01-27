@@ -81,6 +81,8 @@ public class UIManager : MonoBehaviour
         creditsScreen.SetActive(false);
         scoreBoard.SetActive(false);
         jammerCardInfoUpRight.SetActive(false);
+        HandleAudioLevelChange(0.5f);
+        audioSlider.value = 0.5f;
     }
     
     private void HandleStartGameButtonPressed()

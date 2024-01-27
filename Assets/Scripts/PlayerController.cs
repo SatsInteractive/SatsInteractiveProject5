@@ -18,11 +18,19 @@ public class PlayerController : MonoBehaviour
     private Coroutine walkCoroutine;
     
     public bool isInMiniGame = false;
+    
+    [Header("Step Sounds")]
+    public AudioClip[] stepSounds;
+    private AudioSource audioSource;
+    public float stepSoundInterval = 0.4f;
+    private float nextStepSoundTime = 0f;
+    public float walkingSpeedMagForStepSound = 1f;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         Face = transform.Find("Face").transform;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -60,6 +68,14 @@ public class PlayerController : MonoBehaviour
     {
         if (isInMiniGame) return;
         rb.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+        if (rb.velocity.magnitude > walkingSpeedMagForStepSound)
+        {
+            if (Time.time > nextStepSoundTime)
+            {
+                nextStepSoundTime = Time.time + stepSoundInterval;
+                PlayStepSound();
+            }
+        }
     }
     
     private IEnumerator WalkAnimation()
@@ -79,6 +95,16 @@ public class PlayerController : MonoBehaviour
     private void ResetScale()
     {
         Face.localScale = new Vector3(initialFaceScale, initialFaceScale, 1);
+    }
+    
+    public void PlayStepSound()
+    {
+        audioSource.PlayOneShot(stepSounds[UnityEngine.Random.Range(0, stepSounds.Length)]);
+    }
+    
+    public void ChangeVolumeLevel(float value)
+    {
+        audioSource.volume = value * 0.5f;
     }
     
     
