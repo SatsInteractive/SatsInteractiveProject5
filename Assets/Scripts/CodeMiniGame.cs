@@ -126,6 +126,11 @@ public class CodeMiniGame : MiniGame
         codeStartingScreen.SetActive(true);
         base.ShowEndScreen();
         float averagePromptSpeed = totalTimeTaken / promptsPerGame;
+        float averageCharacterSpeed = totalTimeTaken / totalCharactersTyped;
+        averagePromptSpeedText.text = averagePromptSpeed.ToString("F2");
+        averageCharacterSpeedText.text = averageCharacterSpeed.ToString("F2");
+        mistakeCountText.text = totalMistakes.ToString();
+        characterCountText.text = totalCharactersTyped.ToString();
     }
 
     protected override void EndMiniGame()
@@ -152,11 +157,13 @@ public class CodeMiniGame : MiniGame
             {
                 // Correct character
                 currentCharacterIndex++;
+                totalCharactersTyped++;
                 UpdatePromptDisplay();
             }
             else if(currentCharacterIndex < currentPrompt.Length)
             {
                 // Incorrect character
+                totalMistakes++;
                 StartCoroutine(ShowErrorFeedback(lastInputChar));
             }
         }
@@ -233,6 +240,10 @@ public class CodeMiniGame : MiniGame
     {
         totalMistakes = 0;
         totalCharactersTyped = 0;
+        averagePromptSpeedText.text = "0";
+        averageCharacterSpeedText.text = "0";
+        mistakeCountText.text = "0";
+        characterCountText.text = "0";
         base.OnLeaveButtonClicked();
     }
 }
