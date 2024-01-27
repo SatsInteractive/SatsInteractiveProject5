@@ -10,10 +10,13 @@ public class UIManager : MonoBehaviour
     private GameObject menuScreen;
     private Button startButton;
     private Button settingsButton;
+    private AudioSource audioSource;
+    private AudioClip buttonClickSound;
 
     private Button creditsButton;
     
     private GameObject settingsScreen;
+    public GameObject mainMenuEndScreen;
     public Button backButton;
     public Button exitButton;
     public Slider audioSlider;
@@ -47,6 +50,7 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this);
         
         ui = gameObject;
+        audioSource = GetComponent<AudioSource>();
         
         menuScreen = ui.transform.Find("MenuScreen").gameObject;
         startButton = menuScreen.transform.Find("StartGameBtn").GetComponent<Button>();
@@ -65,6 +69,8 @@ public class UIManager : MonoBehaviour
         scoreBoard = ui.transform.Find("ScoreBoard").gameObject;
         healthSlider = scoreBoard.transform.Find("HealthSlider").GetComponent<Slider>();
         healthText = scoreBoard.transform.Find("HealthText").GetComponent<TextMeshProUGUI>();
+        
+        mainMenuEndScreen.SetActive(false);
         
         audioSlider.onValueChanged.AddListener(HandleAudioLevelChange);
         //backButton.onClick.AddListener(HandleBackButtonPressed);
@@ -96,6 +102,7 @@ public class UIManager : MonoBehaviour
             jammerstrongestskill.text = "Sleep";
         }
         
+        audioSource.PlayOneShot(buttonClickSound);
         jammerCardInfoUpRight.SetActive(true);
         menuScreen.SetActive(false);
         scoreBoard.SetActive(false);
@@ -103,6 +110,7 @@ public class UIManager : MonoBehaviour
         jammerCardInfoUpRight.SetActive(true);
         jammername.text = playerNameInput.text;
         jammerstrongestskill.text = strongestSkillInput.text;
+        jammerCardInfoUpRight.SetActive(false);
     }
     
     public void HandleSettingsButtonPressed()
@@ -134,6 +142,7 @@ public class UIManager : MonoBehaviour
     
     private void HandleAudioLevelChange(float value)
     {
+        audioSource.volume = value * 0.25f;
         OnAudioSliderChanged?.Invoke(value);
     }
 
