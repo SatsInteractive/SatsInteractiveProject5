@@ -18,7 +18,7 @@ public class BackButton : MonoBehaviour
         {
             if (dialogue != null)
             {
-                dialogue.gameObject.SetActive(false);
+                dialogue.transform.parent.gameObject.SetActive(false);
             }
             gameObject.transform.parent.gameObject.SetActive(false);
         }
