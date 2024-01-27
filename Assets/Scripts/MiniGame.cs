@@ -14,9 +14,9 @@ public class MiniGame : MonoBehaviour
     [SerializeField] protected AudioClip wrongSound;
     [SerializeField] protected float audioLevel;
     [SerializeField] protected float colorFeedbackDelay = 0.5f;
-    [SerializeField] protected float screenOpeningDelay = 5f;
     [SerializeField] protected List<float> completionTimes;
     [SerializeField] protected float totalTimeTaken;
+    protected float screenOpeningDelay = 3f;
     protected bool inputLocked = false;
     
     [Header("End Screen Settings")]
