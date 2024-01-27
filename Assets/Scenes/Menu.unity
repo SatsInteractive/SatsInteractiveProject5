@@ -5895,7 +5895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc58c36cc22d304f9ec3224729604f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuMusics: []
+  menuMusics:
+  - {fileID: 8300000, guid: d84a7a8a9d1b09f4390a56a89610bd6f, type: 3}
   mainMusics: []
 --- !u!82 &1854677318
 AudioSource:
