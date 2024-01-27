@@ -9,10 +9,10 @@ using Random = UnityEngine.Random;
 
 public class CodeMiniGame : MiniGame
 {
-    private TextMeshProUGUI promptText;
-    private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI promptText;
+    [SerializeField] private TextMeshProUGUI timerText;
     private AudioSource codeMiniGameAudioSource;
-    private GameObject codeStartingScreen;
+    [SerializeField] private GameObject codeStartingScreen;
     
     private float startTime;
     private float timeTaken;
@@ -20,6 +20,7 @@ public class CodeMiniGame : MiniGame
     private int promptCount = 0;
     private bool promptSet = false;
     private bool inputLocked = false;
+    private bool userPressedFirstKey = false;
 
     [Header("Settings")]
     [SerializeField] private List<string> codingPrompts = new List<string>()
@@ -48,17 +49,14 @@ public class CodeMiniGame : MiniGame
     [SerializeField] private TMP_Text promptDisplay;
     [SerializeField] private string currentPrompt;
     private string userInput = "";
-    private bool[] correctInput;
     private int currentCharacterIndex = 0;
 
     private void Awake()
     {
-        promptText = transform.GetChild(0).Find("code_prompt").GetComponent<TextMeshProUGUI>();
-        timerText = transform.GetChild(0).Find("code_minigame_timer").GetComponent<TextMeshProUGUI>();
-        codeStartingScreen = transform.GetChild(0).Find("code_starting_screen").gameObject;
         codeMiniGameAudioSource = GetComponent<AudioSource>();
         codeMiniGameAudioSource.volume = audioLevel;
         promptDisplay.text = "";
+        codeMiniGameActive = false;
     }
     
     private void Update()
@@ -81,6 +79,14 @@ public class CodeMiniGame : MiniGame
 
     public override void StartCodeMiniGame()
     {
+        promptDisplay.text = "";
+        codeMiniGameActive = false;
+        promptCount = 0;
+        promptSet = false;
+        userPressedFirstKey = false;
+        currentCharacterIndex = 0;
+        gameObject.SetActive(true);
+        codeStartingScreen.SetActive(true);
         StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
     }
 
@@ -111,6 +117,8 @@ public class CodeMiniGame : MiniGame
                 codeMiniGameActive = false;
                 codeStartingScreen.SetActive(true);
                 gameObject.SetActive(false);
+                MapManager.Instance.TeleportPlayerToSpawnPoint1();
+                MapManager.Instance.ShowMap();
             }
         }
     }
@@ -120,6 +128,13 @@ public class CodeMiniGame : MiniGame
         string input = Input.inputString;
         if (!string.IsNullOrEmpty(input))
         {
+            // Handle first key press
+            if (!userPressedFirstKey)
+            {
+                userPressedFirstKey = true;
+                startTime = Time.time;
+            }
+            
             char lastInputChar = input[input.Length - 1];
             if (currentCharacterIndex < currentPrompt.Length && lastInputChar == currentPrompt[currentCharacterIndex])
             {
@@ -162,6 +177,7 @@ public class CodeMiniGame : MiniGame
     
     private void UpdateTimer()
     {
+        if (!userPressedFirstKey) return;
         float timeElapsed = Time.time - startTime;
         timerText.text = "Time: " + timeElapsed.ToString("F2");
     }
@@ -185,6 +201,8 @@ public class CodeMiniGame : MiniGame
     {
         yield return new WaitForSeconds(newPromptDelay);
         promptSet = false;
+        promptDisplay.text = "";
+        currentCharacterIndex = 0;
         StartPrompts();
     }
 

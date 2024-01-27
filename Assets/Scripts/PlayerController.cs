@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public float scaleAmount = 0.01f;
     private bool isMoving;
     private Coroutine walkCoroutine;
+    
+    public bool isInMiniGame = false;
 
     void Awake()
     {
@@ -24,8 +26,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovementInput();
-        
+        if (isInMiniGame)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         if (moveInput != Vector2.zero)
         {
             if (!isMoving)
@@ -49,15 +54,10 @@ public class PlayerController : MonoBehaviour
     {
         Move();
     }
-    
-    private void HandleMovementInput()
-    {
-        moveInput.x = Input.GetAxis("Horizontal");
-        moveInput.y = Input.GetAxis("Vertical");
-    }
 
     void Move()
     {
+        if (isInMiniGame) return;
         rb.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
     }
     
@@ -79,5 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         Face.localScale = new Vector3(initialFaceScale, initialFaceScale, 1);
     }
+    
+    
 }
 
