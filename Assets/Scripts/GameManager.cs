@@ -62,7 +62,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         inputManager.HandleUIInput();
-        inputManager.HandlePointsInput();
+        //inputManager.HandlePointsInput();
+        if (isGamePaused) return;
         inputManager.HandleMovementInput();
         
         //if (codeMiniGame == null) return;
@@ -96,11 +97,13 @@ public class GameManager : MonoBehaviour
     private void StopGame()
     {
         Debug.Log("Stopping game...");
+        isGamePaused = true;
     }
     
     private void ResumeGame()
     {
         Debug.Log("Resuming game...");
+        isGamePaused = false;
     }
     
     private void ExitGame()
