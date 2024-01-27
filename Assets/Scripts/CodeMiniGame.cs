@@ -2,9 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class CodeMiniGame : MiniGame
@@ -32,6 +30,7 @@ public class CodeMiniGame : MiniGame
         "float coffeeLevel = 0.0f;",
         "void WhyAmIRunning() { }"
     };
+    private List<string> tempCodingPrompts;
     [SerializeField] public Color normalColor = new Color(85, 85, 85, 1);
     [SerializeField] public Color errorColor = new Color(106, 106, 68, 1);
     public float newPromptDelay = 1f;
@@ -87,6 +86,7 @@ public class CodeMiniGame : MiniGame
         currentCharacterIndex = 0;
         gameObject.SetActive(true);
         codeStartingScreen.SetActive(true);
+        tempCodingPrompts = new List<string>(codingPrompts);
         StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
         base.StartMiniGame();
     }
@@ -105,10 +105,12 @@ public class CodeMiniGame : MiniGame
         inputLocked = false;
         if (promptSet == false)
         {
-            if (promptCount <= promptsPerGame - 1)
+            if (promptCount <= promptsPerGame - 1 && tempCodingPrompts.Count > 0)
             {
-                currentPrompt = codingPrompts[Random.Range(0, codingPrompts.Count)];
+                int _index = Random.Range(0, codingPrompts.Count);
+                currentPrompt = tempCodingPrompts[_index];
                 promptText.text = currentPrompt;
+                tempCodingPrompts.RemoveAt(_index);
                 promptSet = true;
                 promptCount++;
                 startTime = Time.time;
@@ -123,6 +125,7 @@ public class CodeMiniGame : MiniGame
     protected override void ShowEndScreen()
     {
         codeMiniGameActive = false;
+        timerText.text = "0";
         codeStartingScreen.SetActive(true);
         base.ShowEndScreen();
         punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
@@ -244,6 +247,7 @@ public class CodeMiniGame : MiniGame
         averageCharacterSpeedText.text = "0";
         mistakeCountText.text = "0";
         characterCountText.text = "0";
+        tempCodingPrompts.Clear();
         base.OnLeaveButtonClicked();
     }
 }
