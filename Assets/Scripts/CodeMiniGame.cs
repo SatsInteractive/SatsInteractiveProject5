@@ -40,7 +40,6 @@ public class CodeMiniGame : MiniGame
     [Header("UI References")]
     [SerializeField] private TMP_Text promptDisplay;
     [SerializeField] private string currentPrompt;
-    private string userInput = "";
     private int currentCharacterIndex = 0;
     
     [Header("Stats")]
@@ -51,7 +50,7 @@ public class CodeMiniGame : MiniGame
     [SerializeField] private TMP_Text mistakeCountText;
     [SerializeField] private TMP_Text characterCountText;
 
-    private void Awake()
+    protected override void Awake()
     {
         codeMiniGameAudioSource = GetComponent<AudioSource>();
         codeMiniGameAudioSource.volume = audioLevel;
@@ -89,6 +88,7 @@ public class CodeMiniGame : MiniGame
         gameObject.SetActive(true);
         codeStartingScreen.SetActive(true);
         StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
+        base.StartMiniGame();
     }
 
     private IEnumerator StartGameAfterDelay(float delay)

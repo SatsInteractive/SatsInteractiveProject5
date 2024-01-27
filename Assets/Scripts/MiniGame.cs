@@ -29,7 +29,7 @@ public class MiniGame : MonoBehaviour
 
     public virtual void StartMiniGame()
     {
-        
+        Debug.Log("I was called: " + gameObject);
     }
     
     protected virtual void EndMiniGame()
@@ -41,6 +41,7 @@ public class MiniGame : MonoBehaviour
 
     protected virtual void ShowEndScreen()
     {
+        Debug.Log("ShowEndScreen() called");
         for (int i = 0; i < completionTimes.Count; i++)
         {
             totalTimeTaken += completionTimes[i];
@@ -51,6 +52,7 @@ public class MiniGame : MonoBehaviour
     
     public virtual void OnLeaveButtonClicked()
     {
+        Debug.Log("Leave button clicked");
         endScreen.SetActive(false);
         totalTimeTaken = 0f;
         
