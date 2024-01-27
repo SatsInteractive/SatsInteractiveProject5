@@ -2567,7 +2567,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 32083802}
-  m_Father: {fileID: 5549290336736288732}
+  m_Father: {fileID: 5549290336736288733}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6561,6 +6561,14 @@ PrefabInstance:
       value: -16.6665
       objectReference: {fileID: 0}
     - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
+      propertyPath: feedback
+      value: 
+      objectReference: {fileID: 687747524}
+    - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
+      propertyPath: feedbackText
+      value: 
+      objectReference: {fileID: 32083800}
+    - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
       propertyPath: punktideJaTundideHaldaja
       value: 
       objectReference: {fileID: 529506844}
@@ -6660,6 +6668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725a516945af39947a7ddd74800345e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5549290336736288733 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2694267766778780924, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
+  m_PrefabInstance: {fileID: 5549290336736288730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6442819423800044299
 PrefabInstance:
   m_ObjectHideFlags: 0
