@@ -50,6 +50,7 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue(dialoguePlaceOptions dialoguePlace)
     {
+        textComponent.text = String.Empty;
         index = 0;
         dialogueSkippable = true;
         if (dialoguePlace == dialoguePlaceOptions.Kitchen)
@@ -106,12 +107,18 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    public void DialogueOptionChosen(string buttonText)
+    public void DisableDialogueOptions()
     {
         foreach (var varDialogueButton in dialogueButtons)
         {
             varDialogueButton.SetActive(false);
         }
+    }
+
+    public void DialogueOptionChosen(string buttonText)
+    {
+        DisableDialogueOptions();
+        
         if (buttonText == dialogueButtonsTexts[0].text)
         {
             index += 1;
