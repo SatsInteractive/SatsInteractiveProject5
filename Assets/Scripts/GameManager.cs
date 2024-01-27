@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,11 +14,12 @@ public class GameManager : MonoBehaviour
     private CodeMiniGame codeMiniGame;
     private PlayerController playerController;
     private Eating eating;
+    private GameObject playerNameGO;
     
     private bool isGamePaused = false;
     private bool inMiniGame = false;
     
-    public string playerName = "Untitled Player";
+    public string playerName = "";
     public string strongestSkill = "None";
     public Sprite chosenSprite;
     
@@ -79,6 +81,15 @@ public class GameManager : MonoBehaviour
             eating = FindObjectOfType<Eating>();
             inputManager.playerController = playerController;
             playerController.FaceSpriteRenderer.sprite = chosenSprite;
+            playerNameGO = GameObject.FindWithTag("PlayerName");
+            if (playerName.Length == 0)
+            {
+                playerNameGO.GetComponent<TMP_Text>().text = "You";
+            }
+            else
+            {
+                playerNameGO.GetComponent<TMP_Text>().text = playerName;
+            }
             AdjustAudioLevel(uiManager.audioSlider.value);
         }
     }

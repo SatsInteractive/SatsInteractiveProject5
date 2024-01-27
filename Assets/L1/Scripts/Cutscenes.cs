@@ -3,17 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using TMPro;
 
 public class Cutscenes : MonoBehaviour
 {
     [SerializeField] private VideoPlayer videoPlayer;
 
-    private GameObject loadingScreen;
+    public GameObject loadingScreen;
+
     // Start is called before the first frame update
 
     private void Awake()
     {
-
+        
     }
 
     void Start()
