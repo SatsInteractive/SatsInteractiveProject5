@@ -326,6 +326,8 @@ public class ColorMatchingMinigame : MiniGame
 
     protected override void EndMiniGame()
     {
+        punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.art);
+        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.art);
         ResetGame();
         artCount = 0;
         colormatching_side_bg.SetActive(false);
