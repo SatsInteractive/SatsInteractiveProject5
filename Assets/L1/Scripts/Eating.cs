@@ -13,6 +13,7 @@ public class Eating : MonoBehaviour
     private Collider2D mouseFollowingCollider;
     public GameObject mouseFollowingColliderPrefab;
     public List<GameObject> PizzaButtons;
+    public Dialogue Dialogue;
     private Vector3 mousePosition;
 
     public void StartEatingAction()
@@ -23,7 +24,8 @@ public class Eating : MonoBehaviour
     public void MumbleClicked()
     {
         PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.mumbling);
-        //code conversation!
+        Dialogue.transform.parent.gameObject.SetActive(true);
+        Dialogue.StartDialogue(Dialogue.dialoguePlaceOptions.Kitchen);
     }
 
     public void PizzaClicked()

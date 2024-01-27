@@ -3,54 +3,91 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Search;
 
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
-    public string[] lines;
+    private string[] linesToType;
     public float typingDelay;
 
-    private int index;
+    public string[] KitchenDialogue;
+    public string[] WCDialogue;
+    public string[] CoopDialogue;
 
+    private int index;
+    public List<GameObject> dialogueButtons;
+    public List<TextMeshProUGUI> dialogueButtonsTexts;
+    private bool dialogueSkippable=false;
+    private int nextDialogueIndex;
+    
+    public enum dialoguePlaceOptions
+    {
+        Kitchen,
+        WC,
+        Coop
+    }
     private void Awake()
     {
         textComponent.text = String.Empty;
     }
 
-    private void Start()
-    {
-        StartDialogue();
-    }
-
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && dialogueSkippable)
         {
-            if (textComponent.text == lines[index])
+            if (textComponent.text == linesToType[index])
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = linesToType[index];
             }
         }
     }
 
-    private void StartDialogue()
+    public void StartDialogue(dialoguePlaceOptions dialoguePlace)
     {
         index = 0;
+        dialogueSkippable = true;
+        if (dialoguePlace == dialoguePlaceOptions.Kitchen)
+        {
+            linesToType = KitchenDialogue;
+        }
+        else if (dialoguePlace == dialoguePlaceOptions.WC)
+        {
+            linesToType = WCDialogue;
+        }
+        else if (dialoguePlace == dialoguePlaceOptions.Coop)
+        {
+            linesToType = CoopDialogue;
+        }
+
         StartCoroutine(TypeLine());
     }
 
     private void NextLine()
     {
-        if (index < lines.Length - 1)
+        if (index < linesToType.Length - 1)
         {
             index++;
             textComponent.text = String.Empty;
-            StartCoroutine(TypeLine());
+            if (linesToType[index] == "PlayerOptions")
+            {
+                textComponent.text = linesToType[index - 1];
+                index++;
+                PlayerOptions(Int32.Parse(linesToType[index]));
+            }
+            else if (linesToType[index] == "END")
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                StartCoroutine(TypeLine());
+            }
         }
         else
         {
@@ -58,9 +95,44 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    IEnumerator TypeLine()
+    private void PlayerOptions(int playerOptions)
     {
-        foreach (char c in lines[index].ToCharArray())
+        dialogueSkippable = false;
+        for (int i = 0; i < playerOptions; i++)
+        {
+            index++;
+            dialogueButtonsTexts[i].text = linesToType[index];
+            dialogueButtons[i].SetActive(true);
+        }
+    }
+
+    public void DialogueOptionChosen(string buttonText)
+    {
+        foreach (var varDialogueButton in dialogueButtons)
+        {
+            varDialogueButton.SetActive(false);
+        }
+        if (buttonText == dialogueButtonsTexts[0].text)
+        {
+            index += 1;
+        }
+        else if (buttonText == dialogueButtonsTexts[1].text)
+        {
+            index += 2;
+        }
+        else if (buttonText == dialogueButtonsTexts[2].text)
+        {
+            index += 3;
+        }
+        nextDialogueIndex = Int32.Parse(linesToType[index])-1;
+        index = nextDialogueIndex;
+        dialogueSkippable = true;
+        NextLine();
+    }
+
+    private IEnumerator TypeLine()
+    {
+        foreach (char c in linesToType[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(typingDelay);
