@@ -30,12 +30,4 @@ public class InputManager : MonoBehaviour
             uiManager.HandleSettingsButtonPressed();
         }
     }
-    
-    public void HandlePointsInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            pointsManager.AddPoints(10);
-        }
-    }
 }

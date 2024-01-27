@@ -24,8 +24,9 @@ public class UIManager : MonoBehaviour
     private GameObject creditsScreen;
     public Button backButtonCredits;
 
-    private GameObject scoreBoard;
+    public GameObject scoreBoard;
     private Slider healthSlider;
+    public float maxScore = 180f;
     private TextMeshProUGUI healthText;
     
     public event Action OnStartGameButtonPressed; 
@@ -105,7 +106,6 @@ public class UIManager : MonoBehaviour
         audioSource.PlayOneShot(buttonClickSound);
         jammerCardInfoUpRight.SetActive(true);
         menuScreen.SetActive(false);
-        scoreBoard.SetActive(false);
         OnStartGameButtonPressed?.Invoke();
         jammerCardInfoUpRight.SetActive(true);
         jammername.text = playerNameInput.text;
@@ -169,8 +169,8 @@ public class UIManager : MonoBehaviour
 
     public void HandleHealthChange(float value)
     {
-        healthSlider.value = value / 100f;
-        healthText.text = $"{value}%";
+        healthSlider.value = value / maxScore;
+        healthText.text = $"{value.ToString("F1")} points";
     }
     
     public void HandleNextCharacterButton()
