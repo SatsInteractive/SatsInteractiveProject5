@@ -38,6 +38,8 @@ public class UIManager : MonoBehaviour
     public TMP_InputField strongestSkillInput;
     public Image chosenSprite;
     public Sprite[] possibleSprites;
+    public TextMeshProUGUI jammername;
+    public TextMeshProUGUI jammerstrongestskill;
     
     private void Awake()
     {
@@ -81,9 +83,20 @@ public class UIManager : MonoBehaviour
     
     private void HandleStartGameButtonPressed()
     {
+        if (jammername.text == "")
+        {
+            jammername.text = "Jammer";
+        }
+        if (jammerstrongestskill.text == "")
+        {
+            jammerstrongestskill.text = "Sleep";
+        }
+        
         menuScreen.SetActive(false);
         scoreBoard.SetActive(true);
         OnStartGameButtonPressed?.Invoke();
+        jammername.text = playerNameInput.text;
+        jammerstrongestskill.text = strongestSkillInput.text;
     }
     
     public void HandleSettingsButtonPressed()
