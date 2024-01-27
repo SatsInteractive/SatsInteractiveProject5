@@ -47,6 +47,7 @@ public class MapManager : MonoBehaviour
     {
         ShowAllChildSprites(mapArt);
         playerController.FaceSpriteRenderer.enabled = true;
+        codeOrArtScreen.transform.GetChild(0).gameObject.SetActive(true);
         codeOrArtScreen.SetActive(false);
     }
     

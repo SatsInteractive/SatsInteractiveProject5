@@ -184,8 +184,7 @@ public class CodeMiniGame : MiniGame
         codeMiniGameAudioSource.PlayOneShot(correctSound);
         timeTaken = Time.time - startTime;
         completionTimes.Add(timeTaken);
-        int points = CalculatePoints(timeTaken);
-        Debug.Log("Correct! Points: " + points);
+        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         StartCoroutine(WaitBeforeNewPrompt());
     }
     

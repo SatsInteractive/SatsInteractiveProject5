@@ -11,6 +11,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     public float nextMultiplierTotal;
     private int[] endhours;
     private List<ActionType> actionHistory;
+    private float timeTaken;
     public Action[] ActionInfo;
 
     public enum ActionType
@@ -36,7 +37,22 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         actionHistory = new List<ActionType>();
         endhours = new[] { 2400, 2400, 1600};
     }
-    
+
+    public void TimeTakenForCodingOrArt(float timeTaken, ActionType actionType)
+    {
+        if (timeTaken < 15f)
+        {
+            nextMultiplierTotal *= 1f;
+        }
+        else if (timeTaken < 25f)
+        {
+            nextMultiplierTotal *= 0.8f;
+        }
+        else if (timeTaken < 35f)
+        {
+            nextMultiplierTotal *= 0.7f;
+        }
+    }
     public void TriggerAction(ActionType actionType)
     {
         Action actionTriggered = ActionInfo[(int)actionType];
