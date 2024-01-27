@@ -19,6 +19,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         shitting,
         coding,
         art,
+        mumbling,
     }
     [System.Serializable]
     public struct Action
@@ -27,6 +28,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         public float addedPoints;
         public float nextMultiplier;
         public int availability;
+        public int hoursUsed;
     }
 
     private void Awake()
@@ -35,10 +37,10 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         endhours = new[] { 2400, 2400, 1600};
     }
     
-    private void TriggerAction(ActionType actionType)
+    public void TriggerAction(ActionType actionType)
     {
         Action actionTriggered = ActionInfo[(int)actionType];
-        if (actionTriggered.availability > 0)
+        if (actionTriggered.availability < 1)
         {
             //Add additional error functionality, i.e what happens when the action cannot be triggered right now
             return;

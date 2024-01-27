@@ -46,21 +46,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 0
   hours: 1800
+  day: 0
   nextMultiplierTotal: 1
   ActionInfo:
   - type: eating
     addedPoints: 0
     nextMultiplier: 1.2
-    availability: 1
+    availability: 0
+    hoursUsed: 200
   - type: shitting
     addedPoints: 0
     nextMultiplier: 1.2
     availability: 1
+    hoursUsed: 200
   - type: coding
     addedPoints: 10
     nextMultiplier: 1
     availability: 1
+    hoursUsed: 200
   - type: art
     addedPoints: 0
     nextMultiplier: 1
     availability: 1
+    hoursUsed: 200
+  - type: mumbling
+    addedPoints: 0
+    nextMultiplier: 1
+    availability: 1
+    hoursUsed: 0
