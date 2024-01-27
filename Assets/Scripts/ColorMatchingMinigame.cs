@@ -35,6 +35,8 @@ public class ColorMatchingMinigame : MiniGame
     [SerializeField] private GameObject feedback;
     [SerializeField] private TMP_Text feedbackText;
 
+    public GameObject wrongFeedback;
+
     //from Lauri's system
     private bool isColorMatchingMinigameActive = false;
 
@@ -78,6 +80,8 @@ public class ColorMatchingMinigame : MiniGame
 
         // Set up submit button callback
         submitButton.onClick.AddListener(SubmitGrid);
+
+        wrongFeedback.SetActive(false);
 
         // Generate random color IDs for the correct grid
         GenerateRandomGrid();
@@ -222,10 +226,22 @@ public class ColorMatchingMinigame : MiniGame
         else
         {
             StartCoroutine(OpenAndCloseFeedback());
+            StartCoroutine(FlashWrongGrid());
             feedbackText.text = "INCORRECT GRID!";
             Debug.Log("Incorrect grid. Keep trying!");
             // Optionally provide feedback to the player
         }
+    }
+
+    IEnumerator FlashWrongGrid()
+    {
+
+        wrongFeedback.SetActive(true);
+
+        // Wait for 1 second
+        yield return new WaitForSeconds(1f);
+
+        wrongFeedback.SetActive(false);
     }
 
     IEnumerator OpenAndCloseFeedback()
