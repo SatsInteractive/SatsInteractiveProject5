@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
     public Sprite[] possibleSprites;
     public TextMeshProUGUI jammername;
     public TextMeshProUGUI jammerstrongestskill;
+    public GameObject jammerCardInfoUpRight;
     
     private void Awake()
     {
@@ -79,6 +80,7 @@ public class UIManager : MonoBehaviour
         settingsScreen.SetActive(false);
         creditsScreen.SetActive(false);
         scoreBoard.SetActive(false);
+        jammerCardInfoUpRight.SetActive(false);
     }
     
     private void HandleStartGameButtonPressed()
@@ -92,6 +94,7 @@ public class UIManager : MonoBehaviour
             jammerstrongestskill.text = "Sleep";
         }
         
+        jammerCardInfoUpRight.SetActive(true);
         menuScreen.SetActive(false);
         scoreBoard.SetActive(true);
         OnStartGameButtonPressed?.Invoke();
