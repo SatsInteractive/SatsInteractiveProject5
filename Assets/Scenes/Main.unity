@@ -896,7 +896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &292524857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5475,7 +5475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1945386245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6219,7 +6219,7 @@ PrefabInstance:
     - target: {fileID: 2457890805985390503, guid: 2314dfebea31e0b4daf77a653614ec54, type: 3}
       propertyPath: regionUI
       value: 
-      objectReference: {fileID: 292524856}
+      objectReference: {fileID: 1945386244}
     - target: {fileID: 3319539361274134409, guid: 2314dfebea31e0b4daf77a653614ec54, type: 3}
       propertyPath: m_Name
       value: Map
@@ -6228,6 +6228,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9148834673653305161, guid: 2314dfebea31e0b4daf77a653614ec54, type: 3}
+      propertyPath: codeOrArtScreen
+      value: 
+      objectReference: {fileID: 1945386244}
     - target: {fileID: 9148834673653305161, guid: 2314dfebea31e0b4daf77a653614ec54, type: 3}
       propertyPath: playerSpawnPoint
       value: 
