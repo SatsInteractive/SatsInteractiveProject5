@@ -283,43 +283,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7fb31aa4d39944991494814ea98f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
+  points: {x: 0, y: 0, z: 0}
   hours: 1800
   day: 0
   nextMultiplierTotal: 1
   ActionInfo:
   - type: eating
-    addedPoints: 0
+    addedPoints: {x: 0, y: 0, z: 0}
     nextMultiplier: 1.2
     availability: 1
     hoursUsed: 200
   - type: shitting
-    addedPoints: 0
+    addedPoints: {x: 0, y: 0, z: 0}
     nextMultiplier: 1.2
     availability: 1
     hoursUsed: 200
   - type: coding
-    addedPoints: 10
+    addedPoints: {x: 0, y: 0, z: 10}
     nextMultiplier: 1
     availability: 1
     hoursUsed: 200
   - type: art
-    addedPoints: 10
+    addedPoints: {x: 0, y: 10, z: 0}
     nextMultiplier: 1
     availability: 1
     hoursUsed: 200
   - type: mumbling
-    addedPoints: 0
+    addedPoints: {x: 0, y: 0, z: 0}
     nextMultiplier: 1.2
     availability: 1
     hoursUsed: 0
   - type: coop
-    addedPoints: 0
+    addedPoints: {x: 0, y: 0, z: 0}
     nextMultiplier: 1.2
     availability: 1
     hoursUsed: 200
   - type: hex
-    addedPoints: 10
+    addedPoints: {x: 10, y: 0, z: 0}
     nextMultiplier: 1
     availability: 1
     hoursUsed: 200

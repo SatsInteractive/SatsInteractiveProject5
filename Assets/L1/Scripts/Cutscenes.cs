@@ -26,6 +26,8 @@ public class Cutscenes : MonoBehaviour
         videoPlayer.Play();
         yield return new WaitForSeconds(0.1f);
         transform.GetChild(0).gameObject.SetActive(false);
+        yield return new WaitForSeconds((float)videoPlayer.clip.length - 0.1f);
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
