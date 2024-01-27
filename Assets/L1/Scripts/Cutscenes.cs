@@ -11,11 +11,12 @@ public class Cutscenes : MonoBehaviour
 
     private GameObject loadingScreen;
     public UIManager uiManager;
-    // Start is called before the first frame update
+    public TextMeshProUGUI timeText;
 
     private void Start()
     {
         uiManager.jammerCardInfoUpRight.SetActive(false);
+        timeText.gameObject.SetActive(false);
         StartCoroutine(LoadingScreen());
     }
     private IEnumerator LoadingScreen()
@@ -26,7 +27,9 @@ public class Cutscenes : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         yield return new WaitForSeconds((float)videoPlayer.clip.length - 0.1f);
         uiManager.jammerCardInfoUpRight.SetActive(true);
+        timeText.gameObject.SetActive(true);
         gameObject.SetActive(false);
+        
         
     }
 
