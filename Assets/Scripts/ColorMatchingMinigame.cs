@@ -18,7 +18,6 @@ public class ColorMatchingMinigame : MiniGame
     private Image[] exampleGrid;
 
     public Button submitButton;
-    public Text timerText;
 
     private int[] correctGridIds; // Correct grid IDs
     private int[] playerGridIds; // Player's current grid IDs
@@ -225,7 +224,7 @@ public class ColorMatchingMinigame : MiniGame
         }
     }
 
-    public override void EndMiniGame()
+    protected override void EndMiniGame()
     {
         isColorMatchingMinigameActive = false;
         colorMatchingMinigameStartingScreen.SetActive(true);

@@ -106,12 +106,19 @@ public class CodeMiniGame : MiniGame
             }
             else
             {
-                EndMiniGame();
+                ShowEndScreen();
             }
         }
     }
+    
+    protected override void ShowEndScreen()
+    {
+        codeMiniGameActive = false;
+        codeStartingScreen.SetActive(true);
+        base.ShowEndScreen();
+    }
 
-    public override void EndMiniGame()
+    protected override void EndMiniGame()
     {
         codeMiniGameActive = false;
         codeStartingScreen.SetActive(true);

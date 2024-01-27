@@ -206,6 +206,8 @@ MonoBehaviour:
   moveSpeed: 5
   moveInput: {x: 0, y: 0}
   Face: {fileID: 7231915332528615242}
+  FaceSpriteRenderer: {fileID: 2912609477458559696}
   initialFaceScale: 0.09
   walkAnimationRate: 4
   scaleAmount: 0.005
+  isInMiniGame: 0

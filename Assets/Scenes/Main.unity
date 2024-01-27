@@ -1748,13 +1748,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3243617402015828913, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5123765114740966353, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
       propertyPath: m_Name
       value: CodeMiniGame
       objectReference: {fileID: 0}
-    - target: {fileID: 5123765114740966353, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+    - target: {fileID: 8798654517904950697, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
