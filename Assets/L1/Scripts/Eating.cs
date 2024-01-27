@@ -9,17 +9,8 @@ public class Eating : MonoBehaviour
     public PunktideJaTundideHaldaja PunktideJaTundideHaldaja;
     public float eatingNegativeMultiplier = 0.8f;
     private int timesPizzaClicked;
-    private GameObject mouseFollowingColliderGameObject;
-    private Collider2D mouseFollowingCollider;
-    public GameObject mouseFollowingColliderPrefab;
     public List<GameObject> PizzaButtons;
     public Dialogue Dialogue;
-    private Vector3 mousePosition;
-
-    public void StartEatingAction()
-    {
-
-    }
 
     public void MumbleClicked()
     {
