@@ -113,7 +113,6 @@ public class ColorMatchingMinigame : MiniGame
         GenerateRandomGrid();
 
         // Reset timer and any other game-specific variables
-        startTime = 0;
 
         // Optionally, hide or reset any additional UI elements specific to the game
     }
@@ -130,7 +129,6 @@ public class ColorMatchingMinigame : MiniGame
 
     private void Update()
     {
-        Debug.Log(isColorMatchingMinigameActive);
         if (isColorMatchingMinigameActive)
         {
             UpdateTimer();
@@ -304,7 +302,7 @@ public class ColorMatchingMinigame : MiniGame
     private void StartPaintings()
     {
         isColorMatchingMinigameActive = true;
-        startTime = 0;
+        startTime = Time.time;
         colormatching_side_bg.SetActive(true);
         inputLocked = false;
         
