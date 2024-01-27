@@ -10,6 +10,7 @@ public class MapManager : MonoBehaviour
     private GameObject mapArt;
     [SerializeField] private Transform playerSpawnPoint;
     private PlayerController playerController;
+    [SerializeField] private GameObject codeOrArtScreen;
 
     private void Awake()
     {
@@ -46,6 +47,8 @@ public class MapManager : MonoBehaviour
     {
         ShowAllChildSprites(mapArt);
         playerController.FaceSpriteRenderer.enabled = true;
+        codeOrArtScreen.transform.GetChild(0).gameObject.SetActive(true);
+        codeOrArtScreen.SetActive(false);
     }
     
     private void ShowAllChildSprites(GameObject parent)
