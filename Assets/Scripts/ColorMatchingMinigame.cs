@@ -130,7 +130,7 @@ public class ColorMatchingMinigame : MiniGame
 
     private void Update()
     {
-        Debug.Log(isColorMatchingMinigameActive);
+        //Debug.Log(isColorMatchingMinigameActive);
         if (isColorMatchingMinigameActive)
         {
             UpdateTimer();

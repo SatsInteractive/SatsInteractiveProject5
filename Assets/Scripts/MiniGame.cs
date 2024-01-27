@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MiniGame : MonoBehaviour
 {
     protected float startTime;
+    [SerializeField] protected PunktideJaTundideHaldaja punktideJaTundideHaldaja;
     [SerializeField] protected TextMeshProUGUI timerText;
     [SerializeField] protected AudioClip correctSound;
     [SerializeField] protected AudioClip wrongSound;
