@@ -96,11 +96,30 @@ MonoBehaviour:
   textComponent: {fileID: 3200111764123662776}
   typingDelay: 0.13
   KitchenDialogue:
-  - '"Heya"'
-  - '"How is it going?"'
+  - '"Oi mate!"'
+  - PlayerOptions
+  - '"Hey there! The pizza looks nice!"'
+  - "\"Ugh!  smells funky\u2026but I sure am hungry from all this work.\""
+  - 6
+  - 8
+  - '"It sure is! Have a piece!"'
+  - END
+  - "\"Make sure to leave some for others\u2026\""
   - END
   WCDialogue:
-  - I feel like dying.
+  - You enter the restroom.
+  - PlayerOptions
+  - 2
+  - Take out jammer card.
+  - Wash your face.
+  - 7
+  - 10
+  - Finally with some privacy, you take the jammer card.
+  - "\u201CInnovation: XXX Aesthetics: XXX Enjoyment: XXX\u201D"
+  - END
+  - You wash your face to prevent you from falling asleep, when you hear whispers
+    in your ear.
+  - "\u201CInnovation: XXX Aesthetics: XXX Enjoyment: XXX\u201D"
   - END
   CoopDialogue:
   - I arrive at Coop. I feel tired.
@@ -116,19 +135,42 @@ MonoBehaviour:
   - I feel like I have wings
   - END
   HexDialogue:
-  - You enter the restroom.
+  - "It\u2019s time for game design!"
+  - PlayerOptions
+  - 3
+  - "\u2026 "
+  - Deep thought...
+  - Meditate.
+  - 9
+  - 19
+  - 28
+  - You spent 1h and 30 minutes brainstorming. This is all you could come up with.
   - PlayerOptions
   - 2
-  - Take out jammer card.
-  - Wash your face
-  - 7
-  - 10
-  - 'Finally with some privacy, you take the jammer card. '
-  - "\u201CInnovation: XXX Aesthetics: YYY Enjoyment: ZZZ\u201D"
+  - Flying pigs
+  - The floor is lava
+  - 16
+  - 16
+  - "That\u2019s enough for now."
   - END
-  - 'You wash your face to prevent you from falling asleep, when you hear whispers
-    in your ear. '
-  - "\u201CInnovation: XXX Aesthetics: YYY Enjoyment: ZZZ\u201D"
+  - You spent 1h and 30 minutes brainstorming. This is all you could come up with.
+  - PlayerOptions
+  - 2
+  - Pillowfight
+  - Horror game
+  - 25
+  - 25
+  - "That\u2019s enough for now."
+  - END
+  - 'You spent 1h and 30 minutes brainstorming. These are the genius ideas you came
+    up with:'
+  - PlayerOptions
+  - 2
+  - Ancestry
+  - Meta-level
+  - 34
+  - 34
+  - "We\u2019re done here."
   - END
   dialogueButtons:
   - {fileID: 6580247480980851214}
