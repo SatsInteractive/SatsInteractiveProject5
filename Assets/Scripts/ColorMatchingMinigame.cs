@@ -30,6 +30,8 @@ public class ColorMatchingMinigame : MiniGame
 
     public GameObject colormatching_side_bg;
 
+    private float timeTaken;
+
     private float newPaintingDelay = 1f;
 
     //from Lauri's system
@@ -83,6 +85,7 @@ public class ColorMatchingMinigame : MiniGame
 
         colorMatchingMinigameStartingScreen.SetActive(true);
         colormatching_side_bg.SetActive(false);
+        endScreen.SetActive(false);
     }
 
     public void ResetGame()
@@ -262,7 +265,8 @@ public class ColorMatchingMinigame : MiniGame
         isColorMatchingMinigameActive = false;
         // inputLocked = true;
         // codeMiniGameAudioSource.PlayOneShot(correctSound);
-        // timeTaken = Time.time - startTime;
+        timeTaken = Time.time - startTime;
+        completionTimes.Add(timeTaken);
         //int points = CalculatePoints(timeTaken);
         //Debug.Log("Correct! Points: " + points);
 
@@ -274,8 +278,18 @@ public class ColorMatchingMinigame : MiniGame
         }
         else
         {
-            EndMiniGame();
+            ShowEndScreen();
         }
+
+        timeTaken = 0;
+    }
+
+    protected override void ShowEndScreen()
+    {
+        isColorMatchingMinigameActive = false;
+        colorMatchingMinigameStartingScreen.SetActive(true);
+        base.ShowEndScreen();
+        //float averagePromptSpeed = totalTimeTaken / promptsPerGame;
     }
 
     IEnumerator WaitBeforeNewPainting()
@@ -307,6 +321,13 @@ public class ColorMatchingMinigame : MiniGame
         isColorMatchingMinigameActive = false;
         colorMatchingMinigameStartingScreen.SetActive(true);
         base.EndMiniGame();
+    }
+
+    public override void OnLeaveButtonClicked()
+    {
+        // totalMistakes = 0;
+        // totalCharactersTyped = 0;
+        base.OnLeaveButtonClicked();
     }
 }
 
