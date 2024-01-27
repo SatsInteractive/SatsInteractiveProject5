@@ -25,10 +25,12 @@ public class ColorMatchingMinigame : MiniGame
     private float timer = 60f; // Initial timer value
 
     [SerializeField] private int artCount = 0;
-    [SerializeField] private int artsPerGame = 2;
+    private int artsPerGame = 2;
     private float screenOpeningDelay = 3f;
 
     public GameObject colormatching_side_bg;
+
+    private float newPaintingDelay = 1f;
 
     //from Lauri's system
     private bool isColorMatchingMinigameActive = false;
@@ -113,7 +115,6 @@ public class ColorMatchingMinigame : MiniGame
         GenerateRandomGrid();
 
         // Reset timer and any other game-specific variables
-        artCount = 0;
         startTime = 0;
 
         // Optionally, hide or reset any additional UI elements specific to the game
@@ -211,7 +212,7 @@ public class ColorMatchingMinigame : MiniGame
         if (isCorrect)
         {
             Debug.Log("Minigame complete! Grid is correct.");
-            EndMiniGame();
+            CompletePainting();
             // End the minigame, perhaps by transitioning to another scene or showing a completion message
         }
         else
@@ -254,6 +255,35 @@ public class ColorMatchingMinigame : MiniGame
         }
     }
 
+    private void CompletePainting()
+    {
+        ResetGame();
+        // Completion logic, such as scoring
+        isColorMatchingMinigameActive = false;
+        // inputLocked = true;
+        // codeMiniGameAudioSource.PlayOneShot(correctSound);
+        // timeTaken = Time.time - startTime;
+        //int points = CalculatePoints(timeTaken);
+        //Debug.Log("Correct! Points: " + points);
+
+        if (artCount < artsPerGame - 1)
+        {
+            StartCoroutine(WaitBeforeNewPainting());
+            artCount++;
+            startTime = Time.time;
+        }
+        else
+        {
+            EndMiniGame();
+        }
+    }
+
+    IEnumerator WaitBeforeNewPainting()
+    {
+        yield return new WaitForSeconds(newPaintingDelay);
+        StartPaintings();
+    }
+
     private IEnumerator StartGameAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -267,21 +297,12 @@ public class ColorMatchingMinigame : MiniGame
         colormatching_side_bg.SetActive(true);
         inputLocked = false;
         
-        if (artCount <= artsPerGame - 1)
-        {
-
-            artCount++;
-            startTime = Time.time;
-        }
-        else
-        {
-            EndMiniGame();
-        }
     }
 
     protected override void EndMiniGame()
     {
         ResetGame();
+        artCount = 0;
         colormatching_side_bg.SetActive(false);
         isColorMatchingMinigameActive = false;
         colorMatchingMinigameStartingScreen.SetActive(true);
