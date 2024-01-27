@@ -31,25 +31,23 @@ public class RegionManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Exit Collision with: " + other.gameObject.name);
+    //private void OnTriggerExit2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        Debug.Log("Exit Collision with: " + other.gameObject.name);
 
-            // Call the ExitRegion method when the player exits the region
-            ExitRegion();
+    //        // Call the ExitRegion method when the player exits the region
+    //        ExitRegion();
 
-            playerInsideRegion = false;
-            //MapManager.Instance.ShowMap();
-        }
-    }
+    //        playerInsideRegion = false;
+    //        //MapManager.Instance.ShowMap();
+    //    }
+    //}
 
     // Call this method when the player completes the activity and leaves the region
     public void ExitRegion()
     {
-            PlayerController playerController = FindObjectOfType<PlayerController>();
-            //playerController.EnableMovement();
             Debug.Log("ExitRegion gets called");
 
             regionUI.SetActive(false);
