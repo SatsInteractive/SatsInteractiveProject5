@@ -6132,6 +6132,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c3324e2024e95b74c9481cc144c35af8, type: 3}
   jammername: {fileID: 1352119454}
   jammerstrongestskill: {fileID: 856163149}
+  jammerCardInfoUpRight: {fileID: 218033402}
 --- !u!1 &1842870864
 GameObject:
   m_ObjectHideFlags: 0
