@@ -20,7 +20,9 @@ public class Dialogue : MonoBehaviour
     public List<TextMeshProUGUI> dialogueButtonsTexts;
     private bool dialogueSkippable=false;
     private int nextDialogueIndex;
-    
+    public PunktideJaTundideHaldaja PunktideJaTundideHaldaja;
+    private PunktideJaTundideHaldaja.ActionType currentDialoguePlaceActionType;
+
     public enum dialoguePlaceOptions
     {
         Kitchen,
@@ -30,11 +32,12 @@ public class Dialogue : MonoBehaviour
     private void Awake()
     {
         textComponent.text = String.Empty;
+        
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && dialogueSkippable)
+        if (Input.GetMouseButtonDown(0) & dialogueSkippable)
         {
             if (textComponent.text == linesToType[index])
             {
@@ -56,16 +59,19 @@ public class Dialogue : MonoBehaviour
         if (dialoguePlace == dialoguePlaceOptions.Kitchen)
         {
             linesToType = KitchenDialogue;
+            currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.mumbling;
         }
         else if (dialoguePlace == dialoguePlaceOptions.WC)
         {
             linesToType = WCDialogue;
+            currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.shitting;
         }
         else if (dialoguePlace == dialoguePlaceOptions.Coop)
         {
             linesToType = CoopDialogue;
+            currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.coop;
         }
-
+        PunktideJaTundideHaldaja.TriggerAction(currentDialoguePlaceActionType);
         StartCoroutine(TypeLine());
     }
 
@@ -83,7 +89,7 @@ public class Dialogue : MonoBehaviour
             }
             else if (linesToType[index] == "END")
             {
-                gameObject.SetActive(false);
+                gameObject.transform.parent.gameObject.SetActive(false);
             }
             else
             {
@@ -107,12 +113,18 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    public void DialogueOptionChosen(string buttonText)
+    public void DisableDialogueOptions()
     {
         foreach (var varDialogueButton in dialogueButtons)
         {
             varDialogueButton.SetActive(false);
         }
+    }
+
+    public void DialogueOptionChosen(string buttonText)
+    {
+        DisableDialogueOptions();
+        
         if (buttonText == dialogueButtonsTexts[0].text)
         {
             index += 1;

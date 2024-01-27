@@ -10,7 +10,7 @@ public class WC : MonoBehaviour
 
     private void OnEnable()
     {
-        PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.shitting);
+        //PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.shitting);
         Dialogue.transform.parent.gameObject.SetActive(true);
         Dialogue.StartDialogue(Dialogue.dialoguePlaceOptions.WC);
     }
