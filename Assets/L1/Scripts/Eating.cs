@@ -7,7 +7,7 @@ using UnityEngine;
 public class Eating : MonoBehaviour
 {
     public PunktideJaTundideHaldaja PunktideJaTundideHaldaja;
-    public float eatingNegativeMultiplier = 0.8f;
+    public float eatingNegativeMultiplier = 1f;
     private int timesPizzaClicked;
     public List<GameObject> PizzaButtons;
     public Dialogue Dialogue;
