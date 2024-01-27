@@ -9,8 +9,6 @@ public class TalkButton : MonoBehaviour
     public void HeadClicked()
     {
         Eating.MumbleClicked();
-        print("psh-psh");
         Eating.PizzaButtons.Add(gameObject);
-        gameObject.SetActive(false);
     }
 }
