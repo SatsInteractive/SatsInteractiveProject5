@@ -27,7 +27,15 @@ public class BackButton : MonoBehaviour
         {
             gameObject.transform.parent.gameObject.SetActive(false);
         }
-        MapManager.Instance.TeleportPlayerToSpawnPoint1();
+
+        if (isKitchen)
+        {
+            MapManager.Instance.TeleportPlayerToSpawnPoint2();
+        }
+        else
+        {
+            MapManager.Instance.TeleportPlayerToSpawnPoint1();
+        }
         MapManager.Instance.ShowMap();
     }
 }
