@@ -46,12 +46,12 @@ public class RegionManager : MonoBehaviour
     //}
 
     // Call this method when the player completes the activity and leaves the region
-    public void ExitRegion()
-    {
-            Debug.Log("ExitRegion gets called");
+    //public void ExitRegion()
+    //{
+    //        Debug.Log("ExitRegion gets called");
 
-            regionUI.SetActive(false);
+    //        regionUI.SetActive(false);
 
-            // MapController.Instance.EnableMap();
-    }
+    //        // MapController.Instance.EnableMap();
+    //}
 }
