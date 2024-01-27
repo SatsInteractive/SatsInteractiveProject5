@@ -6,11 +6,12 @@ using TMPro;
 using System.Linq;
 
 
-public class ColorMatchingMinigame : MonoBehaviour
+public class ColorMatchingMinigame : MiniGame
 {
     public GameObject ColorPaletteGameObject;
     public GameObject BigGridGameObject;
     public GameObject ExampleGridGameObject;
+    [SerializeField] private GameObject colorMatchingMinigameStartingScreen;
 
     private Button[] colorPalette; // UI buttons for colors
     private GameObject[] bigGrid; // Larger grid of Image components for coloring
@@ -23,6 +24,13 @@ public class ColorMatchingMinigame : MonoBehaviour
     private int[] playerGridIds; // Player's current grid IDs
     private int selectedColorId; // Currently selected color ID
     private float timer = 60f; // Initial timer value
+
+    [SerializeField] private int artCount = 0;
+    [SerializeField] private int artsPerGame = 2;
+
+
+    //from Lauri's system
+    private bool isColorMatchingMinigameActive = false;
 
     private void Awake()
     {
@@ -70,16 +78,15 @@ public class ColorMatchingMinigame : MonoBehaviour
         GenerateRandomGrid();
     }
 
-    //private void GenerateRandomGrid()
-    //{
-    //    correctGridIds = new int[bigGrid.Length];
-    //    for (int i = 0; i < correctGridIds.Length; i++)
-    //    {
-    //        correctGridIds[i] = Random.Range(1, colorPalette.Length + 1);
-    //        exampleGrid[i].color = GetColor(i);
-    //        bigGrid[i].color = Color.white; // Set big grid squares to white initially
-    //    }
-    //}
+    public override void StartMiniGame()
+    {
+        isColorMatchingMinigameActive = false;
+        gameObject.SetActive(true);
+        inputLocked = true;
+        colorMatchingMinigameStartingScreen.SetActive(true);
+        StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
+    }
+
     private void GenerateRandomGrid()
     {
         correctGridIds = new int[bigGrid.Length];
@@ -194,18 +201,35 @@ public class ColorMatchingMinigame : MonoBehaviour
         }
     }
 
-    //private void UpdateTimer()
-    //{
-    //    // Update and display the timer
-    //    timer -= 1f;
-    //    timerText.text = "Time: " + Mathf.Ceil(timer).ToString();
+    private IEnumerator StartGameAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        colorMatchingMinigameStartingScreen.SetActive(false);
+        StartPrompts();
+    }
 
-    //    // Check if time is up
-    //    if (timer <= 0f)
-    //    {
-    //        Debug.Log("Time's up! Minigame incomplete.");
-    //        // End the minigame, perhaps by transitioning to another scene or showing a failure message
-    //    }
-    //}
+    private void StartPaintings()
+    {
+        isColorMatchingMinigameActive = true;
+        inputLocked = false;
+        
+        if (artCount <= artsPerGame - 1)
+        {
+
+            artCount++;
+            startTime = Time.time;
+        }
+        else
+        {
+            EndMiniGame();
+        }
+    }
+
+    public override void EndMiniGame()
+    {
+        isColorMatchingMinigameActive = false;
+        colorMatchingMinigameStartingScreen.SetActive(true);
+        base.EndMiniGame();
+    }
 }
 
