@@ -37,7 +37,7 @@ public class Dialogue : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && dialogueSkippable)
+        if (Input.GetMouseButtonDown(0) & dialogueSkippable)
         {
             if (textComponent.text == linesToType[index])
             {
@@ -71,7 +71,7 @@ public class Dialogue : MonoBehaviour
             linesToType = CoopDialogue;
             currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.coop;
         }
-
+        PunktideJaTundideHaldaja.TriggerAction(currentDialoguePlaceActionType);
         StartCoroutine(TypeLine());
     }
 
@@ -89,7 +89,6 @@ public class Dialogue : MonoBehaviour
             }
             else if (linesToType[index] == "END")
             {
-                PunktideJaTundideHaldaja.TriggerAction(currentDialoguePlaceActionType);
                 gameObject.transform.parent.gameObject.SetActive(false);
             }
             else
