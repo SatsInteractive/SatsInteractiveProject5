@@ -10,14 +10,16 @@ using Random = UnityEngine.Random;
 public class CodeMiniGame : MiniGame
 {
     private TextMeshProUGUI promptText;
-    private TMP_InputField inputField;
     private TextMeshProUGUI timerText;
     private AudioSource codeMiniGameAudioSource;
+    private GameObject codeStartingScreen;
     
-    private string currentPrompt;
     private float startTime;
     private float timeTaken;
     private bool codeMiniGameActive = false;
+    private int promptCount = 0;
+    private bool promptSet = false;
+    private bool inputLocked = false;
 
     [Header("Settings")]
     [SerializeField] private List<string> codingPrompts = new List<string>()
@@ -32,52 +34,130 @@ public class CodeMiniGame : MiniGame
         "float coffeeLevel = 0.0f;",
         "void WhyAmIRunning() { }"
     };
-    public Color normalColor = new Color(85, 85, 85, 1);
-    public Color errorColor = new Color(106, 106, 68, 1);
+    [SerializeField] public Color normalColor = new Color(85, 85, 85, 1);
+    [SerializeField] public Color errorColor = new Color(106, 106, 68, 1);
     public AudioClip correctSound;
     public AudioClip wrongSound;
     public float audioLevel;
     public float colorFeedbackDelay = 0.5f;
+    public float screenOpeningDelay = 5f;
+    public float newPromptDelay = 1f;
+    public int promptsPerGame = 3;
+    
+    [Header("UI References")]
+    [SerializeField] private TMP_Text promptDisplay;
+    [SerializeField] private string currentPrompt;
+    private string userInput = "";
+    private bool[] correctInput;
+    private int currentCharacterIndex = 0;
 
     private void Awake()
     {
-        promptText = transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>();
-        inputField = transform.GetChild(0).GetChild(4).GetComponent<TMP_InputField>();
-        timerText = transform.GetChild(0).GetChild(6).GetComponent<TextMeshProUGUI>();
+        promptText = transform.GetChild(0).Find("code_prompt").GetComponent<TextMeshProUGUI>();
+        timerText = transform.GetChild(0).Find("code_minigame_timer").GetComponent<TextMeshProUGUI>();
+        codeStartingScreen = transform.GetChild(0).Find("code_starting_screen").gameObject;
         codeMiniGameAudioSource = GetComponent<AudioSource>();
         codeMiniGameAudioSource.volume = audioLevel;
+        promptDisplay.text = "";
+    }
+    
+    private void Update()
+    {
+        if (codeMiniGameActive)
+        {
+            UpdateTimer();
+            if (!inputLocked)
+            {
+                HandleCodeMiniGameInput();
+            }
+        }
     }
 
     private void Start()
     {
+        codeStartingScreen.SetActive(true);
         gameObject.SetActive(false);
     }
 
     public override void StartCodeMiniGame()
     {
-        codeMiniGameActive = true;
-        SetRandomPrompt();
+        StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
     }
 
-    public void HandleCodeMiniGameInput()
+    private IEnumerator StartGameAfterDelay(float delay)
     {
-        if (codeMiniGameActive)
+        yield return new WaitForSeconds(delay);
+        codeStartingScreen.SetActive(false);
+        promptCount = 0;
+        StartPrompts();
+    }
+    
+    private void StartPrompts()
+    {
+        codeMiniGameActive = true;
+        inputLocked = false;
+        if (promptSet == false)
         {
-            UpdateTimer();
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (promptCount <= promptsPerGame - 1)
             {
-                CheckInput();
+                currentPrompt = codingPrompts[Random.Range(0, codingPrompts.Count)];
+                promptText.text = currentPrompt;
+                promptSet = true;
+                promptCount++;
+                startTime = Time.time;
+            }
+            else
+            {
+                codeMiniGameActive = false;
+                codeStartingScreen.SetActive(true);
+                gameObject.SetActive(false);
             }
         }
     }
 
-    private void SetRandomPrompt()
+    public void HandleCodeMiniGameInput()
     {
-        currentPrompt = codingPrompts[Random.Range(0, codingPrompts.Count)];
-        promptText.text = currentPrompt;
-        inputField.text = "";
-        inputField.ActivateInputField();
-        startTime = Time.time;
+        string input = Input.inputString;
+        if (!string.IsNullOrEmpty(input))
+        {
+            char lastInputChar = input[input.Length - 1];
+            if (currentCharacterIndex < currentPrompt.Length && lastInputChar == currentPrompt[currentCharacterIndex])
+            {
+                // Correct character
+                currentCharacterIndex++;
+                UpdatePromptDisplay();
+            }
+            else if(currentCharacterIndex < currentPrompt.Length)
+            {
+                // Incorrect character
+                StartCoroutine(ShowErrorFeedback(lastInputChar));
+            }
+        }
+
+        // Check for completion of the current prompt
+        if (currentCharacterIndex == currentPrompt.Length)
+        {
+            // Handle prompt completion
+            CompletePrompt();
+        }
+    }
+    
+    private void CompletePrompt()
+    {
+        // Completion logic, such as scoring
+        codeMiniGameActive = false;
+        inputLocked = true;
+        codeMiniGameAudioSource.PlayOneShot(correctSound);
+        timeTaken = Time.time - startTime;
+        int points = CalculatePoints(timeTaken);
+        Debug.Log("Correct! Points: " + points);
+        StartCoroutine(WaitBeforeNewPrompt());
+    }
+    
+    private void UpdatePromptDisplay()
+    {
+        // Update the displayed text based on the current index
+        promptDisplay.text = currentPrompt.Substring(0, currentCharacterIndex);
     }
     
     private void UpdateTimer()
@@ -85,30 +165,27 @@ public class CodeMiniGame : MiniGame
         float timeElapsed = Time.time - startTime;
         timerText.text = "Time: " + timeElapsed.ToString("F2");
     }
-
-
-    private void CheckInput()
+    
+    IEnumerator ShowErrorFeedback(char wrongChar)
     {
-        if (inputField.text.Equals(currentPrompt))
-        {
-            codeMiniGameAudioSource.PlayOneShot(correctSound);
-            codeMiniGameActive = false;
-            timeTaken = Time.time - startTime;
-            int points = CalculatePoints(timeTaken);
-            Debug.Log("Correct! Points: " + points);
-        }
-        else
-        {
-            StartCoroutine(ShowErrorFeedback());
-        }
+        inputLocked = true;
+        codeMiniGameAudioSource.PlayOneShot(wrongSound);
+
+        // Show the wrong character temporarily
+        string errorText = $"<color=#{ColorUtility.ToHtmlStringRGB(errorColor)}>{wrongChar}</color>";
+        promptDisplay.text += errorText;
+        yield return new WaitForSeconds(colorFeedbackDelay);
+
+        // Remove the wrong character and unlock input
+        promptDisplay.text = promptDisplay.text.Replace(errorText, string.Empty);
+        inputLocked = false;
     }
     
-    IEnumerator ShowErrorFeedback()
+    IEnumerator WaitBeforeNewPrompt()
     {
-        codeMiniGameAudioSource.PlayOneShot(wrongSound);
-        inputField.image.color = errorColor;
-        yield return new WaitForSeconds(colorFeedbackDelay);
-        inputField.image.color = normalColor;
+        yield return new WaitForSeconds(newPromptDelay);
+        promptSet = false;
+        StartPrompts();
     }
 
     private int CalculatePoints(float time)
