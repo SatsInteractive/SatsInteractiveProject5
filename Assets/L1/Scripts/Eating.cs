@@ -37,7 +37,7 @@ public class Eating : MonoBehaviour
         timesPizzaClicked += 1;
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         timesPizzaClicked = 0;
         foreach (var variablePizzaButton in PizzaButtons)
