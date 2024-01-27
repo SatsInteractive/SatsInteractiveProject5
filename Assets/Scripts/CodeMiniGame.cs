@@ -125,6 +125,8 @@ public class CodeMiniGame : MiniGame
         codeMiniGameActive = false;
         codeStartingScreen.SetActive(true);
         base.ShowEndScreen();
+        punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
+        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         float averagePromptSpeed = totalTimeTaken / promptsPerGame;
         float averageCharacterSpeed = totalTimeTaken / totalCharactersTyped;
         averagePromptSpeedText.text = averagePromptSpeed.ToString("F2");
@@ -184,7 +186,6 @@ public class CodeMiniGame : MiniGame
         codeMiniGameAudioSource.PlayOneShot(correctSound);
         timeTaken = Time.time - startTime;
         completionTimes.Add(timeTaken);
-        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         StartCoroutine(WaitBeforeNewPrompt());
     }
     
