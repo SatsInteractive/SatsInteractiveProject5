@@ -465,9 +465,11 @@ MonoBehaviour:
   - '"Heya"'
   - '"How is it going?"'
   - END
-  WCDialogue: []
+  WCDialogue:
+  - I feel like dying.
+  - END
   CoopDialogue:
-  - I arrive at Coop. I feel tired
+  - I arrive at Coop. I feel tired.
   - I decide to buy an energy drink. I see two options, Monster and Red Bull.
   - PlayerOptions
   - 2
@@ -4859,7 +4861,7 @@ GameObject:
   - component: {fileID: 1529056760}
   - component: {fileID: 1529056759}
   - component: {fileID: 1529056758}
-  - component: {fileID: 1529056757}
+  - component: {fileID: 1529056762}
   m_Layer: 5
   m_Name: WCCanvas
   m_TagString: Untagged
@@ -4867,20 +4869,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1529056757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529056756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd354c38580c2c14f9381aae927c5d45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PunktideJaTundideHaldaja: {fileID: 529506844}
-  Dialogue: {fileID: 113861386}
 --- !u!114 &1529056758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4964,6 +4952,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1529056762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529056756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ddd7318cb6b3f47bd41b7a40bfa26c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PunktideJaTundideHaldaja: {fileID: 529506844}
+  Dialogue: {fileID: 113861386}
 --- !u!4 &1556545500 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8233431839632656002, guid: 8190e9a884bd5104c8a70eec74117a08, type: 3}
