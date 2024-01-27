@@ -33,6 +33,7 @@ public class CodeMiniGame : MiniGame
     private List<string> tempCodingPrompts;
     [SerializeField] public Color normalColor = new Color(85, 85, 85, 1);
     [SerializeField] public Color errorColor = new Color(106, 106, 68, 1);
+    [SerializeField] public Color placeHolderColor = new Color(85, 85, 85, 0.5f);
     public float newPromptDelay = 1f;
     public int promptsPerGame = 3;
     
@@ -53,7 +54,8 @@ public class CodeMiniGame : MiniGame
     {
         codeMiniGameAudioSource = GetComponent<AudioSource>();
         codeMiniGameAudioSource.volume = audioLevel;
-        promptDisplay.text = "";
+        promptDisplay.text = "start typing immediately.. good luck!";
+        promptDisplay.color = placeHolderColor;
         codeMiniGameActive = false;
     }
     
@@ -78,7 +80,8 @@ public class CodeMiniGame : MiniGame
 
     public override void StartMiniGame()
     {
-        promptDisplay.text = "";
+        promptDisplay.text = "start typing immediately.. good luck!";
+        promptDisplay.color = placeHolderColor;
         codeMiniGameActive = false;
         promptCount = 0;
         promptSet = false;
@@ -107,7 +110,7 @@ public class CodeMiniGame : MiniGame
         {
             if (promptCount <= promptsPerGame - 1 && tempCodingPrompts.Count > 0)
             {
-                int _index = Random.Range(0, codingPrompts.Count);
+                int _index = Random.Range(0, tempCodingPrompts.Count);
                 currentPrompt = tempCodingPrompts[_index];
                 promptText.text = currentPrompt;
                 tempCodingPrompts.RemoveAt(_index);
@@ -155,6 +158,8 @@ public class CodeMiniGame : MiniGame
             {
                 userPressedFirstKey = true;
                 startTime = Time.time;
+                promptDisplay.text = "";
+                promptDisplay.color = normalColor;
             }
             
             char lastInputChar = input[input.Length - 1];
@@ -174,7 +179,7 @@ public class CodeMiniGame : MiniGame
         }
 
         // Check for completion of the current prompt
-        if (currentCharacterIndex == currentPrompt.Length)
+        if (currentCharacterIndex == currentPrompt.Length && userPressedFirstKey == true)
         {
             // Handle prompt completion
             CompletePrompt();
