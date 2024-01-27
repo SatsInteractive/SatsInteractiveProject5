@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private SoundManager soundManager;
     private CodeMiniGame codeMiniGame;
     private PlayerController playerController;
+    private Eating eating;
     
     private bool isGamePaused = false;
     private bool inMiniGame = false;
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
         {
             codeMiniGame = FindObjectOfType<CodeMiniGame>();
             playerController = FindObjectOfType<PlayerController>();
+            eating = FindObjectOfType<Eating>();
             inputManager.playerController = playerController;
             playerController.FaceSpriteRenderer.sprite = chosenSprite;
             AdjustAudioLevel(uiManager.audioSlider.value);
@@ -125,6 +127,7 @@ public class GameManager : MonoBehaviour
         soundManager.AdjustAudioLevel(value);
         if (codeMiniGame != null) codeMiniGame.CodeMiniGameChangeVolumeLevel(value);
         if (playerController != null) playerController.ChangeVolumeLevel(value);
+        if (eating != null) eating.ChangeVolume(value);
     }
     
     private void ChangeScene(string sceneName)

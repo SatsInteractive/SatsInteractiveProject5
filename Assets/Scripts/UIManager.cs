@@ -98,7 +98,7 @@ public class UIManager : MonoBehaviour
         
         jammerCardInfoUpRight.SetActive(true);
         menuScreen.SetActive(false);
-        scoreBoard.SetActive(true);
+        scoreBoard.SetActive(false);
         OnStartGameButtonPressed?.Invoke();
         jammername.text = playerNameInput.text;
         jammerstrongestskill.text = strongestSkillInput.text;
