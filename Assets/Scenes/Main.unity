@@ -7486,6 +7486,8 @@ MonoBehaviour:
   Dialogue: {fileID: 113861386}
 --- !u!1 &1743135791
 GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -7514,7 +7516,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1588437450}
-  m_Father: {fileID: 529506845}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7585,13 +7587,17 @@ Canvas:
   m_SortingOrder: 11
   m_TargetDisplay: 0
 --- !u!1 &1758379880
+GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1758379883}
   - component: {fileID: 1758379882}
-  - component: {fileID: 1758379881}
   - component: {fileID: 1758379884}
+  - component: {fileID: 1758379881}
   - component: {fileID: 1758379885}
   m_Layer: 0
   m_Name: VideoManager
@@ -9904,3 +9910,4 @@ SceneRoots:
   - {fileID: 1758379883}
   - {fileID: 529506843}
   - {fileID: 707527850}
+  - {fileID: 1743135792}
