@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
     {
         if (jammername.text == "")
         {
-            jammername.text = "Jammer";
+            jammername.text = "JammerX";
         }
         if (jammerstrongestskill.text == "")
         {
@@ -100,6 +100,7 @@ public class UIManager : MonoBehaviour
         menuScreen.SetActive(false);
         scoreBoard.SetActive(false);
         OnStartGameButtonPressed?.Invoke();
+        jammerCardInfoUpRight.SetActive(true);
         jammername.text = playerNameInput.text;
         jammerstrongestskill.text = strongestSkillInput.text;
     }
