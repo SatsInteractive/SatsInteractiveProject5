@@ -65,12 +65,17 @@ MonoBehaviour:
     availability: 1
     hoursUsed: 200
   - type: art
-    addedPoints: 0
+    addedPoints: 10
     nextMultiplier: 1
     availability: 1
     hoursUsed: 200
   - type: mumbling
     addedPoints: 0
-    nextMultiplier: 1
+    nextMultiplier: 1.2
     availability: 1
     hoursUsed: 0
+  - type: coop
+    addedPoints: 0
+    nextMultiplier: 1.2
+    availability: 1
+    hoursUsed: 200
