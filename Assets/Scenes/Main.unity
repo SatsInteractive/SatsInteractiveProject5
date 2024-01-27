@@ -691,8 +691,19 @@ MonoBehaviour:
   - I feel like I have wings
   - END
   HexDialogue:
-  - I am feeling brainy!
-  - Heureka! I have got it now.
+  - You enter the restroom.
+  - PlayerOptions
+  - 2
+  - Take out jammer card.
+  - Wash your face
+  - 7
+  - 10
+  - 'Finally with some privacy, you take the jammer card. '
+  - "\u201CInnovation: XXX Aesthetics: YYY Enjoyment: ZZZ\u201D"
+  - END
+  - 'You wash your face to prevent you from falling asleep, when you hear whispers
+    in your ear. '
+  - "\u201CInnovation: XXX Aesthetics: YYY Enjoyment: ZZZ\u201D"
   - END
   dialogueButtons:
   - {fileID: 484291187}
