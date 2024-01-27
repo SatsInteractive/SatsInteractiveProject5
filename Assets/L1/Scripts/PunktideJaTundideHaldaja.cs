@@ -64,11 +64,12 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         hours = 0800;
         if (day == 1)
         {
+            //Trigger next part of ending cutscene
             
         }
         else if (day == 2)
         {
-            
+            //Trigger another end ceremony cutscene
         }
         else if (day == 3)
         {
