@@ -66,6 +66,10 @@ public class Dialogue : MonoBehaviour
         else if (dialoguePlace == dialoguePlaceOptions.WC)
         {
             linesToType = WCDialogue;
+            linesToType[8] = "Innovation: " + PunktideJaTundideHaldaja.points.x + " Aesthetics: " + PunktideJaTundideHaldaja.points.y
+                             + " Enjoyment: " + PunktideJaTundideHaldaja.points.z + ".";
+            linesToType[11] = "Innovation: " + PunktideJaTundideHaldaja.points.x + " Aesthetics: " + PunktideJaTundideHaldaja.points.y
+                              + " Enjoyment: " + PunktideJaTundideHaldaja.points.z + ".";
             currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.shitting;
         }
         else if (dialoguePlace == dialoguePlaceOptions.Coop)
