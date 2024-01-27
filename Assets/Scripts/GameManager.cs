@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private bool isGamePaused = false;
     private bool inMiniGame = false;
     
+    public string playerName = "Untitled Player";
+    
     private void Awake()
     {
         DontDestroyOnLoad(this);

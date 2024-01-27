@@ -16,7 +16,7 @@ public class ButtonManager : MonoBehaviour
     {
         Debug.Log("Button Clicked!" + this.gameObject.transform.parent.transform.gameObject);
         minigame.SetActive(true);
-        minigame.GetComponent<MiniGame>().StartCodeMiniGame();
+        minigame.GetComponent<MiniGame>().StartMiniGame();
 
         this.gameObject.transform.parent.transform.gameObject.SetActive(false);
     }
