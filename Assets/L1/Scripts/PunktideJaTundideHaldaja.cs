@@ -18,6 +18,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     public TextMeshProUGUI TimeAndDateTextMeshProUGUI;
     public PointsManager pointsManager;
     private int nextThreeIndex;
+    public GameEndManager GameEndManager;
 
     public enum ActionType
     {
@@ -121,6 +122,8 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         }
         else if (day == 3)
         {
+            GameEndManager.EndTheFuckingGame();
+            print("Game Ended!");
             // END THE FUCKING GAME!!!!!!!!!!!!!!!!!!!!!!
         }
     }
