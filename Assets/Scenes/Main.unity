@@ -8925,7 +8925,7 @@ PrefabInstance:
     - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
       propertyPath: correctSound
       value: 
-      objectReference: {fileID: 8300000, guid: ed2ba7e0a64cd7a4db8406b4a0627963, type: 3}
+      objectReference: {fileID: 8300000, guid: 05482d782157377419928665d1870688, type: 3}
     - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
       propertyPath: successSound
       value: 
