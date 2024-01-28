@@ -78,7 +78,6 @@ public class CodeMiniGame : MiniGame
         promptDisplay.text = "start typing immediately.. good luck!";
         promptDisplay.color = placeHolderColor;
         codeMiniGameActive = false;
-        currentMiniGame = CodeMiniGameAction.BugFinding;
         codeBuggingScreen.gameObject.SetActive(false);
     }
     
