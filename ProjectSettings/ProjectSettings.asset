@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: SatsInteractive
   productName: GameJam Simulator
-  defaultCursor: {fileID: 2800000, guid: 49bd89ce43035d94dbbe2b9f6d2d8fe7, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 52e6583f6265bc5478c84ac9eb819dac, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
