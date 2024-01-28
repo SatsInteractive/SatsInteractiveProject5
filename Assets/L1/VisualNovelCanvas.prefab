@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 3184824620019991567}
   - component: {fileID: 5788706946848789128}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,14 +603,14 @@ MonoBehaviour:
   - END
   dialogueButtons:
   - {fileID: 6580247480980851214}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9218862083904343576}
+  - {fileID: 1830146081898458424}
+  - {fileID: 2933422952298429225}
   dialogueButtonsTexts:
   - {fileID: 2239462047723906202}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1338713299598832016}
+  - {fileID: 3536028254262790501}
+  - {fileID: 5788706946848789128}
   PunktideJaTundideHaldaja: {fileID: 0}
 --- !u!1 &3748537842634184618
 GameObject:
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 4859386606667915548}
   - component: {fileID: 3536028254262790501}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 265229800375039339}
   - component: {fileID: 2239462047723906202}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1275,7 +1275,7 @@ GameObject:
   - component: {fileID: 3477892181988814155}
   - component: {fileID: 1338713299598832016}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
