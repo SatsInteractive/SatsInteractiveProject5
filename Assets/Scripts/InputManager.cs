@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager : Singleton<InputManager>
 {
     private UIManager uiManager;
     private PointsManager pointsManager;
     public PlayerController playerController;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         DontDestroyOnLoad(this);
         pointsManager = GetComponent<PointsManager>();
         uiManager = FindObjectOfType<UIManager>();

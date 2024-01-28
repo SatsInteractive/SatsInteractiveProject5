@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointsManager : MonoBehaviour
+public class PointsManager : Singleton<PointsManager>
 {
     [SerializeField] private float points = 0;
     public float maxPoints = 180;
     public event Action<float> OnPointsUpdated;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         DontDestroyOnLoad(this);
     }
 

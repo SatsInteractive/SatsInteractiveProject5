@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     private UIManager uiManager;
     private PointsManager pointsManager;
@@ -27,8 +27,9 @@ public class GameManager : MonoBehaviour
     public Sprite chosenSprite;
     
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         DontDestroyOnLoad(this);
         
         uiManager = FindObjectOfType<UIManager>();
@@ -63,6 +64,8 @@ public class GameManager : MonoBehaviour
         uiManager.OnExitButtonPressed -= ExitGame;
         uiManager.OnSettingsButtonPressed -= StopGame;
         uiManager.OnBackButtonPressed -= ResumeGame;
+        uiManager.OnStartGameButtonPressed -= StartGame;
+        pointsManager.OnPointsUpdated -= UpdatePoints;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -82,6 +85,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Scene loaded: " + scene.name);
         if (scene.name == "Main")
         {
+            isGamePaused = false;
             codeMiniGame = FindObjectOfType<CodeMiniGame>();
             colorMatchingMinigame = FindObjectOfType<ColorMatchingMinigame>();
             playerController = FindObjectOfType<PlayerController>();
@@ -108,6 +112,7 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         Debug.Log("Starting game...");
+        isGamePaused = false;
         pointsManager.SetPoints(0);
         playerName = uiManager.playerNameInput.text;
         strongestSkill = uiManager.strongestSkillInput.text;
@@ -141,6 +146,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Exiting game...");
             pointsManager.SetPoints(0);
+            uiManager.jammerCardInfoUpRight.SetActive(false);
+            uiManager.menuScreen.SetActive(true);
             SceneManager.LoadScene("Menu");
         }
     }

@@ -4,11 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     private GameObject ui;
     
-    private GameObject menuScreen;
+    public GameObject menuScreen;
     private Button startButton;
     private Button settingsButton;
     private AudioSource audioSource;
@@ -54,8 +54,9 @@ public class UIManager : MonoBehaviour
     
     public bool credentialsEntered = false;
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         DontDestroyOnLoad(this);
         
         ui = gameObject;
