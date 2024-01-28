@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public void PlayParticles()
+    public void PlayParticles(string type = "normal")
     {
         if (playerParticles != null)
         {

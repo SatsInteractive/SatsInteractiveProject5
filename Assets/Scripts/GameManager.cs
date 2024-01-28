@@ -93,6 +93,9 @@ public class GameManager : Singleton<GameManager>
             eating = FindObjectOfType<Eating>();
             cutscenes = FindObjectOfType<Cutscenes>();
             cutscenes.uiManager = uiManager;
+            Debug.Log("Cutscenes: " + cutscenes);
+            Debug.Log("UIManager: " + uiManager);
+            Debug.Log("Cutscenes UIManager: " + cutscenes.uiManager);
             inputManager.playerController = playerController;
             playerController.FaceSpriteRenderer.sprite = chosenSprite;
             playerNameGO = GameObject.FindWithTag("PlayerName");

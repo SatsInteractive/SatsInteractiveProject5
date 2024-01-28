@@ -66,7 +66,7 @@ public class MapManager : MonoBehaviour
     {
         playerController.transform.position = playerSpawnPoint1.position;
         playerController.isInMiniGame = false;
-        playerController.PlayParticles();
+        playerController.PlayParticles("normal");
     }
     
     public void TeleportPlayerToSpawnPoint2()
