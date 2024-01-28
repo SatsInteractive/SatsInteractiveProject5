@@ -83,6 +83,9 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         if ((actionTriggered.addedPoints.x+actionTriggered.addedPoints.y+actionTriggered.addedPoints.z)!=0)
         {
             points += actionTriggered.addedPoints * nextMultiplierTotal * nextThreeMultiplierTotal;
+            if (points.x >= 5f) points.x = 5f;
+            if (points.y >= 5f) points.y = 5f;
+            if (points.z >= 5f) points.z = 5f;
             float average_points = (points.x + points.y + points.z) / 3;
             pointsManager.AddPoints(average_points);
         }
