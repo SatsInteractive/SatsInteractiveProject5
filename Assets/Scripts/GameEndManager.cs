@@ -123,12 +123,12 @@ public class GameEndManager : MonoBehaviour
         }
     }
     
-    private void HandleRestartButtonPressed()
+    public void HandleRestartButtonPressed()
     {
         gameManager.RestartGame();
     }
     
-    private void HandleQuitButtonPressed()
+    public void HandleQuitButtonPressed()
     {
         gameManager.ExitGame();
     }
