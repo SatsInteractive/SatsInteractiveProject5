@@ -8277,9 +8277,25 @@ PrefabInstance:
       propertyPath: dialogueButtonsTexts.Array.data[3]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1830146081898458424, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933422952298429225, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580247480980851214, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6605284934095532490, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: m_Name
       value: VisualNovelCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605284934095532490, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7900111591914292319, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: m_Pivot.x
@@ -8359,6 +8375,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7900111591914292319, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9218862083904343576, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
