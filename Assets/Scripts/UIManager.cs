@@ -152,6 +152,7 @@ public class UIManager : Singleton<UIManager>
     
     public void HandleSettingsButtonPressed()
     {
+        audioSource.PlayOneShot(buttonClickSound);
         if (settingsScreen.activeSelf)
         {
             settingsScreen.SetActive(false);
@@ -169,12 +170,14 @@ public class UIManager : Singleton<UIManager>
         settingsScreen.SetActive(false);
         creditsScreen.SetActive(false);
         tutorialScreen.SetActive(false);
+        audioSource.PlayOneShot(buttonClickSound);
         OnBackButtonPressed?.Invoke();
     }
     
     public void HandleExitButtonPressed()
     {
         settingsScreen.SetActive(false);
+        audioSource.PlayOneShot(buttonClickSound);
         OnExitButtonPressed?.Invoke();
     }
     
@@ -186,6 +189,7 @@ public class UIManager : Singleton<UIManager>
 
     public void HandleCreditsButtonPressed()
     {
+        audioSource.PlayOneShot(buttonClickSound);
         if (creditsScreen.activeSelf)
         {
             creditsScreen.SetActive(false);
@@ -213,6 +217,7 @@ public class UIManager : Singleton<UIManager>
     
     public void HandleTutorialButtonPressed()
     {
+        audioSource.PlayOneShot(buttonClickSound);
         tutorialScreen.SetActive(true);
     }
     
