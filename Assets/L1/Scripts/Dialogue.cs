@@ -25,6 +25,7 @@ public class Dialogue : MonoBehaviour
     private PunktideJaTundideHaldaja.ActionType currentDialoguePlaceActionType;
     private bool tiksuAppearAfterButtonClick=false;
     public GameObject TiksuUIGameObject;
+    public PlayerController PlayerController;
 
     public enum dialoguePlaceOptions
     {
@@ -58,6 +59,7 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue(dialoguePlaceOptions dialoguePlace)
     {
+        PlayerController.isInMiniGame = true;
         textComponent.text = String.Empty;
         index = 0;
         dialogueSkippable = true;
@@ -69,10 +71,10 @@ public class Dialogue : MonoBehaviour
         else if (dialoguePlace == dialoguePlaceOptions.WC)
         {
             linesToType = WCDialogue;
-            linesToType[8] = "Innovation: " + PunktideJaTundideHaldaja.points.x + " Aesthetics: " + PunktideJaTundideHaldaja.points.y
-                             + " Enjoyment: " + PunktideJaTundideHaldaja.points.z + ".";
-            linesToType[11] = "Innovation: " + PunktideJaTundideHaldaja.points.x + " Aesthetics: " + PunktideJaTundideHaldaja.points.y
-                              + " Enjoyment: " + PunktideJaTundideHaldaja.points.z + ".";
+            linesToType[8] = "Innovation: " + PunktideJaTundideHaldaja.points.x.ToString("0.000") + " Aesthetics: " + PunktideJaTundideHaldaja.points.y.ToString("0.000")
+                             + " Enjoyment: " + PunktideJaTundideHaldaja.points.z.ToString("0.000") + ".";
+            linesToType[11] = "Innovation: " + PunktideJaTundideHaldaja.points.x.ToString("0.000") + " Aesthetics: " + PunktideJaTundideHaldaja.points.y.ToString("0.000")
+                              + " Enjoyment: " + PunktideJaTundideHaldaja.points.z.ToString("0.000") + ".";
             tiksuAppearAfterButtonClick = true;
             currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.shitting;
         }
@@ -109,6 +111,7 @@ public class Dialogue : MonoBehaviour
             }
             else if (linesToType[index] == "END")
             {
+                PlayerController.isInMiniGame = false;
                 TiksuUIGameObject.SetActive(false);
                 gameObject.transform.parent.gameObject.SetActive(false);
             }

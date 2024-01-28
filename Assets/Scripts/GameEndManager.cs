@@ -15,6 +15,13 @@ public class GameEndManager : MonoBehaviour
     public List<float> teamScores = new List<float> { 3.0f, 2.2f, 4.6f };
     public List<string> teamNames = new List<string> { "Jobud", "Kovad mehed", "Wieners" };
     public PunktideJaTundideHaldaja PunktideJaTundideHaldaja;
+    private Vector3 playerScoreXYZ;
+    private float playerScore;
+
+    public GameObject overallValue;
+    public GameObject aestheticsValue;
+    public GameObject innovationValue;
+    public GameObject enjoymentValue;
 
     private GameManager gameManager;
 
@@ -34,6 +41,8 @@ public class GameEndManager : MonoBehaviour
         restartButton.GetComponent<Button>().onClick.RemoveListener(HandleRestartButtonPressed);
         leaveButton.GetComponent<Button>().onClick.RemoveListener(HandleQuitButtonPressed);
     }
+
+    public GameObject scoreBoard;
 
     private void Start()
     {
@@ -58,8 +67,8 @@ public class GameEndManager : MonoBehaviour
     private void AddPlayerEntry()
     {
         // Add the player's score to the list (replace this with the actual player's score)
-        Vector3 playerScoreXYZ = PunktideJaTundideHaldaja.points;
-        float playerScore = (playerScoreXYZ.x+playerScoreXYZ.y+playerScoreXYZ.z)/3f;
+        playerScoreXYZ = PunktideJaTundideHaldaja.points;
+        playerScore = (playerScoreXYZ.x+playerScoreXYZ.y+playerScoreXYZ.z)/3f;
         string playerName = gameManager.GetComponent<GameManager>().playerName;
         teamScores.Add(playerScore);
         teamNames.Add(playerName);
@@ -87,9 +96,18 @@ public class GameEndManager : MonoBehaviour
         }
     }
 
+    private void UpdateScoreBoard()
+    {
+        overallValue.GetComponent<TMP_Text>().text = playerScore.ToString("0.000");
+        aestheticsValue.GetComponent<TMP_Text>().text = playerScoreXYZ.x.ToString("0.000");
+        innovationValue.GetComponent<TMP_Text>().text = playerScoreXYZ.y.ToString("0.000");
+        enjoymentValue.GetComponent<TMP_Text>().text = playerScoreXYZ.z.ToString("0.000");
+    }
+
 
     private void UpdateUIElements()
     {
+        UpdateScoreBoard();
         // Iterate through each UI element and update its text components
         for (int i = 0; i < leaderboard.transform.childCount; i++)
         {
@@ -101,7 +119,7 @@ public class GameEndManager : MonoBehaviour
             // Set the placement number, team name, and score
             teamPlaceText.text = (i + 1).ToString(); // Placement numbers start from 1
             teamNameText.text = teamEntries[i].TeamName;
-            teamScoreText.text = teamEntries[i].Score.ToString();
+            teamScoreText.text = teamEntries[i].Score.ToString("0.000");
         }
     }
     

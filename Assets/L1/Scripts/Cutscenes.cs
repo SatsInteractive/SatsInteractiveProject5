@@ -14,9 +14,11 @@ public class Cutscenes : MonoBehaviour
     public TextMeshProUGUI timeText;
     public Dialogue Dialogue;
     public GameObject TiksuUIGameObject;
+    public PlayerController PlayerController;
 
     private void Start()
     {
+        PlayerController.isInMiniGame = true;
         uiManager.jammerCardInfoUpRight.SetActive(false);
         timeText.gameObject.SetActive(false);
         StartCoroutine(LoadingScreen());
