@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class GameEndManager : MonoBehaviour
 {
-    public GameObject leaderboard; // Reference to the leaderboard GameObject containing team entries
+    public GameObject leaderboard;
+    public GameObject endingScreen;
     public Button restartButton;
     public Button leaveButton;
 
@@ -126,6 +127,7 @@ public class GameEndManager : MonoBehaviour
     public void HandleRestartButtonPressed()
     {
         gameManager.RestartGame();
+        endingScreen.SetActive(false);
     }
     
     public void HandleQuitButtonPressed()
