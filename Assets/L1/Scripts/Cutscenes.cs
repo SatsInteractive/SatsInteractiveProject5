@@ -37,7 +37,9 @@ public class Cutscenes : MonoBehaviour
 
     private void TiksuOpening()
     {
+        Dialogue.transform.parent.gameObject.SetActive(true);
         Dialogue.StartDialogue(Dialogue.dialoguePlaceOptions.Tiksu);
+
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class Cutscenes : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             gameObject.SetActive(false);
+            TiksuOpening();
         }
         
     }
