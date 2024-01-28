@@ -5348,16 +5348,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129604552}
-  m_LocalRotation: {x: -0, y: 0, z: -0.24699889, w: 0.96901584}
+  m_LocalRotation: {x: -0, y: -0, z: -0.24699889, w: 0.96901584}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.21817708, y: 0.21817708, z: 0.21817707}
+  m_LocalScale: {x: 0.59, y: 0.59, z: 0.59}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2674624763765812485}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28.6}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2358.9878, y: 2813.6467}
+  m_AnchoredPosition: {x: -840, y: 67.71}
   m_SizeDelta: {x: 603, y: 966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1129771294
@@ -8921,14 +8921,62 @@ PrefabInstance:
       objectReference: {fileID: 529506844}
     - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: TiksuDialogue.Array.size
-      value: 2
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: TiksuDialogue.Array.data[0]
-      value: '"You are stuck in here with me now!"'
+      value: "\u201CMere mortal, I have bestowed upon you sight of the fourth dimension.\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: TiksuDialogue.Array.data[1]
+      value: "\u201CThe powers are contained in the pass.\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[2]
+      value: "\u201CI will guide you in moments of quiet.\u201D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[3]
+      value: PlayerOptions
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[5]
+      value: HYPEHYPEHYPE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[6]
+      value: Damn, I have to win this thing now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[7]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[8]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[9]
+      value: Enthusiastic with this newfound contact, you head straight to work.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[10]
+      value: END
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[11]
+      value: 'Confused, you distract yourself by jamming. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[12]
+      value: END
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[13]
       value: END
       objectReference: {fileID: 0}
     - target: {fileID: 6605284934095532490, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
@@ -9021,9 +9069,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7900111591914292319, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1129604555}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+--- !u!224 &2674624763765812485 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7900111591914292319, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+  m_PrefabInstance: {fileID: 2674624763765812484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5549290336736288730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9386,7 +9442,6 @@ SceneRoots:
   - {fileID: 1943443386}
   - {fileID: 292524860}
   - {fileID: 1682426545}
-  - {fileID: 1129604555}
   - {fileID: 1529056761}
   - {fileID: 1129771299}
   - {fileID: 1615225169}
