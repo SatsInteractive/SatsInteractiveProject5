@@ -278,8 +278,8 @@ public class CodeMiniGame : MiniGame
         timerText.text = "0";
         codeStartingScreen.SetActive(true);
         base.ShowEndScreen();
-        punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
-        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
+        //punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
+        //punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         float averagePromptSpeed = totalTimeTaken / promptsPerGame;
         float averageCharacterSpeed = totalTimeTaken / totalCharactersTyped;
         averageCharacterSpeedTextTitle.text = "Average character speed:";
@@ -301,8 +301,8 @@ public class CodeMiniGame : MiniGame
         endScreen.SetActive(true);
         totalTimeTaken = Time.time - startTime;
         totalTimeTakenText.text = totalTimeTaken.ToString("F2");
-        punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
-        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
+        //punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
+        //punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         float averageCatchSpeed = totalTimeTaken / promptsPerGame;
         averageCharacterSpeedTextTitle.text = "";
         mistakeCountText.text = "";
@@ -323,7 +323,8 @@ public class CodeMiniGame : MiniGame
         codeMiniGameActive = false;
         codeStartingScreen.SetActive(true);
         completionTimes = new List<float>();
-        //punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
+        punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
+        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         if (currentMiniGame == CodeMiniGameAction.SpeedTyping)
         {
             currentMiniGame = CodeMiniGameAction.BugFinding;
