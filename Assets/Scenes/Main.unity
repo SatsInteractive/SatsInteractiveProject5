@@ -12588,6 +12588,10 @@ PrefabInstance:
       propertyPath: teamScores.Array.data[0]
       value: 1.6
       objectReference: {fileID: 0}
+    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
+      propertyPath: teamScores.Array.data[4]
+      value: 4.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
