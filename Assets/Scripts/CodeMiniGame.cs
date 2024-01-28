@@ -323,7 +323,7 @@ public class CodeMiniGame : MiniGame
         codeMiniGameActive = false;
         codeStartingScreen.SetActive(true);
         completionTimes = new List<float>();
-        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
+        //punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         if (currentMiniGame == CodeMiniGameAction.SpeedTyping)
         {
             currentMiniGame = CodeMiniGameAction.BugFinding;
