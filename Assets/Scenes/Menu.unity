@@ -1642,7 +1642,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -8495,6 +8495,9 @@ MonoBehaviour:
   backButton: {fileID: 0}
   exitButton: {fileID: 0}
   audioSlider: {fileID: 0}
+  jammerCard: {fileID: 1791314083}
+  scaleAnimationDuration: 1
+  targetScaleFactor: 1.2
   backButtonCredits: {fileID: 0}
   scoreBoard: {fileID: 0}
   maxScore: 180
@@ -8509,6 +8512,7 @@ MonoBehaviour:
   jammerCardInfoUpRight: {fileID: 218033402}
   tutorialButton: {fileID: 1604140866}
   tutorialScreen: {fileID: 802895143}
+  credentialsEntered: 0
 --- !u!82 &1821343795
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9359,7 +9363,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535

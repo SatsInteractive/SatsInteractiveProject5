@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,9 @@ public class UIManager : MonoBehaviour
     public Button backButton;
     public Button exitButton;
     public Slider audioSlider;
+    public GameObject jammerCard;
+    public float scaleAnimationDuration = 1f;
+    public float targetScaleFactor = 1.2f;
     
     private GameObject creditsScreen;
     public Button backButtonCredits;
@@ -47,6 +51,8 @@ public class UIManager : MonoBehaviour
     public GameObject jammerCardInfoUpRight;
     public Button tutorialButton;
     public GameObject tutorialScreen;
+    
+    public bool credentialsEntered = false;
     
     private void Awake()
     {
@@ -97,13 +103,10 @@ public class UIManager : MonoBehaviour
     
     private void HandleStartGameButtonPressed()
     {
-        if (jammername.text == "")
+        if (string.IsNullOrEmpty(playerNameInput.text) || string.IsNullOrEmpty(strongestSkillInput.text))
         {
-            jammername.text = "JammerX";
-        }
-        if (jammerstrongestskill.text == "")
-        {
-            jammerstrongestskill.text = "Sleep";
+            StartCoroutine(ScaleJammerCard());
+            return;
         }
         
         audioSource.PlayOneShot(buttonClickSound);
@@ -114,6 +117,36 @@ public class UIManager : MonoBehaviour
         jammername.text = playerNameInput.text;
         jammerstrongestskill.text = strongestSkillInput.text;
         jammerCardInfoUpRight.SetActive(false);
+    }
+    
+    private IEnumerator ScaleJammerCard()
+    {
+        float elapsed = 0f; 
+        Vector3 initialScale = jammerCard.transform.localScale; // Initial scale of the GameObject
+        Vector3 targetScale = initialScale * targetScaleFactor; // Target scale (20% larger than the initial scale)
+
+        // Scale up
+        while (elapsed < scaleAnimationDuration / 2)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / (scaleAnimationDuration / 2);
+            jammerCard.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+            yield return null;
+        }
+
+        elapsed = 0f; // Reset the elapsed time
+
+        // Scale down
+        while (elapsed < scaleAnimationDuration / 2)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / (scaleAnimationDuration / 2);
+            jammerCard.transform.localScale = Vector3.Lerp(targetScale, initialScale, t);
+            yield return null;
+        }
+
+        // Ensure the scale is reset to the initial scale
+        jammerCard.transform.localScale = initialScale;
     }
     
     public void HandleSettingsButtonPressed()
