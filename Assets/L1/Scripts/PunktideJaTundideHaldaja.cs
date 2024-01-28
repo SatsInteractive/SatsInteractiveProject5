@@ -25,6 +25,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     public GameObject CoopCanvas;
     public GameObject HexCanvas;
     public GameObject KitchenCanvas;
+    public GameObject CodeArtCanvas;
     public Dialogue Dialogue;
 
     public enum ActionType
@@ -82,6 +83,9 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         if ((actionTriggered.addedPoints.x+actionTriggered.addedPoints.y+actionTriggered.addedPoints.z)!=0)
         {
             points += actionTriggered.addedPoints * nextMultiplierTotal * nextThreeMultiplierTotal;
+            if (points.x >= 5f) points.x = 5f;
+            if (points.y >= 5f) points.y = 5f;
+            if (points.z >= 5f) points.z = 5f;
             float average_points = (points.x + points.y + points.z) / 3;
             pointsManager.AddPoints(average_points);
         }
@@ -124,13 +128,14 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
             //Trigger next part of ending cutscene
             TurnOffAllLocationCanvases();
             StartCoroutine(InstantiateNextDayCanvas("Day 2"));
-
+            CodeArtCanvas.transform.GetChild(0).gameObject.SetActive(true);
         }
         else if (day == 2)
         {
             //Trigger another end ceremony cutscene
             TurnOffAllLocationCanvases();
             StartCoroutine(InstantiateNextDayCanvas("Day 3"));
+            CodeArtCanvas.transform.GetChild(0).gameObject.SetActive(true);
         }
         else if (day == 3)
         {
