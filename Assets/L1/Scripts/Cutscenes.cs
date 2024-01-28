@@ -12,6 +12,8 @@ public class Cutscenes : MonoBehaviour
     private GameObject loadingScreen;
     public UIManager uiManager;
     public TextMeshProUGUI timeText;
+    public Dialogue Dialogue;
+    public GameObject TiksuUIGameObject;
 
     private void Start()
     {
@@ -30,8 +32,12 @@ public class Cutscenes : MonoBehaviour
         uiManager.scoreBoard.SetActive(true);
         timeText.gameObject.SetActive(true);
         gameObject.SetActive(false);
-        
-        
+        TiksuOpening();
+    }
+
+    private void TiksuOpening()
+    {
+        Dialogue.StartDialogue(Dialogue.dialoguePlaceOptions.Tiksu);
     }
 
     // Update is called once per frame

@@ -15,6 +15,7 @@ public class Dialogue : MonoBehaviour
     public string[] WCDialogue;
     public string[] CoopDialogue;
     public string[] HexDialogue;
+    public string[] TiksuDialogue;
 
     private int index;
     public List<GameObject> dialogueButtons;
@@ -31,7 +32,8 @@ public class Dialogue : MonoBehaviour
         Kitchen,
         WC,
         Coop,
-        Hex
+        Hex,
+        Tiksu
     }
     private void Awake()
     {
@@ -84,6 +86,11 @@ public class Dialogue : MonoBehaviour
         {
             linesToType = HexDialogue;
             currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.hex;
+        }
+        else if (dialoguePlace == dialoguePlaceOptions.Tiksu)
+        {
+            linesToType = TiksuDialogue;
+            currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.tiksu;
         }
         PunktideJaTundideHaldaja.TriggerAction(currentDialoguePlaceActionType);
         StartCoroutine(TypeLine());
