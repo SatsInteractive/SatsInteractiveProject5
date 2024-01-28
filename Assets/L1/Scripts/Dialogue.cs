@@ -23,6 +23,8 @@ public class Dialogue : MonoBehaviour
     private int nextDialogueIndex;
     public PunktideJaTundideHaldaja PunktideJaTundideHaldaja;
     private PunktideJaTundideHaldaja.ActionType currentDialoguePlaceActionType;
+    private bool tiksuAppearAfterButtonClick=false;
+    public GameObject TiksuUIGameObject;
 
     public enum dialoguePlaceOptions
     {
@@ -70,6 +72,7 @@ public class Dialogue : MonoBehaviour
                              + " Enjoyment: " + PunktideJaTundideHaldaja.points.z + ".";
             linesToType[11] = "Innovation: " + PunktideJaTundideHaldaja.points.x + " Aesthetics: " + PunktideJaTundideHaldaja.points.y
                               + " Enjoyment: " + PunktideJaTundideHaldaja.points.z + ".";
+            tiksuAppearAfterButtonClick = true;
             currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.shitting;
         }
         else if (dialoguePlace == dialoguePlaceOptions.Coop)
@@ -100,6 +103,7 @@ public class Dialogue : MonoBehaviour
             }
             else if (linesToType[index] == "END")
             {
+                TiksuUIGameObject.SetActive(false);
                 gameObject.transform.parent.gameObject.SetActive(false);
             }
             else
@@ -109,6 +113,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
+            TiksuUIGameObject.SetActive(false);
             gameObject.SetActive(false);
         }
     }
@@ -134,6 +139,11 @@ public class Dialogue : MonoBehaviour
 
     public void DialogueOptionChosen(string buttonText)
     {
+        if (tiksuAppearAfterButtonClick)
+        {
+            tiksuAppearAfterButtonClick = false;
+            TiksuUIGameObject.SetActive(true);
+        }
         DisableDialogueOptions();
         
         if (buttonText == dialogueButtonsTexts[0].text)
