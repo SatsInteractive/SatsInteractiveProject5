@@ -9691,6 +9691,7 @@ MonoBehaviour:
   timeText: {fileID: 529506845}
   Dialogue: {fileID: 113861386}
   TiksuUIGameObject: {fileID: 1129604552}
+  PlayerController: {fileID: 8211442121627670086}
 --- !u!1 &1798925558
 GameObject:
   m_ObjectHideFlags: 0
@@ -10819,6 +10820,10 @@ PrefabInstance:
       value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: PlayerController
+      value: 
+      objectReference: {fileID: 8211442121627670086}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: PunktideJaTundideHaldaja
       value: 
       objectReference: {fileID: 529506844}
@@ -11313,6 +11318,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 985006405317767045, guid: f425a099fe6d56548a2bba7b2a9b56ea, type: 3}
   m_PrefabInstance: {fileID: 8211442121627670084}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8211442121627670086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6391839988121198141, guid: f425a099fe6d56548a2bba7b2a9b56ea, type: 3}
+  m_PrefabInstance: {fileID: 8211442121627670084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89e9fc4cd402d6428b233270c10cb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

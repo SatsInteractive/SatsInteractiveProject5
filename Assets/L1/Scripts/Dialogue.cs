@@ -25,6 +25,7 @@ public class Dialogue : MonoBehaviour
     private PunktideJaTundideHaldaja.ActionType currentDialoguePlaceActionType;
     private bool tiksuAppearAfterButtonClick=false;
     public GameObject TiksuUIGameObject;
+    public PlayerController PlayerController;
 
     public enum dialoguePlaceOptions
     {
@@ -58,6 +59,7 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue(dialoguePlaceOptions dialoguePlace)
     {
+        PlayerController.isInMiniGame = true;
         textComponent.text = String.Empty;
         index = 0;
         dialogueSkippable = true;
@@ -109,6 +111,7 @@ public class Dialogue : MonoBehaviour
             }
             else if (linesToType[index] == "END")
             {
+                PlayerController.isInMiniGame = false;
                 TiksuUIGameObject.SetActive(false);
                 gameObject.transform.parent.gameObject.SetActive(false);
             }
