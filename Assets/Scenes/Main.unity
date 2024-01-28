@@ -8774,6 +8774,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: typingDelay
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: PunktideJaTundideHaldaja
       value: 
       objectReference: {fileID: 529506844}
