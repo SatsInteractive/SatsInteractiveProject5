@@ -8,9 +8,8 @@ public class GameEndManager : MonoBehaviour
 
     private List<TeamEntry> teamEntries = new List<TeamEntry>();
 
-    // Sample team scores (replace these with actual scores)
-    private List<float> teamScores = new List<float> { 3.0f, 2.2f, 4.6f };
-    private List<string> teamNames = new List<string> { "Jobud", "Kovad mehed", "Wieners" };
+    public List<float> teamScores = new List<float> { 3.0f, 2.2f, 4.6f };
+    public List<string> teamNames = new List<string> { "Jobud", "Kovad mehed", "Wieners" };
 
     private GameObject gameManager;
 
@@ -20,11 +19,7 @@ public class GameEndManager : MonoBehaviour
         // Initialize team entries from the leaderboard
         InitializeTeamEntries();
 
-        // Add the player's score to the list (replace this with the actual player's score)
-        float playerScore = 4.8f;
-        string playerName = gameManager.GetComponent<GameManager>().playerName;
-        teamScores.Add(playerScore);
-        teamNames.Add(playerName);
+        AddPlayerEntry();
 
         // Sort the team entries based on scores in descending order
         teamEntries.Sort((a, b) => b.Score.CompareTo(a.Score));
@@ -33,10 +28,26 @@ public class GameEndManager : MonoBehaviour
         UpdateUIElements();
     }
 
+    private void AddPlayerEntry()
+    {
+        // Add the player's score to the list (replace this with the actual player's score)
+        float playerScore = 3.6f;
+        string playerName = gameManager.GetComponent<GameManager>().playerName;
+        teamScores.Add(playerScore);
+        teamNames.Add(playerName);
+
+        TeamEntry teamEntry = new TeamEntry
+        {
+            TeamName = playerName,
+            Score = playerScore
+        };
+        teamEntries.Add(teamEntry);
+    }
+
     private void InitializeTeamEntries()
     {
         // Iterate through each team entry in the leaderboard
-        for (int i = 0; i < leaderboard.transform.childCount; i++)
+        for (int i = 0; i < leaderboard.transform.childCount - 1; i++)
         {
             TeamEntry teamEntry = new TeamEntry {
                 TeamName = teamNames[i],
