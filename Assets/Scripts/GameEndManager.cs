@@ -79,7 +79,7 @@ public class GameEndManager : MonoBehaviour
             // Set the placement number, team name, and score
             teamPlaceText.text = (i + 1).ToString(); // Placement numbers start from 1
             teamNameText.text = teamEntries[i].TeamName;
-            teamScoreText.text = teamEntries[i].Score.ToString();
+            teamScoreText.text = teamEntries[i].Score.ToString("0.000");
         }
     }
 
