@@ -45,6 +45,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI jammername;
     public TextMeshProUGUI jammerstrongestskill;
     public GameObject jammerCardInfoUpRight;
+    public Button tutorialButton;
+    public GameObject tutorialScreen;
     
     private void Awake()
     {
@@ -80,6 +82,7 @@ public class UIManager : MonoBehaviour
         creditsButton.onClick.AddListener(HandleCreditsButtonPressed);
         //backButtonCredits.onClick.AddListener(HandleBackButtonCreditsPressed);
         startButton.onClick.AddListener(HandleStartGameButtonPressed);
+        tutorialButton.onClick.AddListener(HandleTutorialButtonPressed);
     }
 
     private void Start()
@@ -131,6 +134,7 @@ public class UIManager : MonoBehaviour
     {
         settingsScreen.SetActive(false);
         creditsScreen.SetActive(false);
+        tutorialScreen.SetActive(false);
         OnBackButtonPressed?.Invoke();
     }
     
@@ -171,6 +175,11 @@ public class UIManager : MonoBehaviour
     {
         healthSlider.value = value / maxScore;
         healthText.text = $"{value.ToString("F1")} points";
+    }
+    
+    public void HandleTutorialButtonPressed()
+    {
+        tutorialScreen.SetActive(true);
     }
     
     public void HandleNextCharacterButton()

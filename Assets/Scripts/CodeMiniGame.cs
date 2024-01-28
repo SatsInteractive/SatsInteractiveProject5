@@ -77,7 +77,6 @@ public class CodeMiniGame : MiniGame
     
     private void Update()
     {
-        
         if (codeMiniGameActive)
         {
             UpdateTimer();
@@ -120,6 +119,9 @@ public class CodeMiniGame : MiniGame
     private void EndBugFindingGame()
     {
         codeBuggingScreen.gameObject.SetActive(false);
+        totalTimeTaken = Time.time - startTime;
+        punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
+        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         EndMiniGame();
     }
 
@@ -161,6 +163,8 @@ public class CodeMiniGame : MiniGame
     private void InitializeBugFindingGame()
     {
         codeMiniGameActive = true;
+        startTime = Time.time;
+        userPressedFirstKey = true;
         for (int i = 0; i < promptsPerGame; i++)
         {
             GameObject bugObject = Instantiate(bugPrefab, codeBuggingScreen);
@@ -170,15 +174,6 @@ public class CodeMiniGame : MiniGame
             Bug bug = bugObject.AddComponent<Bug>();
             bug.OnBugClicked += BugClicked;
             bugs.Add(bugObject);
-        }
-    }
-    
-    IEnumerator MoveBug(RectTransform bugRect)
-    {
-        while (bugs.Contains(bugRect.gameObject))
-        {
-            bugRect.anchoredPosition = GetRandomPosition();
-            yield return new WaitForSeconds(bugMoveInterval);
         }
     }
     
@@ -264,6 +259,8 @@ public class CodeMiniGame : MiniGame
     {
         codeMiniGameActive = false;
         codeStartingScreen.SetActive(true);
+        completionTimes = new List<float>();
+        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         if (currentMiniGame == CodeMiniGameAction.SpeedTyping)
         {
             currentMiniGame = CodeMiniGameAction.BugFinding;
