@@ -55,11 +55,11 @@ public class CodeMiniGame : MiniGame
     [SerializeField] private TMP_Text averagePromptSpeedTextTitle;
     [SerializeField] private TMP_Text averageCharacterSpeedTextTitle;
     [SerializeField] private TMP_Text mistakeCountTextTitle;
+    [SerializeField] private TMP_Text characterCountTextTitle;
     
     [Header("Bug Finding Game")]
     public GameObject bugPrefab;
     private List<GameObject> bugs = new List<GameObject>();
-    public float bugMoveInterval = 1f;
     public RectTransform  codeBuggingScreen;
     [SerializeField] public Color highlightBugColor = Color.green;
     [SerializeField] public Color normalBugColor = Color.white;
@@ -115,11 +115,11 @@ public class CodeMiniGame : MiniGame
             StartCoroutine(HighlightBug(clickedBug));
             bugs.Remove(clickedBug);
             Destroy(clickedBug);
-
+            
             if (bugs.Count == 0)
             {
                 // All bugs caught
-                EndBugFindingGame();
+                ShowBugEndScreen();
             }
         }
     }
@@ -132,12 +132,8 @@ public class CodeMiniGame : MiniGame
         clickedBug.GetComponent<Image>().color = normalBugColor;
     }
     
-    private void EndBugFindingGame()
+    public void EndBugFindingGame()
     {
-        codeBuggingScreen.gameObject.SetActive(false);
-        totalTimeTaken = Time.time - startTime;
-        punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
-        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         EndMiniGame();
     }
 
@@ -189,7 +185,9 @@ public class CodeMiniGame : MiniGame
             bugRect.anchoredPosition = GetRandomPosition();
             Bug bug = bugObject.AddComponent<Bug>();
             bug.OnBugClicked += BugClicked;
-            bug.gameAreaRectTransform = codeBuggingScreen;
+            
+            bug.halfWidth = codeBuggingScreen.rect.width / 2;
+            bug.halfHeight = codeBuggingScreen.rect.height / 2;
             bugs.Add(bugObject);
         }
     }
@@ -212,7 +210,7 @@ public class CodeMiniGame : MiniGame
         if (bugs.Count == 0)
         {
             // All bugs caught
-            EndBugFindingGame();
+            inputLocked = true;
         }
     }
 
@@ -268,8 +266,9 @@ public class CodeMiniGame : MiniGame
         float averagePromptSpeed = totalTimeTaken / promptsPerGame;
         float averageCharacterSpeed = totalTimeTaken / totalCharactersTyped;
         averageCharacterSpeedTextTitle.text = "Average character speed:";
-        averagePromptSpeedTextTitle.text = "Average prompt speed:";
+        averagePromptSpeedTextTitle.text = "Average line speed:";
         mistakeCountTextTitle.text = "Mistakes:";
+        characterCountTextTitle.text = "Total characters:";
         averagePromptSpeedText.text = averagePromptSpeed.ToString("F2");
         averageCharacterSpeedText.text = averageCharacterSpeed.ToString("F2");
         mistakeCountText.text = totalMistakes.ToString();
@@ -279,6 +278,7 @@ public class CodeMiniGame : MiniGame
     private void ShowBugEndScreen()
     {
         codeMiniGameActive = false;
+        codeBuggingScreen.gameObject.SetActive(false);
         timerText.text = "0";
         codeStartingScreen.SetActive(true);
         base.ShowEndScreen();
@@ -287,7 +287,10 @@ public class CodeMiniGame : MiniGame
         float averageCatchSpeed = totalTimeTaken / promptsPerGame;
         averageCharacterSpeedTextTitle.text = "";
         mistakeCountText.text = "";
-        averagePromptSpeedTextTitle.text = "Average bug catch speed:";
+        characterCountText.text = "";
+        mistakeCountTextTitle.text = "";
+        characterCountTextTitle.text = "";
+        averagePromptSpeedTextTitle.text = "Average bugging speed:";
         averagePromptSpeedText.text = averageCatchSpeed.ToString("F2");
         
     }
