@@ -52,10 +52,10 @@ public class Bug : MonoBehaviour, IPointerClickHandler
 
     private void ChangeTargetPosition()
     {
-        float minX = startingPosition.x - 100;
-        float maxX = startingPosition.x + 100;
-        float minY = startingPosition.y - 100;
-        float maxY = startingPosition.y + 100;
+        float minX = startingPosition.x - 50;
+        float maxX = startingPosition.x + 50;
+        float minY = startingPosition.y - 50;
+        float maxY = startingPosition.y + 50;
 
         // Calculate a random position within these borders
         float x = Random.Range(minX, maxX);
