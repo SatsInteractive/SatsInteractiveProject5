@@ -89,6 +89,6 @@ public class SoundManager : MonoBehaviour
     public void AdjustAudioLevel(float audioLevel)
     {
         this.audioLevel = audioLevel;
-        musicAudioSource.volume = audioLevel;
+        musicAudioSource.volume = audioLevel * 0.25f;
     }
 }

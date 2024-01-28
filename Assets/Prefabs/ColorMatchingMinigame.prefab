@@ -318,9 +318,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punktideJaTundideHaldaja: {fileID: 0}
   timerText: {fileID: 6554093742514833494}
-  correctSound: {fileID: 8300000, guid: dd9d0a5cd5f58a5408579a55264a4cbc, type: 3}
+  correctSound: {fileID: 8300000, guid: 05482d782157377419928665d1870688, type: 3}
   successSound: {fileID: 8300000, guid: 6e52222e92a25fd499ef0ae712db0271, type: 3}
-  wrongSound: {fileID: 8300000, guid: b94fe6db1de64ab4d832f19162f3303e, type: 3}
+  wrongSound: {fileID: 8300000, guid: a8286998db4da5a43a59a14de68cb533, type: 3}
+  doYouWantMusic: {fileID: 8300000, guid: 393c703f646883c4d889522a651143eb, type: 3}
+  checkDiscord: {fileID: 8300000, guid: 6c98da7e840e4f8449763fb52f994b92, type: 3}
   audioLevel: 0
   colorFeedbackDelay: 0.5
   completionTimes: []
@@ -349,11 +351,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2fe6840c74b4d9248bddeb1bc196119d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.763
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -361,7 +363,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -0.328
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0

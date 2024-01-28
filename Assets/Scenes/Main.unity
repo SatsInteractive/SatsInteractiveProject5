@@ -2676,6 +2676,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0871fd3a0a8554245a64447f9380900a, type: 3}
   krooks: {fileID: 8300000, guid: f6cc97d908ba6e24cb4e9dd282c5f5bd, type: 3}
   audioSource: {fileID: 435279406}
+  danielAudioSource: {fileID: 435279407}
 --- !u!114 &435279402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9374,42 +9375,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 584955721698097506, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 584955721698097506, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: Pan2D
-      value: -0.348
-      objectReference: {fileID: 0}
-    - target: {fileID: 584955721698097506, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: Priority
-      value: 149
-      objectReference: {fileID: 0}
-    - target: {fileID: 584955721698097506, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: m_Volume
-      value: 0.428
-      objectReference: {fileID: 0}
-    - target: {fileID: 584955721698097506, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2fe6840c74b4d9248bddeb1bc196119d, type: 3}
     - target: {fileID: 5123765114740966353, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
       propertyPath: m_Name
       value: CodeMiniGame
       objectReference: {fileID: 0}
-    - target: {fileID: 5123765114740966353, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6476887109716761675, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: wrongSound
-      value: 
-      objectReference: {fileID: 8300000, guid: a8286998db4da5a43a59a14de68cb533, type: 3}
-    - target: {fileID: 6476887109716761675, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
-      propertyPath: correctSound
-      value: 
-      objectReference: {fileID: 8300000, guid: dd9d0a5cd5f58a5408579a55264a4cbc, type: 3}
     - target: {fileID: 6476887109716761675, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
       propertyPath: punktideJaTundideHaldaja
       value: 
@@ -11319,22 +11288,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColorMatchingMinigame
       objectReference: {fileID: 0}
-    - target: {fileID: 3994165910154786425, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994165910154786425, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
-      propertyPath: Pan2D
-      value: -0.328
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994165910154786425, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
-      propertyPath: m_Volume
-      value: 0.763
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994165910154786425, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2fe6840c74b4d9248bddeb1bc196119d, type: 3}
     - target: {fileID: 8111667348983283198, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11375,18 +11328,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
-      propertyPath: wrongSound
-      value: 
-      objectReference: {fileID: 8300000, guid: a8286998db4da5a43a59a14de68cb533, type: 3}
-    - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
-      propertyPath: correctSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 05482d782157377419928665d1870688, type: 3}
-    - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
-      propertyPath: successSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 6e52222e92a25fd499ef0ae712db0271, type: 3}
     - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
       propertyPath: punktideJaTundideHaldaja
       value: 
@@ -11554,6 +11495,10 @@ PrefabInstance:
       propertyPath: leaveButton
       value: 
       objectReference: {fileID: 1027972738}
+    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
+      propertyPath: endingScreen
+      value: 
+      objectReference: {fileID: 1196069876}
     - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
       propertyPath: overallValue
       value: 

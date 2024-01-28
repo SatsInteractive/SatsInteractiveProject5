@@ -2305,19 +2305,19 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2fe6840c74b4d9248bddeb1bc196119d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.428
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 149
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -0.348
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -2407,7 +2407,9 @@ MonoBehaviour:
   timerText: {fileID: 1534155584252028980}
   correctSound: {fileID: 8300000, guid: dd9d0a5cd5f58a5408579a55264a4cbc, type: 3}
   successSound: {fileID: 8300000, guid: 6e52222e92a25fd499ef0ae712db0271, type: 3}
-  wrongSound: {fileID: 8300000, guid: b94fe6db1de64ab4d832f19162f3303e, type: 3}
+  wrongSound: {fileID: 8300000, guid: a8286998db4da5a43a59a14de68cb533, type: 3}
+  doYouWantMusic: {fileID: 8300000, guid: 393c703f646883c4d889522a651143eb, type: 3}
+  checkDiscord: {fileID: 8300000, guid: 4549f9876b02e4249876ee3a0752e976, type: 3}
   audioLevel: 0.5
   colorFeedbackDelay: 0.2
   completionTimes: []
@@ -2457,7 +2459,6 @@ MonoBehaviour:
   mistakeCountTextTitle: {fileID: 3371372622666043028}
   characterCountTextTitle: {fileID: 7973292423519789625}
   bugPrefab: {fileID: 1382953299839116809, guid: 246ae1a27a479c041882654f491135aa, type: 3}
-  bugMoveInterval: 1
   codeBuggingScreen: {fileID: 4003722717976984337}
   highlightBugColor: {r: 0, g: 1, b: 0, a: 1}
   normalBugColor: {r: 1, g: 1, b: 1, a: 1}
