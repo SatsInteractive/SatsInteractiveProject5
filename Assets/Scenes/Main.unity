@@ -2174,6 +2174,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7fb31aa4d39944991494814ea98f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &529506845 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2282114216809948572, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+  m_PrefabInstance: {fileID: 529506843}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &539904597
 GameObject:
   m_ObjectHideFlags: 0
@@ -5529,7 +5540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1758379882}
   uiManager: {fileID: 0}
-  timeText: {fileID: 0}
+  timeText: {fileID: 529506845}
 --- !u!1 &1798925558
 GameObject:
   m_ObjectHideFlags: 0
