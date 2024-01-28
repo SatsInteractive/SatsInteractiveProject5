@@ -70,27 +70,5 @@ public class MiniGame : MonoBehaviour
         float timeElapsed = Time.time - startTime;
         timerText.text = "Time: " + timeElapsed.ToString("F2");
     }
-
-    public virtual IEnumerator PlayDanielSound(AudioSource _audioSource)
-    {
-        yield return new WaitForSeconds(5f);
-        if (Random.Range(1, 2) == 1)
-        {
-            if (Random.Range(1, 2) == 1)
-            {
-                _audioSource.PlayOneShot(doYouWantMusic);
-            }
-            else
-            {
-                _audioSource.PlayOneShot(checkDiscord);
-            }
-        }
-        else
-        {
-            yield break;
-        }
-    }
-    
-    
 }
  
