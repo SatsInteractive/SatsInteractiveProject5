@@ -46,10 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leaderboard: {fileID: 0}
   teamScores:
-  - 3
-  - 2.2
-  - 4.6
+  - 2.1
+  - 2.775
+  - 3.25
+  - 4
+  - 4.8
   teamNames:
-  - Jobud
-  - Kovad mehed
-  - Wieners
+  - Head of Anubis
+  - Unstabler
+  - Root to Treasure
+  - Space Insanity
+  - Daniel Nael
+  PunktideJaTundideHaldaja: {fileID: 0}
