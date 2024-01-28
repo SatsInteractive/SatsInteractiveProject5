@@ -7166,6 +7166,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6476887109716761675, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: wrongSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a8286998db4da5a43a59a14de68cb533, type: 3}
+    - target: {fileID: 6476887109716761675, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
+      propertyPath: correctSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f5bd7519fe87dd842be18e4ba617990d, type: 3}
+    - target: {fileID: 6476887109716761675, guid: 4c4152c3b6aa73c4ea9ae999946fc42c, type: 3}
       propertyPath: punktideJaTundideHaldaja
       value: 
       objectReference: {fileID: 529506844}
@@ -8910,6 +8918,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
+      propertyPath: wrongSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a8286998db4da5a43a59a14de68cb533, type: 3}
+    - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
+      propertyPath: correctSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 05482d782157377419928665d1870688, type: 3}
+    - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
+      propertyPath: successSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e52222e92a25fd499ef0ae712db0271, type: 3}
     - target: {fileID: 8786099797101660824, guid: a7cf7a9c6b452774ea83cea58a8b8e1e, type: 3}
       propertyPath: punktideJaTundideHaldaja
       value: 
