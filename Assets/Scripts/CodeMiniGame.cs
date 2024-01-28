@@ -119,6 +119,7 @@ public class CodeMiniGame : MiniGame
     
     private void EndBugFindingGame()
     {
+        codeBuggingScreen.gameObject.SetActive(false);
         EndMiniGame();
     }
 
