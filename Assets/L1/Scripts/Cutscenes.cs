@@ -30,11 +30,7 @@ public class Cutscenes : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         transform.GetChild(0).gameObject.SetActive(false);
         yield return new WaitForSeconds((float)videoPlayer.clip.length - 0.1f);
-        uiManager.jammerCardInfoUpRight.SetActive(true);
-        uiManager.scoreBoard.SetActive(true);
-        timeText.gameObject.SetActive(true);
-        gameObject.SetActive(false);
-        TiksuOpening();
+        DisableCutScene();
     }
 
     private void TiksuOpening()
@@ -50,8 +46,16 @@ public class Cutscenes : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            TiksuOpening();
-            gameObject.SetActive(false);
+            DisableCutScene();
         }
+    }
+
+    private void DisableCutScene()
+    {
+        uiManager.jammerCardInfoUpRight.SetActive(true);
+        uiManager.scoreBoard.SetActive(true);
+        timeText.gameObject.SetActive(true);
+        gameObject.SetActive(false);
+        TiksuOpening();
     }
 }

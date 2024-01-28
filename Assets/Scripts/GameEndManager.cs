@@ -55,6 +55,7 @@ public class GameEndManager : MonoBehaviour
     public void EndTheFuckingGame()
     {
         restartButton.gameObject.SetActive(true);
+        UIManager.Instance.jammerCardInfoUpRight.SetActive(false);
         AddPlayerEntry();
 
         // Sort the team entries based on scores in descending order
