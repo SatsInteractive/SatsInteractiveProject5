@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BigGridSquare
   - PlayerName
+  - GameManager
   layers:
   - Default
   - TransparentFX
