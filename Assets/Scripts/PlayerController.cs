@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     [SerializeField] public Vector2 moveInput;
+    public bool enableMovement = true;
     
     // Movement animation
     public Transform Face;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isInMiniGame)
+        if (isInMiniGame || !enableMovement)
         {
             rb.velocity = Vector2.zero;
             return;

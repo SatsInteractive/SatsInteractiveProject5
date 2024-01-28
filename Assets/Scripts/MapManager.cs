@@ -31,6 +31,7 @@ public class MapManager : MonoBehaviour
     public void HideMap()
     {
         HideAllChildSprites(mapArt);
+        playerController.enableMovement = false;
         playerController.FaceSpriteRenderer.enabled = false;
     }
     
@@ -46,6 +47,7 @@ public class MapManager : MonoBehaviour
 
     public void ShowMap()
     {
+        playerController.enableMovement = true;
         ShowAllChildSprites(mapArt);
         playerController.FaceSpriteRenderer.enabled = true;
         codeOrArtScreen.transform.GetChild(0).gameObject.SetActive(true);
