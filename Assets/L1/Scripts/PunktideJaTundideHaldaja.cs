@@ -19,6 +19,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     public PointsManager pointsManager;
     private int nextThreeIndex;
     public GameEndManager GameEndManager;
+    public Dialogue Dialogue;
 
     public enum ActionType
     {
@@ -124,6 +125,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         else if (day == 3)
         {
             GameEndManager.EndTheFuckingGame();
+            Dialogue.gameObject.transform.parent.gameObject.SetActive(false);
             print("Game Ended!");
             // END THE FUCKING GAME!!!!!!!!!!!!!!!!!!!!!!
         }
