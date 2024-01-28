@@ -14,10 +14,16 @@ public class Eating : MonoBehaviour
     public AudioClip[] eatingSounds;
     public AudioClip krooks;
     public AudioSource audioSource;
+    public AudioSource danielAudioSource;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        danielAudioSource.Play();
     }
 
     public void MumbleClicked()
