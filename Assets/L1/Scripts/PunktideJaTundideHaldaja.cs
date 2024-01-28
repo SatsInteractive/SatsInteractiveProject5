@@ -20,6 +20,10 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     private int nextThreeIndex;
     public GameEndManager GameEndManager;
     public Dialogue Dialogue;
+    public GameObject WCCanvas;
+    public GameObject CoopCanvas;
+    public GameObject KitchenCanvas;
+    public GameObject HexCanvas;
 
     public enum ActionType
     {
@@ -126,6 +130,10 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         {
             GameEndManager.EndTheFuckingGame();
             Dialogue.gameObject.transform.parent.gameObject.SetActive(false);
+            WCCanvas.SetActive(false);
+            CoopCanvas.SetActive(false);
+            HexCanvas.SetActive(false);
+            KitchenCanvas.SetActive(false);
             print("Game Ended!");
             // END THE FUCKING GAME!!!!!!!!!!!!!!!!!!!!!!
         }
