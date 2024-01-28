@@ -142,8 +142,8 @@ MonoBehaviour:
   - Deep thought...
   - Meditate.
   - 9
-  - 19
-  - 28
+  - 18
+  - 27
   - You spent 1h and 30 minutes brainstorming. This is all you could come up with.
   - PlayerOptions
   - 2
@@ -174,12 +174,12 @@ MonoBehaviour:
   - END
   dialogueButtons:
   - {fileID: 6580247480980851214}
-  - {fileID: 8329974117096515750}
+  - {fileID: 0}
   - {fileID: 9094148375832525673}
   - {fileID: 4187530020949226240}
   dialogueButtonsTexts:
   - {fileID: 2239462047723906202}
-  - {fileID: 2974052412264933168}
+  - {fileID: 0}
   - {fileID: 6290602669035074181}
   - {fileID: 8404748950582340818}
   PunktideJaTundideHaldaja: {fileID: 0}
