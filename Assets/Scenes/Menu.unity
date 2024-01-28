@@ -8356,7 +8356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuScreen: {fileID: 0}
-  buttonClickSound: {fileID: 8300000, guid: f5bd7519fe87dd842be18e4ba617990d, type: 3}
+  buttonClickSound: {fileID: 8300000, guid: 05482d782157377419928665d1870688, type: 3}
   mainMenuEndScreen: {fileID: 1503663613}
   backButton: {fileID: 0}
   exitButton: {fileID: 0}
