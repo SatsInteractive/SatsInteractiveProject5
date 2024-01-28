@@ -15,7 +15,7 @@ public class RegionManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerName"))
         {
             Debug.Log("Collision with: " + other.gameObject.name);
 
