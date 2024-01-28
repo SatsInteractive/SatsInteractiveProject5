@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 779668717506548538}
   - component: {fileID: 3202466017420992732}
   - component: {fileID: 1797866996503355686}
+  - component: {fileID: 2228824118212855297}
   m_Layer: 5
   m_Name: Next Day
   m_TagString: Untagged
@@ -178,6 +179,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2228824118212855297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8597474744644211259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f064918a726204d4383b163a0a500a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInDuration: 2
 --- !u!1 &8682171756710938312
 GameObject:
   m_ObjectHideFlags: 0
