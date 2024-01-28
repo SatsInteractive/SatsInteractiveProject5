@@ -95,6 +95,10 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         hours += actionTriggered.hoursUsed;
         TimeAndDateTextMeshProUGUI.text = String.Empty;
         TimeAndDateTextMeshProUGUI.text += (hours / 100).ToString() + ":00" + "\n";
+        if (hours == endhours[day])
+        {
+            NextDay();
+        }
         if (day == 0)
         {
             TimeAndDateTextMeshProUGUI.text += "January 26";
@@ -108,11 +112,6 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
             TimeAndDateTextMeshProUGUI.text += "January 28";
         }
         actionHistory.Add(actionType);
-
-        if (hours == endhours[day])
-        {
-            NextDay();
-        }
     }
 
     private void NextDay()
