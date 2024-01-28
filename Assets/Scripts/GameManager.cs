@@ -113,7 +113,6 @@ public class GameManager : Singleton<GameManager>
 
     private void StartGame()
     {
-        Debug.Log("Starting game...");
         isGamePaused = false;
         pointsManager.SetPoints(0);
         playerName = uiManager.playerNameInput.text;
@@ -124,13 +123,11 @@ public class GameManager : Singleton<GameManager>
     
     private void StopGame()
     {
-        Debug.Log("Stopping game...");
         isGamePaused = true;
     }
     
     private void ResumeGame()
     {
-        Debug.Log("Resuming game...");
         isGamePaused = false;
     }
 
