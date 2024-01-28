@@ -1,10 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameEndManager : MonoBehaviour
 {
     public GameObject leaderboard; // Reference to the leaderboard GameObject containing team entries
+    public Button restartButton;
+    public Button leaveButton;
 
     private List<TeamEntry> teamEntries = new List<TeamEntry>();
 
@@ -19,19 +23,37 @@ public class GameEndManager : MonoBehaviour
     public GameObject innovationValue;
     public GameObject enjoymentValue;
 
-    private GameObject gameManager;
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        restartButton.gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        restartButton.GetComponent<Button>().onClick.AddListener(HandleRestartButtonPressed);
+        leaveButton.GetComponent<Button>().onClick.AddListener(HandleQuitButtonPressed);
+    }
+
+    private void OnDisable()
+    {
+        restartButton.GetComponent<Button>().onClick.RemoveListener(HandleRestartButtonPressed);
+        leaveButton.GetComponent<Button>().onClick.RemoveListener(HandleQuitButtonPressed);
+    }
 
     public GameObject scoreBoard;
 
     private void Start()
     {
-        gameManager = GameObject.FindWithTag("GameManager");
+        gameManager = FindObjectOfType<GameManager>();
         // Initialize team entries from the leaderboard
         InitializeTeamEntries();
     }
 
     public void EndTheFuckingGame()
     {
+        restartButton.gameObject.SetActive(true);
         AddPlayerEntry();
 
         // Sort the team entries based on scores in descending order
@@ -99,6 +121,16 @@ public class GameEndManager : MonoBehaviour
             teamNameText.text = teamEntries[i].TeamName;
             teamScoreText.text = teamEntries[i].Score.ToString("0.000");
         }
+    }
+    
+    public void HandleRestartButtonPressed()
+    {
+        gameManager.RestartGame();
+    }
+    
+    public void HandleQuitButtonPressed()
+    {
+        gameManager.ExitGame();
     }
 
     // Class to represent a team entry
