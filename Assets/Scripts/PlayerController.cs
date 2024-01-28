@@ -93,15 +93,18 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public void PlayParticles(string type = "normal")
+    public void PlayParticles(string type)
     {
-        if (playerParticles != null)
+        if (type == "pizza")
         {
-            playerParticles.Play();
-        }
-        else
-        {
-            Debug.LogError("Player particles are not assigned!");
+            if (playerParticles != null)
+            {
+                playerParticles.Play();
+            }
+            else
+            {
+                Debug.LogError("Player particles are not assigned!");
+            }
         }
     }
 

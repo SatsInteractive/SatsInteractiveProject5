@@ -73,5 +73,6 @@ public class MapManager : MonoBehaviour
     {
         playerController.transform.position = playerSpawnPoint2.position;
         playerController.isInMiniGame = false;
+        playerController.PlayParticles("pizza");
     }
 }
