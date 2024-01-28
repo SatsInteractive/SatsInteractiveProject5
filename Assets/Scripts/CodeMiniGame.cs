@@ -115,12 +115,6 @@ public class CodeMiniGame : MiniGame
             StartCoroutine(HighlightBug(clickedBug));
             bugs.Remove(clickedBug);
             Destroy(clickedBug);
-            
-            if (bugs.Count == 0)
-            {
-                // All bugs caught
-                ShowBugEndScreen();
-            }
         }
     }
     
@@ -203,14 +197,16 @@ public class CodeMiniGame : MiniGame
     private void BugClicked(Bug bug)
     {
         
-        //GameObject bugObject = bug.gameObject;
-        //bugs.Remove(bugObject);
-        //Destroy(bugObject);
+        GameObject bugObject = bug.gameObject;
+        bugs.Remove(bugObject);
+        Destroy(bugObject);
 
         if (bugs.Count == 0)
         {
             // All bugs caught
             inputLocked = true;
+            codeMiniGameAudioSource.PlayOneShot(successSound);
+            ShowBugEndScreen();
         }
     }
 
@@ -281,7 +277,7 @@ public class CodeMiniGame : MiniGame
         codeBuggingScreen.gameObject.SetActive(false);
         timerText.text = "0";
         codeStartingScreen.SetActive(true);
-        base.ShowEndScreen();
+        totalTimeTaken = Time.time - startTime;
         punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
         punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         float averageCatchSpeed = totalTimeTaken / promptsPerGame;
@@ -290,6 +286,10 @@ public class CodeMiniGame : MiniGame
         characterCountText.text = "";
         mistakeCountTextTitle.text = "";
         characterCountTextTitle.text = "";
+        averagePromptSpeedText.text = "";
+        averageCharacterSpeedText.text = "";
+        mistakeCountText.text = "";
+        characterCountText.text = "";
         averagePromptSpeedTextTitle.text = "Average bugging speed:";
         averagePromptSpeedText.text = averageCatchSpeed.ToString("F2");
         
@@ -439,7 +439,14 @@ public class CodeMiniGame : MiniGame
         averageCharacterSpeedText.text = "0";
         mistakeCountText.text = "0";
         characterCountText.text = "0";
-        tempCodingPrompts.Clear();
+        if (currentMiniGame == CodeMiniGameAction.SpeedTyping)
+        {
+            tempCodingPrompts.Clear();
+        }
+        else if (currentMiniGame == CodeMiniGameAction.BugFinding)
+        {
+            
+        }
         base.OnLeaveButtonClicked();
     }
 }

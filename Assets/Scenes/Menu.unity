@@ -8490,6 +8490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb2c23f18456f444b68f5249f2329cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSound: {fileID: 8300000, guid: 05482d782157377419928665d1870688, type: 3}
   mainMenuEndScreen: {fileID: 1503663613}
   backButton: {fileID: 0}
   exitButton: {fileID: 0}

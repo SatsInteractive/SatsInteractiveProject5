@@ -21,11 +21,13 @@ public class Bug : MonoBehaviour, IPointerClickHandler
     public float halfHeight;
     private float movement_start_time;
     private float passed_time;
+    private Vector3 startingPosition;
 
     private void Start()
     {
         bugIsAlive = true;
-        movement_start_time = Time.time; 
+        movement_start_time = Time.time;
+        startingPosition = RectTransform.position;
     }
 
     private void Awake()
@@ -51,11 +53,10 @@ public class Bug : MonoBehaviour, IPointerClickHandler
 
     private void ChangeTargetPosition()
     {
-
-        float minX = -100; // replace with your value
-        float maxX = 100; // replace with your value
-        float minY = -100; // replace with your value
-        float maxY = 100; // replace with your value
+        float minX = startingPosition.x - 100;
+        float maxX = startingPosition.x + 100;
+        float minY = startingPosition.y - 100;
+        float maxY = startingPosition.y + 100;
 
         // Calculate a random position within these borders
         float x = Random.Range(minX, maxX);
