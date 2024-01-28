@@ -51,6 +51,9 @@ public class UIManager : Singleton<UIManager>
     public GameObject jammerCardInfoUpRight;
     public Button tutorialButton;
     public GameObject tutorialScreen;
+    public Button tutorialScreenNextButton;
+    public Sprite tutorialScreenSprite1;
+    public Sprite tutorialScreenSprite2;
     
     public bool credentialsEntered = false;
     
@@ -90,6 +93,7 @@ public class UIManager : Singleton<UIManager>
         //backButtonCredits.onClick.AddListener(HandleBackButtonCreditsPressed);
         startButton.onClick.AddListener(HandleStartGameButtonPressed);
         tutorialButton.onClick.AddListener(HandleTutorialButtonPressed);
+        tutorialScreenNextButton.onClick.AddListener(HandleTutorialScreenNextButtonPressed);
     }
 
     private void Start()
@@ -99,7 +103,7 @@ public class UIManager : Singleton<UIManager>
         scoreBoard.SetActive(false);
         jammerCardInfoUpRight.SetActive(false);
         HandleAudioLevelChange(0.5f);
-        audioSlider.value = 0.5f;
+        audioSlider.value = 1f;
     }
     
     private void HandleStartGameButtonPressed()
@@ -183,7 +187,7 @@ public class UIManager : Singleton<UIManager>
     
     private void HandleAudioLevelChange(float value)
     {
-        audioSource.volume = value * 0.25f;
+        audioSource.volume = value * 0.5f;
         OnAudioSliderChanged?.Invoke(value);
     }
 
@@ -219,6 +223,19 @@ public class UIManager : Singleton<UIManager>
     {
         audioSource.PlayOneShot(buttonClickSound);
         tutorialScreen.SetActive(true);
+    }
+    
+    public void HandleTutorialScreenNextButtonPressed()
+    {
+        audioSource.PlayOneShot(buttonClickSound);
+        if (tutorialScreen.GetComponent<Image>().sprite == tutorialScreenSprite1)
+        {
+            tutorialScreen.GetComponent<Image>().sprite = tutorialScreenSprite2;
+        }
+        else
+        {
+            tutorialScreen.GetComponent<Image>().sprite = tutorialScreenSprite1;
+        }
     }
     
     public void HandleNextCharacterButton()

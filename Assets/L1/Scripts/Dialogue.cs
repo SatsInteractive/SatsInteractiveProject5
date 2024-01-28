@@ -93,7 +93,6 @@ public class Dialogue : MonoBehaviour
             linesToType = TiksuDialogue;
             currentDialoguePlaceActionType = PunktideJaTundideHaldaja.ActionType.tiksu;
         }
-        PunktideJaTundideHaldaja.TriggerAction(currentDialoguePlaceActionType);
         StartCoroutine(TypeLine());
     }
 
@@ -111,6 +110,7 @@ public class Dialogue : MonoBehaviour
             }
             else if (linesToType[index] == "END")
             {
+                PunktideJaTundideHaldaja.TriggerAction(currentDialoguePlaceActionType);
                 PlayerController.isInMiniGame = false;
                 TiksuUIGameObject.SetActive(false);
                 gameObject.transform.parent.gameObject.SetActive(false);
