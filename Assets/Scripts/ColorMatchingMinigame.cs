@@ -42,7 +42,7 @@ public class ColorMatchingMinigame : MiniGame
     private bool isColorMatchingMinigameActive = false;
     public AudioSource colorMatchingMinigameAudioSource;
 
-    private void Awake()
+    protected override void Awake()
     {
         // Find Image arrays from the specified GameObjects
         colorPalette = ColorPaletteGameObject.GetComponentsInChildren<Button>();

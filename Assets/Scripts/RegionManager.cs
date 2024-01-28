@@ -5,8 +5,7 @@ using UnityEngine;
 public class RegionManager : MonoBehaviour
 {
     public GameObject regionUI; // Prefab for the UI to be displayed in the region
-
-    private bool playerInsideRegion = false;
+    
 
     private void Start()
     {
@@ -19,7 +18,6 @@ public class RegionManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Collision with: " + other.gameObject.name);
-            playerInsideRegion = true;
 
             regionUI.SetActive(true);
 

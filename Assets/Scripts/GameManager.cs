@@ -20,7 +20,6 @@ public class GameManager : Singleton<GameManager>
     private PunktideJaTundideHaldaja punktideJaTundideHaldaja;
     
     private bool isGamePaused = false;
-    private bool inMiniGame = false;
     
     public string playerName = "";
     public string strongestSkill = "None";
