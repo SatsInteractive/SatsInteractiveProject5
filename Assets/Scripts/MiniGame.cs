@@ -21,7 +21,7 @@ public class MiniGame : MonoBehaviour
     
     [Header("End Screen Settings")]
     [SerializeField] protected GameObject endScreen;
-    [SerializeField] private TMP_Text totalTimeTakenText;
+    [SerializeField] protected TMP_Text totalTimeTakenText;
     
     protected virtual void Awake()
     {
