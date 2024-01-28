@@ -8513,10 +8513,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameEndManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5626398642462879813, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6443880964344727905, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 799.7761
@@ -8562,57 +8558,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 75108693}
     - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamNames.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamScores.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamNames.Array.data[0]
-      value: Head of Anubis
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamNames.Array.data[1]
-      value: Unstabler
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamNames.Array.data[2]
-      value: Root to Treasure
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamNames.Array.data[3]
-      value: Space Insanity
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamNames.Array.data[4]
-      value: Daniel Nael
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
       propertyPath: PunktideJaTundideHaldaja
       value: 
       objectReference: {fileID: 529506844}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamScores.Array.data[0]
-      value: 2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamScores.Array.data[1]
-      value: 2.775
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamScores.Array.data[2]
-      value: 3.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamScores.Array.data[3]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
-      propertyPath: teamScores.Array.data[4]
-      value: 4.8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
