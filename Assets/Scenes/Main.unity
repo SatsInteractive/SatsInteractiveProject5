@@ -7766,8 +7766,8 @@ RectTransform:
   m_Children:
   - {fileID: 1411517873}
   - {fileID: 1176063596}
-  - {fileID: 297031938}
   - {fileID: 1836153457}
+  - {fileID: 297031938}
   - {fileID: 1863961654}
   m_Father: {fileID: 1196069877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11165,7 +11165,7 @@ PrefabInstance:
     - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
       propertyPath: aestheticsValue
       value: 
-      objectReference: {fileID: 820860774}
+      objectReference: {fileID: 125729518}
     - target: {fileID: 7424291215698041466, guid: 19dd91955201fe9458c80ee3748afe1d, type: 3}
       propertyPath: innovationValue
       value: 
