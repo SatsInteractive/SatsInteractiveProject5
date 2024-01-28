@@ -94,9 +94,10 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         nextMultiplierTotal *= actionTriggered.nextMultiplier;
         hours += actionTriggered.hoursUsed;
         TimeAndDateTextMeshProUGUI.text = String.Empty;
-        TimeAndDateTextMeshProUGUI.text += (hours / 100).ToString() + ":00" + "\n";
+        TimeAndDateTextMeshProUGUI.text = (hours / 100).ToString() + ":00" + "\n";
         if (hours == endhours[day])
         {
+            TimeAndDateTextMeshProUGUI.text = (800 / 100).ToString() + ":00" + "\n";
             NextDay();
         }
         if (day == 0)
