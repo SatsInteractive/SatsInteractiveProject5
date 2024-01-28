@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class CodeMiniGame : MiniGame
@@ -51,12 +52,18 @@ public class CodeMiniGame : MiniGame
     [SerializeField] private TMP_Text averageCharacterSpeedText;
     [SerializeField] private TMP_Text mistakeCountText;
     [SerializeField] private TMP_Text characterCountText;
+    [SerializeField] private TMP_Text averagePromptSpeedTextTitle;
+    [SerializeField] private TMP_Text averageCharacterSpeedTextTitle;
+    [SerializeField] private TMP_Text mistakeCountTextTitle;
     
     [Header("Bug Finding Game")]
     public GameObject bugPrefab;
     private List<GameObject> bugs = new List<GameObject>();
     public float bugMoveInterval = 1f;
     public RectTransform  codeBuggingScreen;
+    [SerializeField] public Color highlightBugColor = Color.green;
+    [SerializeField] public Color normalBugColor = Color.white;
+    public float bugHighlightDuration = 0.2f;
 
     public enum CodeMiniGameAction 
     {
@@ -105,6 +112,7 @@ public class CodeMiniGame : MiniGame
         if (hit.collider != null && bugs.Contains(hit.collider.gameObject))
         {
             GameObject clickedBug = hit.collider.gameObject;
+            StartCoroutine(HighlightBug(clickedBug));
             bugs.Remove(clickedBug);
             Destroy(clickedBug);
 
@@ -114,6 +122,14 @@ public class CodeMiniGame : MiniGame
                 EndBugFindingGame();
             }
         }
+    }
+    
+    
+    private IEnumerator HighlightBug(GameObject clickedBug)
+    {
+        clickedBug.GetComponent<Image>().color = highlightBugColor;
+        yield return new WaitForSeconds(bugHighlightDuration);
+        clickedBug.GetComponent<Image>().color = normalBugColor;
     }
     
     private void EndBugFindingGame()
@@ -173,6 +189,7 @@ public class CodeMiniGame : MiniGame
             bugRect.anchoredPosition = GetRandomPosition();
             Bug bug = bugObject.AddComponent<Bug>();
             bug.OnBugClicked += BugClicked;
+            bug.gameAreaRectTransform = codeBuggingScreen;
             bugs.Add(bugObject);
         }
     }
@@ -187,9 +204,10 @@ public class CodeMiniGame : MiniGame
     
     private void BugClicked(Bug bug)
     {
-        GameObject bugObject = bug.gameObject;
-        bugs.Remove(bugObject);
-        Destroy(bugObject);
+        
+        //GameObject bugObject = bug.gameObject;
+        //bugs.Remove(bugObject);
+        //Destroy(bugObject);
 
         if (bugs.Count == 0)
         {
@@ -249,10 +267,29 @@ public class CodeMiniGame : MiniGame
         punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         float averagePromptSpeed = totalTimeTaken / promptsPerGame;
         float averageCharacterSpeed = totalTimeTaken / totalCharactersTyped;
+        averageCharacterSpeedTextTitle.text = "Average character speed:";
+        averagePromptSpeedTextTitle.text = "Average prompt speed:";
+        mistakeCountTextTitle.text = "Mistakes:";
         averagePromptSpeedText.text = averagePromptSpeed.ToString("F2");
         averageCharacterSpeedText.text = averageCharacterSpeed.ToString("F2");
         mistakeCountText.text = totalMistakes.ToString();
         characterCountText.text = totalCharactersTyped.ToString();
+    }
+
+    private void ShowBugEndScreen()
+    {
+        codeMiniGameActive = false;
+        timerText.text = "0";
+        codeStartingScreen.SetActive(true);
+        base.ShowEndScreen();
+        punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
+        punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
+        float averageCatchSpeed = totalTimeTaken / promptsPerGame;
+        averageCharacterSpeedTextTitle.text = "";
+        mistakeCountText.text = "";
+        averagePromptSpeedTextTitle.text = "Average bug catch speed:";
+        averagePromptSpeedText.text = averageCatchSpeed.ToString("F2");
+        
     }
 
     protected override void EndMiniGame()
