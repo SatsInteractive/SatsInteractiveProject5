@@ -347,7 +347,7 @@ MonoBehaviour:
   Face: {fileID: 7231915332528615242}
   FaceSpriteRenderer: {fileID: 2912609477458559696}
   initialFaceScale: 0.09
-  walkAnimationRate: 4
+  walkAnimationRate: 3.5
   scaleAmount: 0.005
   isInMiniGame: 0
   stepSounds:
@@ -360,6 +360,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cd68c6f58d4650e41999b75e84a34fea, type: 3}
   - {fileID: 8300000, guid: 8174866d2d8bc774e80332f681e4d26d, type: 3}
   stepSoundInterval: 0.4
+  walkingSpeedMagForStepSound: 2.5
 --- !u!82 &4139063099557459214
 AudioSource:
   m_ObjectHideFlags: 0
@@ -372,7 +373,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

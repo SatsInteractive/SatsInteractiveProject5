@@ -170,7 +170,7 @@ public class UIManager : MonoBehaviour
     public void HandleHealthChange(float value)
     {
         healthSlider.value = value / maxScore;
-        healthText.text = $"{value.ToString("F1")}%";
+        healthText.text = $"{value.ToString("F1")} points";
     }
     
     public void HandleNextCharacterButton()
