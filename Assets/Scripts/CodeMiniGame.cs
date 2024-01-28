@@ -192,7 +192,7 @@ public class CodeMiniGame : MiniGame
         codeMiniGameActive = true;
         startTime = Time.time;
         userPressedFirstKey = true;
-        for (int i = 0; i < promptsPerGame; i++)
+        for (int i = 0; i < promptsPerGame * 2; i++)
         {
             GameObject bugObject = Instantiate(bugPrefab, codeBuggingScreen);
             Debug.Log("bugObject: " + bugObject.name);

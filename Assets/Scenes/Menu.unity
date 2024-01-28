@@ -8908,6 +8908,9 @@ MonoBehaviour:
   possibleSprites:
   - {fileID: 21300000, guid: 303975d41afc35c45a09412a5b820ff2, type: 3}
   - {fileID: 21300000, guid: c3324e2024e95b74c9481cc144c35af8, type: 3}
+  - {fileID: 21300000, guid: 04b2530ff1e531541a25b5f8f1b98b4e, type: 3}
+  - {fileID: 21300000, guid: 66f83ec05d5bc1a4bb601f96eb0d1d34, type: 3}
+  - {fileID: 21300000, guid: 425091dfa5a57bf4dac03ae0b42cefa2, type: 3}
   jammername: {fileID: 1352119454}
   jammerstrongestskill: {fileID: 856163149}
   jammerCardInfoUpRight: {fileID: 218033402}
@@ -9503,7 +9506,6 @@ MonoBehaviour:
   playerName: Untitled Player
   strongestSkill: None
   chosenSprite: {fileID: 0}
-  nextDayCanvas: {fileID: 8597474744644211259, guid: 36046aea8f0bef246a419b1f7ce304d6, type: 3}
 --- !u!4 &1854677314
 Transform:
   m_ObjectHideFlags: 0
