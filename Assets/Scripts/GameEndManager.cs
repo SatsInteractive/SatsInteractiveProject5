@@ -10,6 +10,7 @@ public class GameEndManager : MonoBehaviour
 
     public List<float> teamScores = new List<float> { 3.0f, 2.2f, 4.6f };
     public List<string> teamNames = new List<string> { "Jobud", "Kovad mehed", "Wieners" };
+    public PunktideJaTundideHaldaja PunktideJaTundideHaldaja;
 
     private GameObject gameManager;
 
@@ -18,7 +19,10 @@ public class GameEndManager : MonoBehaviour
         gameManager = GameObject.FindWithTag("GameManager");
         // Initialize team entries from the leaderboard
         InitializeTeamEntries();
+    }
 
+    public void EndTheFuckingGame()
+    {
         AddPlayerEntry();
 
         // Sort the team entries based on scores in descending order
@@ -26,12 +30,14 @@ public class GameEndManager : MonoBehaviour
 
         // Update the UI elements with placement, team name, and score
         UpdateUIElements();
+        leaderboard.transform.parent.gameObject.SetActive(true);
     }
 
     private void AddPlayerEntry()
     {
         // Add the player's score to the list (replace this with the actual player's score)
-        float playerScore = 3.6f;
+        Vector3 playerScoreXYZ = PunktideJaTundideHaldaja.points;
+        float playerScore = (playerScoreXYZ.x+playerScoreXYZ.y+playerScoreXYZ.z)/3f;
         string playerName = gameManager.GetComponent<GameManager>().playerName;
         teamScores.Add(playerScore);
         teamNames.Add(playerName);
