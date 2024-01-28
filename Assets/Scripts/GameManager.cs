@@ -138,11 +138,15 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Restarting game...");
         pointsManager.SetPoints(0);
+        punktideJaTundideHaldaja.points = Vector3.zero;
+        punktideJaTundideHaldaja.hours = 1600;
+        punktideJaTundideHaldaja.day = 0;
         uiManager.HandleHealthChange(0);
         uiManager.jammerCardInfoUpRight.SetActive(true);
         MapManager.Instance.TeleportPlayerToSpawnPoint2();
         MapManager.Instance.ShowMap();
         uiManager.menuScreen.SetActive(false);
+        uiManager.jammerCardInfoUpRight.SetActive(true);
         punktideJaTundideHaldaja.points = Vector3.zero;
         punktideJaTundideHaldaja.hours = 1600;
         punktideJaTundideHaldaja.day = 0;
