@@ -9232,6 +9232,7 @@ MonoBehaviour:
   playerName: Untitled Player
   strongestSkill: None
   chosenSprite: {fileID: 0}
+  nextDayCanvas: {fileID: 8597474744644211259, guid: 36046aea8f0bef246a419b1f7ce304d6, type: 3}
 --- !u!4 &1854677314
 Transform:
   m_ObjectHideFlags: 0

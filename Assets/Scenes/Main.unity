@@ -3460,6 +3460,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: nextDayCanvas
+      value: 
+      objectReference: {fileID: 8597474744644211259, guid: 36046aea8f0bef246a419b1f7ce304d6, type: 3}
+    - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
       propertyPath: GameEndManager
       value: 
       objectReference: {fileID: 8095561300917563589}

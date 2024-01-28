@@ -175,5 +175,4 @@ public class GameManager : Singleton<GameManager>
         Debug.Log($"Points set to: {points}");
         uiManager.HandleHealthChange(points);
     }
-    
 }

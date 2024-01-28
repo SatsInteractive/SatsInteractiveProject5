@@ -20,6 +20,8 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     private int nextThreeIndex;
     public GameEndManager GameEndManager;
 
+    public GameObject nextDayCanvas;
+
     public enum ActionType
     {
         eating,
@@ -115,11 +117,13 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         if (day == 1)
         {
             //Trigger next part of ending cutscene
-            
+            StartCoroutine(InstantiateNextDayCanvas("Day 2"));
+
         }
         else if (day == 2)
         {
             //Trigger another end ceremony cutscene
+            StartCoroutine(InstantiateNextDayCanvas("Day 3"));
         }
         else if (day == 3)
         {
@@ -128,4 +132,13 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
             // END THE FUCKING GAME!!!!!!!!!!!!!!!!!!!!!!
         }
     }
+
+    public IEnumerator InstantiateNextDayCanvas(string day)
+    {
+        nextDayCanvas.transform.GetChild(1).GetComponent<TMP_Text>().text = day;
+        var instantiated = Instantiate(nextDayCanvas);
+        yield return new WaitForSeconds(3f);
+        Destroy(instantiated);
+    }
+
 }
