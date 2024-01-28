@@ -130,25 +130,25 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Resuming game...");
         isGamePaused = false;
     }
-    
-    private void ExitGame()
-    {
-        string currentScene = SceneManager.GetActiveScene().name;
-        Debug.Log("Exiting game called, scene: " + currentScene + "...");
 
-        if (currentScene == "Menu")
-        {
-            Debug.Log("Exiting application...");
-            Application.Quit();
-        }
-        else if (currentScene == "Main")
-        {
-            Debug.Log("Exiting game...");
-            pointsManager.SetPoints(0);
-            uiManager.jammerCardInfoUpRight.SetActive(false);
-            uiManager.menuScreen.SetActive(true);
-            SceneManager.LoadScene("Menu");
-        }
+    public void RestartGame()
+    {
+        Debug.Log("Restarting game...");
+        pointsManager.SetPoints(0);
+        uiManager.HandleHealthChange(0);
+        uiManager.jammerCardInfoUpRight.SetActive(true);
+        MapManager.Instance.TeleportPlayerToSpawnPoint2();
+        MapManager.Instance.ShowMap();
+        uiManager.menuScreen.SetActive(false);
+        punktideJaTundideHaldaja.points = Vector3.zero;
+        punktideJaTundideHaldaja.hours = 1600;
+        punktideJaTundideHaldaja.day = 0;
+    }
+    
+    public void ExitGame()
+    {
+        Debug.Log("Exiting game called ...");
+        Application.Quit();
     }
     
     private void AdjustAudioLevel(float value)
