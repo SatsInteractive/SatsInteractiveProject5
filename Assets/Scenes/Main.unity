@@ -2926,6 +2926,34 @@ PrefabInstance:
       propertyPath: GameEndManager
       value: 
       objectReference: {fileID: 8095561300917563589}
+    - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: ActionInfo.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: ActionInfo.Array.data[7].type
+      value: tiksu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: ActionInfo.Array.data[7].hoursUsed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: ActionInfo.Array.data[7].availability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: ActionInfo.Array.data[7].addedPoints.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: ActionInfo.Array.data[7].nextMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: ActionInfo.Array.data[7].nextThreeMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7040493838785884347, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
       propertyPath: m_Name
       value: PointsManager
@@ -5257,6 +5285,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101634567}
   m_CullTransparentMesh: 1
+--- !u!1 &1129604552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1129604555}
+  - component: {fileID: 1129604554}
+  - component: {fileID: 1129604553}
+  m_Layer: 5
+  m_Name: Tiksu (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1129604553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129604552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 48799457e27c93a4e82fc1329bd214d4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1129604554
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129604552}
+  m_CullTransparentMesh: 1
+--- !u!224 &1129604555
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129604552}
+  m_LocalRotation: {x: -0, y: 0, z: -0.24699889, w: 0.96901584}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.21817708, y: 0.21817708, z: 0.21817707}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28.6}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2358.9878, y: 2813.6467}
+  m_SizeDelta: {x: 603, y: 966}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1129771294
 GameObject:
   m_ObjectHideFlags: 0
@@ -7757,6 +7860,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 1758379882}
   uiManager: {fileID: 0}
   timeText: {fileID: 529506845}
+  Dialogue: {fileID: 113861386}
+  TiksuUIGameObject: {fileID: 1129604552}
 --- !u!1 &1798925558
 GameObject:
   m_ObjectHideFlags: 0
@@ -8814,9 +8919,25 @@ PrefabInstance:
       propertyPath: PunktideJaTundideHaldaja
       value: 
       objectReference: {fileID: 529506844}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[0]
+      value: '"You are stuck in here with me now!"'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052460608447958197, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: TiksuDialogue.Array.data[1]
+      value: END
+      objectReference: {fileID: 0}
     - target: {fileID: 6605284934095532490, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: m_Name
       value: VisualNovelCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605284934095532490, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7900111591914292319, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: m_Pivot.x
@@ -9265,6 +9386,7 @@ SceneRoots:
   - {fileID: 1943443386}
   - {fileID: 292524860}
   - {fileID: 1682426545}
+  - {fileID: 1129604555}
   - {fileID: 1529056761}
   - {fileID: 1129771299}
   - {fileID: 1615225169}

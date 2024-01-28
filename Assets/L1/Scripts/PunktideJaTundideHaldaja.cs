@@ -28,7 +28,8 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         art,
         mumbling,
         coop,
-        hex
+        hex,
+        tiksu
     }
     [System.Serializable]
     public struct Action
