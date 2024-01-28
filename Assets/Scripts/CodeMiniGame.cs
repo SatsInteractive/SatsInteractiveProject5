@@ -278,8 +278,8 @@ public class CodeMiniGame : MiniGame
         timerText.text = "0";
         codeStartingScreen.SetActive(true);
         endScreen.SetActive(true);
-        totalTimeTakenText.text = totalTimeTaken.ToString("F2");
         totalTimeTaken = Time.time - startTime;
+        totalTimeTakenText.text = totalTimeTaken.ToString("F2");
         punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
         punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
         float averageCatchSpeed = totalTimeTaken / promptsPerGame;
@@ -292,7 +292,7 @@ public class CodeMiniGame : MiniGame
         averageCharacterSpeedText.text = "";
         mistakeCountText.text = "";
         characterCountText.text = "";
-        averagePromptSpeedTextTitle.text = "Average bugging speed:";
+        averagePromptSpeedTextTitle.text = "Bug fixing speed:";
         averagePromptSpeedText.text = averageCatchSpeed.ToString("F2");
         
     }

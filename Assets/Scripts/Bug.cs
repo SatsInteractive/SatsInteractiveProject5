@@ -10,8 +10,7 @@ public class Bug : MonoBehaviour, IPointerClickHandler
 {
     public System.Action<Bug> OnBugClicked;
     public RectTransform RectTransform;
-    public float bugPathFollowDuration = 5f;
-    public float bugPathFindRepeatRate = 5f;
+    public float bugPathFollowDuration = 3f;
     public bool bugIsAlive = true;
     
     private Vector3 targetPosition;

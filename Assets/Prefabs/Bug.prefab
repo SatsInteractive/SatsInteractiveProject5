@@ -90,11 +90,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RectTransform: {fileID: 4070450843826012898}
-  gameAreaRectTransform: {fileID: 0}
-  bugPathFollowDuration: 3
-  bugPathFindRepeatRate: 3
+  bugPathFollowDuration: 2
   bugIsAlive: 1
   bugSpeed: 50
+  halfWidth: 0
+  halfHeight: 0
 --- !u!61 &3418030862913713965
 BoxCollider2D:
   m_ObjectHideFlags: 0
