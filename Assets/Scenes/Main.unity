@@ -3491,6 +3491,10 @@ PrefabInstance:
       propertyPath: ActionInfo.Array.data[7].nextThreeMultiplier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3942752668370157294, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -790
+      objectReference: {fileID: 0}
     - target: {fileID: 7040493838785884347, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
       propertyPath: m_Name
       value: PointsManager
@@ -12644,7 +12648,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -13508,7 +13512,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 6
+        scalar: 25
         minScalar: 30
         maxCurve:
           serializedVersion: 2

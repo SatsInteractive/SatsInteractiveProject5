@@ -39,8 +39,8 @@ public class GameEndManager : MonoBehaviour
 
     private void OnDisable()
     {
-        restartButton.GetComponent<Button>().onClick.RemoveListener(HandleRestartButtonPressed);
-        leaveButton.GetComponent<Button>().onClick.RemoveListener(HandleQuitButtonPressed);
+        //restartButton.GetComponent<Button>().onClick.RemoveListener(HandleRestartButtonPressed);
+        //leaveButton.GetComponent<Button>().onClick.RemoveListener(HandleQuitButtonPressed);
     }
 
     public GameObject scoreBoard;
