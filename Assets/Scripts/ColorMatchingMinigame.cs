@@ -137,6 +137,27 @@ public class ColorMatchingMinigame : MiniGame
         inputLocked = true;
         colorMatchingMinigameStartingScreen.SetActive(true);
         StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
+        StartCoroutine(PlayDanielSound());
+    }
+
+    public IEnumerator PlayDanielSound()
+    {
+        yield return new WaitForSeconds(5f);
+        if (Random.Range(1, 3) == 1)
+        {
+            if (Random.Range(1, 3) == 1)
+            {
+                colorMatchingMinigameAudioSource.PlayOneShot(doYouWantMusic);
+            }
+            else
+            {
+                colorMatchingMinigameAudioSource.PlayOneShot(checkDiscord);
+            }
+        }
+        else
+        {
+            yield break;
+        }
     }
 
     private void Update()
