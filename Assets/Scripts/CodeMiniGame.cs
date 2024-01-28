@@ -165,9 +165,29 @@ public class CodeMiniGame : MiniGame
             
         }
         base.StartMiniGame();
-        base.StartCoroutine(base.PlayDanielSound(codeMiniGameAudioSource));
+        StartCoroutine(PlayDanielSound());
     }
-    
+
+    public IEnumerator PlayDanielSound()
+    {
+        yield return new WaitForSeconds(5f);
+        if (Random.Range(1, 2) == 1)
+        {
+            if (Random.Range(1, 2) == 1)
+            {
+                codeMiniGameAudioSource.PlayOneShot(doYouWantMusic);
+            }
+            else
+            {
+                codeMiniGameAudioSource.PlayOneShot(checkDiscord);
+            }
+        }
+        else
+        {
+            yield break;
+        }
+    }
+
     private void InitializeBugFindingGame()
     {
         codeMiniGameActive = true;
