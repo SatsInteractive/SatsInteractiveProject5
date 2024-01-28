@@ -3491,6 +3491,10 @@ PrefabInstance:
       propertyPath: ActionInfo.Array.data[7].nextThreeMultiplier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3942752668370157294, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -790
+      objectReference: {fileID: 0}
     - target: {fileID: 7040493838785884347, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
       propertyPath: m_Name
       value: PointsManager
