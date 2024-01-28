@@ -16,6 +16,7 @@ public class CodeMiniGame : MiniGame
     private int promptCount = 0;
     private bool promptSet = false;
     private bool userPressedFirstKey = false;
+    public CodeMiniGameAction currentMiniGame;
 
     [Header("Settings")]
     [SerializeField] private List<string> codingPrompts = new List<string>()
@@ -50,6 +51,18 @@ public class CodeMiniGame : MiniGame
     [SerializeField] private TMP_Text averageCharacterSpeedText;
     [SerializeField] private TMP_Text mistakeCountText;
     [SerializeField] private TMP_Text characterCountText;
+    
+    [Header("Bug Finding Game")]
+    public GameObject bugPrefab;
+    private List<GameObject> bugs = new List<GameObject>();
+    public float bugMoveInterval = 1f;
+    public RectTransform  codeBuggingScreen;
+
+    public enum CodeMiniGameAction 
+    {
+        SpeedTyping,
+        BugFinding
+    }
 
     protected override void Awake()
     {
@@ -58,18 +71,55 @@ public class CodeMiniGame : MiniGame
         promptDisplay.text = "start typing immediately.. good luck!";
         promptDisplay.color = placeHolderColor;
         codeMiniGameActive = false;
+        currentMiniGame = CodeMiniGameAction.BugFinding;
+        codeBuggingScreen.gameObject.SetActive(false);
     }
     
     private void Update()
     {
+        
         if (codeMiniGameActive)
         {
             UpdateTimer();
+
             if (!inputLocked)
             {
-                HandleCodeMiniGameInput();
+                if (currentMiniGame == CodeMiniGameAction.SpeedTyping)
+                {
+                    HandleCodeMiniGameInput();
+                }
+                else if (currentMiniGame == CodeMiniGameAction.BugFinding)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        CheckBugClick();
+                    }
+                }
             }
         }
+    }
+    
+    private void CheckBugClick()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        if (hit.collider != null && bugs.Contains(hit.collider.gameObject))
+        {
+            GameObject clickedBug = hit.collider.gameObject;
+            bugs.Remove(clickedBug);
+            Destroy(clickedBug);
+
+            if (bugs.Count == 0)
+            {
+                // All bugs caught
+                EndBugFindingGame();
+            }
+        }
+    }
+    
+    private void EndBugFindingGame()
+    {
+        EndMiniGame();
     }
 
     private void Start()
@@ -81,18 +131,75 @@ public class CodeMiniGame : MiniGame
 
     public override void StartMiniGame()
     {
-        promptDisplay.text = "start typing immediately.. good luck!";
-        promptDisplay.color = placeHolderColor;
-        codeMiniGameActive = false;
-        promptCount = 0;
-        promptSet = false;
-        userPressedFirstKey = false;
-        currentCharacterIndex = 0;
-        gameObject.SetActive(true);
-        codeStartingScreen.SetActive(true);
-        tempCodingPrompts = new List<string>(codingPrompts);
-        StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
+        if (currentMiniGame == CodeMiniGameAction.SpeedTyping)
+        {
+            promptDisplay.text = "start typing immediately.. good luck!";
+            promptDisplay.color = placeHolderColor;
+            codeMiniGameActive = false;
+            promptCount = 0;
+            promptSet = false;
+            userPressedFirstKey = false;
+            currentCharacterIndex = 0;
+            gameObject.SetActive(true);
+            codeStartingScreen.SetActive(true);
+            tempCodingPrompts = new List<string>(codingPrompts);
+            StartCoroutine(StartGameAfterDelay(screenOpeningDelay));
+        }
+        else if (currentMiniGame == CodeMiniGameAction.BugFinding)
+        {
+            codeMiniGameActive = false;
+            promptCount = 0;
+            gameObject.SetActive(true);
+            codeStartingScreen.SetActive(true);
+            StartCoroutine(StartBugGameAfterDelay(screenOpeningDelay));
+            
+        }
         base.StartMiniGame();
+    }
+    
+    private void InitializeBugFindingGame()
+    {
+        codeMiniGameActive = true;
+        for (int i = 0; i < promptsPerGame; i++)
+        {
+            GameObject bugObject = Instantiate(bugPrefab, codeBuggingScreen);
+            Debug.Log("bugObject: " + bugObject.name);
+            RectTransform bugRect = bugObject.GetComponent<RectTransform>();
+            bugRect.anchoredPosition = GetRandomPosition();
+            Bug bug = bugObject.AddComponent<Bug>();
+            bug.OnBugClicked += BugClicked;
+            bugs.Add(bugObject);
+        }
+    }
+    
+    IEnumerator MoveBug(RectTransform bugRect)
+    {
+        while (bugs.Contains(bugRect.gameObject))
+        {
+            bugRect.anchoredPosition = GetRandomPosition();
+            yield return new WaitForSeconds(bugMoveInterval);
+        }
+    }
+    
+    private Vector2 GetRandomPosition()
+    {
+        // Calculate a random position within the game area's RectTransform
+        float x = Random.Range(-codeBuggingScreen.rect.width / 2, codeBuggingScreen.rect.width / 2);
+        float y = Random.Range(-codeBuggingScreen.rect.height / 2, codeBuggingScreen.rect.height / 2);
+        return new Vector2(x, y);
+    }
+    
+    private void BugClicked(Bug bug)
+    {
+        GameObject bugObject = bug.gameObject;
+        bugs.Remove(bugObject);
+        Destroy(bugObject);
+
+        if (bugs.Count == 0)
+        {
+            // All bugs caught
+            EndBugFindingGame();
+        }
     }
 
     private IEnumerator StartGameAfterDelay(float delay)
@@ -101,6 +208,15 @@ public class CodeMiniGame : MiniGame
         codeStartingScreen.SetActive(false);
         promptCount = 0;
         StartPrompts();
+    }
+    
+    private IEnumerator StartBugGameAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        codeStartingScreen.SetActive(false);
+        codeBuggingScreen.gameObject.SetActive(true);
+        promptCount = 0;
+        InitializeBugFindingGame();
     }
     
     private void StartPrompts()
@@ -147,6 +263,14 @@ public class CodeMiniGame : MiniGame
     {
         codeMiniGameActive = false;
         codeStartingScreen.SetActive(true);
+        if (currentMiniGame == CodeMiniGameAction.SpeedTyping)
+        {
+            currentMiniGame = CodeMiniGameAction.BugFinding;
+        }
+        else if (currentMiniGame == CodeMiniGameAction.BugFinding)
+        {
+            currentMiniGame = CodeMiniGameAction.SpeedTyping;
+        }
         base.EndMiniGame();
     }
 

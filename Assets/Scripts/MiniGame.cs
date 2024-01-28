@@ -36,6 +36,7 @@ public class MiniGame : MonoBehaviour
     
     protected virtual void EndMiniGame()
     {
+        
         gameObject.SetActive(false);
         MapManager.Instance.TeleportPlayerToSpawnPoint1();
         MapManager.Instance.ShowMap();
