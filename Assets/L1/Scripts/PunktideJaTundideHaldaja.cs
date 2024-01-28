@@ -25,6 +25,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     public GameObject CoopCanvas;
     public GameObject HexCanvas;
     public GameObject KitchenCanvas;
+    public GameObject CodeArtCanvas;
     public Dialogue Dialogue;
 
     public enum ActionType
@@ -124,13 +125,14 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
             //Trigger next part of ending cutscene
             TurnOffAllLocationCanvases();
             StartCoroutine(InstantiateNextDayCanvas("Day 2"));
-
+            CodeArtCanvas.transform.GetChild(0).gameObject.SetActive(true);
         }
         else if (day == 2)
         {
             //Trigger another end ceremony cutscene
             TurnOffAllLocationCanvases();
             StartCoroutine(InstantiateNextDayCanvas("Day 3"));
+            CodeArtCanvas.transform.GetChild(0).gameObject.SetActive(true);
         }
         else if (day == 3)
         {

@@ -3476,6 +3476,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1682426541}
     - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
+      propertyPath: CodeArtCanvas
+      value: 
+      objectReference: {fileID: 292524856}
+    - target: {fileID: 1070456349761196648, guid: 4547a3ca4e706e94886d0eebb346c9bc, type: 3}
       propertyPath: KitchenCanvas
       value: 
       objectReference: {fileID: 435279400}
