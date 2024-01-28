@@ -122,25 +122,32 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         if (day == 1)
         {
             //Trigger next part of ending cutscene
+            TurnOffAllLocationCanvases();
             StartCoroutine(InstantiateNextDayCanvas("Day 2"));
 
         }
         else if (day == 2)
         {
             //Trigger another end ceremony cutscene
+            TurnOffAllLocationCanvases();
             StartCoroutine(InstantiateNextDayCanvas("Day 3"));
         }
         else if (day == 3)
         {
             GameEndManager.EndTheFuckingGame();
-            Dialogue.gameObject.transform.parent.gameObject.SetActive(false);
-            WCCanvas.SetActive(false);
-            CoopCanvas.SetActive(false);
-            HexCanvas.SetActive(false);
-            KitchenCanvas.SetActive(false);
+            TurnOffAllLocationCanvases();
             print("Game Ended!");
             // END THE FUCKING GAME!!!!!!!!!!!!!!!!!!!!!!
         }
+    }
+
+    private void TurnOffAllLocationCanvases()
+    {
+        Dialogue.gameObject.transform.parent.gameObject.SetActive(false);
+        WCCanvas.SetActive(false);
+        CoopCanvas.SetActive(false);
+        HexCanvas.SetActive(false);
+        KitchenCanvas.SetActive(false);
     }
 
     public IEnumerator InstantiateNextDayCanvas(string day)
