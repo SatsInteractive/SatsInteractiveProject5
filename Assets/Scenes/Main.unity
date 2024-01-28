@@ -8822,10 +8822,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: VisualNovelCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6605284934095532490, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7900111591914292319, guid: a7f7a6cb754db8948800a049d5298fcf, type: 3}
       propertyPath: m_Pivot.x
       value: 0

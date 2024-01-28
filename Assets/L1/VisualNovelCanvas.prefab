@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 3200111764123662776}
-  typingDelay: 0.13
+  typingDelay: 0.08
   KitchenDialogue:
   - '"Oi mate!"'
   - PlayerOptions
@@ -612,6 +612,7 @@ MonoBehaviour:
   - {fileID: 3536028254262790501}
   - {fileID: 5788706946848789128}
   PunktideJaTundideHaldaja: {fileID: 0}
+  TiksuUIGameObject: {fileID: 0}
 --- !u!1 &3748537842634184618
 GameObject:
   m_ObjectHideFlags: 0
