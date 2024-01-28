@@ -277,6 +277,8 @@ public class CodeMiniGame : MiniGame
         codeBuggingScreen.gameObject.SetActive(false);
         timerText.text = "0";
         codeStartingScreen.SetActive(true);
+        endScreen.SetActive(true);
+        totalTimeTakenText.text = totalTimeTaken.ToString("F2");
         totalTimeTaken = Time.time - startTime;
         punktideJaTundideHaldaja.TimeTakenForCodingOrArt(totalTimeTaken, PunktideJaTundideHaldaja.ActionType.coding);
         punktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.coding);
