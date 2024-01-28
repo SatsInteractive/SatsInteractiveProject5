@@ -40,15 +40,6 @@ public class Eating : MonoBehaviour
         {
             PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.eating);
         }
-        else if (timesPizzaClicked == 5)
-        {
-            PunktideJaTundideHaldaja.ActionInfo[(int)PunktideJaTundideHaldaja.ActionType.eating].nextMultiplier = eatingNegativeMultiplier;
-            PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.eating);
-        }
-        else if (timesPizzaClicked > 5)
-        { 
-            PunktideJaTundideHaldaja.TriggerAction(PunktideJaTundideHaldaja.ActionType.eating);
-        }
         timesPizzaClicked += 1;
         if (timesPizzaClicked == 5)
         {
