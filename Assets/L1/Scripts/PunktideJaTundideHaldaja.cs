@@ -78,7 +78,7 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
         }
         nextMultiplierTotal = 1f;
         nextThreeMultiplierTotal = (nextThreeMultiplierTotal - 1f) * (2f / 3f) + 1f;
-        nextMultiplierTotal *= actionTriggered.nextThreeMultiplier;
+        nextThreeMultiplierTotal *= actionTriggered.nextThreeMultiplier;
         nextMultiplierTotal *= actionTriggered.nextMultiplier;
         hours += actionTriggered.hoursUsed;
         TimeAndDateTextMeshProUGUI.text = String.Empty;
