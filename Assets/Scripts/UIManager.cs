@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     private Button startButton;
     private Button settingsButton;
     private AudioSource audioSource;
-    private AudioClip buttonClickSound;
+    public AudioClip buttonClickSound;
 
     private Button creditsButton;
     
