@@ -53,7 +53,7 @@ public class GameEndManager : MonoBehaviour
     private void InitializeTeamEntries()
     {
         // Iterate through each team entry in the leaderboard
-        for (int i = 0; i < leaderboard.transform.childCount - 1; i++)
+        for (int i = 0; i < leaderboard.transform.childCount; i++)
         {
             TeamEntry teamEntry = new TeamEntry {
                 TeamName = teamNames[i],
