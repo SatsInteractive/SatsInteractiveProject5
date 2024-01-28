@@ -136,6 +136,7 @@ public class CodeMiniGame : MiniGame
         codeStartingScreen.SetActive(true);
         gameObject.SetActive(false);
         endScreen.SetActive(false);
+
     }
 
     public override void StartMiniGame()
@@ -164,6 +165,7 @@ public class CodeMiniGame : MiniGame
             
         }
         base.StartMiniGame();
+        base.StartCoroutine(base.PlayDanielSound(codeMiniGameAudioSource));
     }
     
     private void InitializeBugFindingGame()

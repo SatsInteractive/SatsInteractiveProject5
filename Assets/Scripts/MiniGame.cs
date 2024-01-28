@@ -12,6 +12,8 @@ public class MiniGame : MonoBehaviour
     [SerializeField] protected AudioClip correctSound;
     [SerializeField] protected AudioClip successSound;
     [SerializeField] protected AudioClip wrongSound;
+    [SerializeField] protected AudioClip doYouWantMusic;
+    [SerializeField] protected AudioClip checkDiscord;
     [SerializeField] protected float audioLevel;
     [SerializeField] protected float colorFeedbackDelay = 0.5f;
     [SerializeField] protected List<float> completionTimes;
@@ -67,6 +69,26 @@ public class MiniGame : MonoBehaviour
     {
         float timeElapsed = Time.time - startTime;
         timerText.text = "Time: " + timeElapsed.ToString("F2");
+    }
+
+    public virtual IEnumerator PlayDanielSound(AudioSource _audioSource)
+    {
+        yield return new WaitForSeconds(5f);
+        if (Random.Range(1, 2) == 1)
+        {
+            if (Random.Range(1, 2) == 1)
+            {
+                _audioSource.PlayOneShot(doYouWantMusic);
+            }
+            else
+            {
+                _audioSource.PlayOneShot(checkDiscord);
+            }
+        }
+        else
+        {
+            yield break;
+        }
     }
     
     
