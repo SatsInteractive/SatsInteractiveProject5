@@ -141,6 +141,7 @@ public class GameManager : Singleton<GameManager>
         punktideJaTundideHaldaja.points = Vector3.zero;
         punktideJaTundideHaldaja.hours = 1600;
         punktideJaTundideHaldaja.day = 0;
+        punktideJaTundideHaldaja.TimeAndDateTextMeshProUGUI.text = "16:00\nJanuary 26";
         uiManager.HandleHealthChange(0);
         uiManager.jammerCardInfoUpRight.SetActive(true);
         MapManager.Instance.TeleportPlayerToSpawnPoint2();
