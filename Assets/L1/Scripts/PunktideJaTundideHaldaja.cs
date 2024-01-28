@@ -21,6 +21,11 @@ public class PunktideJaTundideHaldaja : MonoBehaviour
     public GameEndManager GameEndManager;
 
     public GameObject nextDayCanvas;
+    public GameObject WCCanvas;
+    public GameObject CoopCanvas;
+    public GameObject HexCanvas;
+    public GameObject KitchenCanvas;
+    public Dialogue Dialogue;
 
     public enum ActionType
     {
