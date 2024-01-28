@@ -526,11 +526,11 @@ MonoBehaviour:
   hours: 1800
   day: 0
   nextMultiplierTotal: 1
-  nextThreeMultiplierTotal: 0
+  nextThreeMultiplierTotal: 1
   ActionInfo:
   - type: eating
     addedPoints: {x: 0, y: 0, z: 0}
-    nextMultiplier: 1.2
+    nextMultiplier: 1
     nextThreeMultiplier: 1.5
     availability: 1
     hoursUsed: 200
