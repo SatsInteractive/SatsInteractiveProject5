@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float scaleAmount = 0.01f;
     private bool isMoving;
     private Coroutine walkCoroutine;
+    public ParticleSystem playerParticles;
     
     public bool isInMiniGame = false;
     
@@ -89,6 +90,18 @@ public class PlayerController : MonoBehaviour
 
             timer += Time.deltaTime * walkAnimationRate;
             yield return null;
+        }
+    }
+    
+    public void PlayParticles(string type = "normal")
+    {
+        if (playerParticles != null)
+        {
+            playerParticles.Play();
+        }
+        else
+        {
+            Debug.LogError("Player particles are not assigned!");
         }
     }
 
