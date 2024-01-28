@@ -179,4 +179,9 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSeconds(typingDelay);
         }
     }
+
+    private void OnDisable()
+    {
+        TiksuUIGameObject.SetActive(false);
+    }
 }

@@ -43,20 +43,13 @@ public class Cutscenes : MonoBehaviour
 
     }
 
-    private void OnDisable()
-    {
-        TiksuUIGameObject.SetActive(false);
-        Dialogue.transform.parent.gameObject.SetActive(false);
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            gameObject.SetActive(false);
             TiksuOpening();
+            gameObject.SetActive(false);
         }
-        
     }
 }
